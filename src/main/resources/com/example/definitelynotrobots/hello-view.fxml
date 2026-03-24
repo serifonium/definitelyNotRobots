@@ -13,4 +13,5 @@
 
     <Label fx:id="welcomeText"/>
     <Button text="Definitely Not A Robot!" onAction="#onHelloButtonClick"/>
+    <Button text="Jack button" onAction="#onJackButtonClick"/>
 </VBox>
