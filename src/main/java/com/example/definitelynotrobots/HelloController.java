@@ -14,6 +14,7 @@ public class HelloController {
 
     public void onJackButtonClick() {
         welcomeText.setText("Hi Im Jack");
+        //note
     }
 
 }
