@@ -9,6 +9,6 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to CAB302 Application!");
+        welcomeText.setText("Welcome to the CAB302 Application!");
     }
 }
