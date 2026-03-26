@@ -9,7 +9,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText" />
+    <Label text="Login" />
     <TextField fx:id="usernameInput" promptText="Username" />
     <PasswordField fx:id="passwordInput" promptText="Password" />
     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">

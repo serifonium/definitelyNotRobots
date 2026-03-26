@@ -12,9 +12,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class SignUpController {
-    private UserAccountDAO userAccountDAO = new UserAccountDAO();
+    private final UserAccountDAO userAccountDAO = new UserAccountDAO();
 
-    public Label welcomeText;
     public TextField usernameInput;
     public PasswordField passwordInput;
     public Button signInButton;

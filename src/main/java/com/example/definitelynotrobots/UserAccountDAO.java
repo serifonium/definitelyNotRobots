@@ -7,7 +7,7 @@ import java.util.List;
 public class UserAccountDAO {
     static UserAccount currentAccount;
 
-    private Connection connection;
+    private final Connection connection;
 
     public UserAccountDAO() {
         connection = DatabaseConnection.getInstance();
@@ -44,9 +44,7 @@ public class UserAccountDAO {
 
     public void updateUser(UserAccount userAccount) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE userAccounts" +
-                    "SET username = ?, password = ?" +
-                    "WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE userAccounts SET username = ?, password = ? WHERE id = ?");
             preparedStatement.setString(1, userAccount.getUsername());
             preparedStatement.setString(2, userAccount.getPassword());
             preparedStatement.setInt(3, userAccount.getID());
@@ -58,7 +56,7 @@ public class UserAccountDAO {
 
     public void deleteUser(Integer id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM table_name WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM userAccounts WHERE id = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
         } catch (SQLException ex) {

@@ -1,6 +1,5 @@
 package com.example.definitelynotrobots;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,26 +13,13 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloController {
-
-    UserAccountDAO userAccountDAO = new UserAccountDAO();
+    private final UserAccountDAO userAccountDAO = new UserAccountDAO();
 
     @FXML
-    private Label welcomeText;
     public Button signInButton;
     public PasswordField passwordInput;
     public TextField usernameInput;
     public Label errorText;
-
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-    public void onJackButtonClick() {
-        welcomeText.setText("Hi Im Jack");
-        //note
-    }
 
     @FXML
     protected void onLoginButtonClick() throws IOException {
