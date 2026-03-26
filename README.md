@@ -1,5 +1,10 @@
 ## CAB302 Group Project
 
+### Before starting project
+
+Install `org.xerial:sqlite-jdbc:3.36.0.3` to Maven Addons
+
+
 Meal Creator:
 
 - Generates Meals based on user input of ingredients (what’s in my pantry?)  
