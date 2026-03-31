@@ -3,6 +3,7 @@ package com.example.definitelynotrobots;
 public class UserAccount {
     private Integer ID;
     public Integer getID() { return ID; }
+    public void setID(Integer id) { ID = id; }
 
     private String Username;
     public String getUsername() { return Username; }
