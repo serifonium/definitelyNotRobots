@@ -11,6 +11,9 @@ module com.example.definitelynotrobots {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires openai.java.client.okhttp;
+    requires openai.java.core;
+
 
     opens com.example.definitelynotrobots to javafx.fxml;
     exports com.example.definitelynotrobots;

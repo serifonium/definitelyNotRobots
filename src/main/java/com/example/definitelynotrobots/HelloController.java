@@ -34,6 +34,7 @@ public class HelloController {
         UserAccount account = userAccountDAO.queryDetails(inputUsername, inputPassword);
         if(Objects.isNull(account)) { errorText.setText("Details are incorrect"); return; }
         System.out.println(account);
+
         com.example.definitelynotrobots.UserAccountDAO.currentAccount = account;
 
         Stage stage = (Stage) signInButton.getScene().getWindow();

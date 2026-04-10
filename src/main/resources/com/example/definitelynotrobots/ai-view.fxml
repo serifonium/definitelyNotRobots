@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER"
+      prefHeight="400.0" prefWidth="382.0"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.definitelynotrobots.AiController">
+
+    <children>
+        <Label text="This is the AI page" />
+        <TextField fx:id="chatbotInput" promptText="Ask something..." />
+        <Button text="Send" onAction="#onChatbotInputButtonClick"/>
+        <TextArea fx:id="chatbotOutput" />
+    </children>
+</VBox>
