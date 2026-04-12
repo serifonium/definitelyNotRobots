@@ -1,6 +1,8 @@
-package com.example.definitelynotrobots;
+package controllers;
 
-import javafx.fxml.FXML;
+import com.example.definitelynotrobots.HelloApplication;
+import com.example.definitelynotrobots.UserAccount;
+import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,17 +14,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelloController {
+public class SignUpController {
     private final UserAccountDAO userAccountDAO = new UserAccountDAO();
 
-    @FXML
-    public Button signInButton;
-    public PasswordField passwordInput;
     public TextField usernameInput;
+    public PasswordField passwordInput;
+    public Button signInButton;
     public Label errorText;
 
-    @FXML
-    protected void onLoginButtonClick() throws IOException {
+    public void onSignUpButtonClick() throws IOException {
         String inputUsername = usernameInput.getText();
         String inputPassword = passwordInput.getText();
 
@@ -31,21 +31,13 @@ public class HelloController {
         if(Objects.equals(inputPassword, "")) { errorText.setText("Password field is empty"); return; }
         errorText.setText("");
 
-        UserAccount account = userAccountDAO.queryDetails(inputUsername, inputPassword);
-        if(Objects.isNull(account)) { errorText.setText("Details are incorrect"); return; }
-        System.out.println(account);
-        com.example.definitelynotrobots.UserAccountDAO.currentAccount = account;
-
-        Stage stage = (Stage) signInButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
-        stage.setScene(scene);
+        userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword));
+        goToSignIn();
     }
 
-    @FXML
-    protected void onSignUpButtonClick() throws IOException {
+    public void goToSignIn() throws IOException {
         Stage stage = (Stage) signInButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sign-up-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }

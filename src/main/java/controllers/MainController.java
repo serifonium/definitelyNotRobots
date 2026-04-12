@@ -1,5 +1,6 @@
-package com.example.definitelynotrobots;
+package controllers;
 
+import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

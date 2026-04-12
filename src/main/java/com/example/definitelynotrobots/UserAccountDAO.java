@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserAccountDAO {
-    static UserAccount currentAccount;
+    public static UserAccount currentAccount;
 
     private final Connection connection;
 
