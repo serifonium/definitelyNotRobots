@@ -9,8 +9,9 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     public static final String TITLE = "Not A Chef";
-    public static int WIDTH = 320;
-    public static int HEIGHT = 240;
+    public static int WIDTH = 720;
+    public static int HEIGHT = 480;
+    // 320, 240
 
     @Override
     public void start(Stage stage) throws IOException {
