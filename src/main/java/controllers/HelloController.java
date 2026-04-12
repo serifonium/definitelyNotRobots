@@ -43,6 +43,8 @@ public class HelloController {
 
         Stage stage = (Stage) signInButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
+        HelloApplication.WIDTH = 600;
+        HelloApplication.HEIGHT = 600;
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }
