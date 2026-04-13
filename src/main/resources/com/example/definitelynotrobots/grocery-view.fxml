@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GroceryListController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
          <children>
@@ -13,7 +13,7 @@
                   <Insets bottom="4.0" />
                </VBox.margin>
             </Button>
-            <ListView prefHeight="200.0" prefWidth="100.0" />
+            <ListView prefHeight="200.0" prefWidth="100.0" fx:id="groceryListView" />
          </children>
          <HBox.margin>
             <Insets />
@@ -70,6 +70,7 @@
                   </Button>
                </children>
             </GridPane>
+            <Label text="" fx:id="errorText" textFill="RED" />
          </children>
          <HBox.margin>
             <Insets />

@@ -1,0 +1,96 @@
+package com.example.definitelynotrobots;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class GroceryListDAO {
+    private final Connection connection;
+
+    public GroceryListDAO() {
+        connection = DatabaseConnection.getInstance();
+        createTable();
+    }
+
+    public void createTable() {
+        try {
+            Statement createTable = connection.createStatement();
+            createTable.execute(
+                    "CREATE TABLE IF NOT EXISTS groceryList ("
+                            + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "userId INTEGER NOT NULL, "
+                            + "item VARCHAR NOT NULL, "
+                            + "amount INTEGER NOT NULL, "
+                            + "notes VARCHAR "
+                            + ")"
+            );
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void insertGroceryItem(GroceryItem groceryItem) {
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "INSERT INTO groceryList (userId, item, amount, notes) VALUES (?, ?, ?, ?)"
+            );
+            insertStatement.setInt(1, groceryItem.getUserID());
+            insertStatement.setString(2, groceryItem.getName());
+            insertStatement.setInt(3, groceryItem.getAmount());
+            insertStatement.setString(4, groceryItem.getNotes());
+            insertStatement.execute();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void updateGroceryItem(GroceryItem groceryItem) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE groceryList SET item = ?, amount = ?, notes = ? WHERE id = ?"
+            );
+            preparedStatement.setString(1, groceryItem.getName());
+            preparedStatement.setInt(2, groceryItem.getAmount());
+            preparedStatement.setString(3, groceryItem.getNotes());
+            preparedStatement.setInt(4, groceryItem.getID());
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void deleteGroceryItem(Integer id) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM groceryList WHERE id = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public List<GroceryItem> getByID(Integer id) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM groceryList WHERE userId = ?");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<GroceryItem> groceryList = new ArrayList<GroceryItem>() {};
+
+            while(resultSet.next()) {
+                groceryList.add(new GroceryItem(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("userId"),
+                        resultSet.getString("item"),
+                        resultSet.getInt("amount"),
+                        resultSet.getString("notes")
+                ));
+            }
+
+            return groceryList;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
+    }
+}
