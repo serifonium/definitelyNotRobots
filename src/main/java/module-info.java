@@ -11,7 +11,10 @@ module com.example.definitelynotrobots {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
 
     opens com.example.definitelynotrobots to javafx.fxml;
     exports com.example.definitelynotrobots;
+    exports controllers;
+    opens controllers to javafx.fxml;
 }
