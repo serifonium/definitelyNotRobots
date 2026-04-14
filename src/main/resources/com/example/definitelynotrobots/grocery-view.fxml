@@ -8,12 +8,12 @@
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
          <children>
-            <Button mnemonicParsing="false" text="+ Add Item" onMouseClicked="#onAdd">
+            <Button mnemonicParsing="false" onMouseClicked="#onAdd" text="+ Add Item">
                <VBox.margin>
                   <Insets bottom="4.0" />
                </VBox.margin>
             </Button>
-            <ListView prefHeight="200.0" prefWidth="100.0" fx:id="groceryListView" />
+            <ListView fx:id="groceryListView" prefHeight="200.0" prefWidth="100.0" />
          </children>
          <HBox.margin>
             <Insets />
@@ -43,12 +43,12 @@
                   <TextArea fx:id="itemNotesField" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="275.0" text="Save Changes" onMouseClicked="#onEditConfirm">
+            <Button mnemonicParsing="false" onMouseClicked="#onEditConfirm" prefHeight="25.0" prefWidth="275.0" text="Save Changes">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="275.0" text="Discard Changes" onMouseClicked="#onCancel" />
+            <Button mnemonicParsing="false" onMouseClicked="#onCancel" prefHeight="25.0" prefWidth="275.0" text="Discard Changes" />
             <GridPane prefWidth="285.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="256.0" />
@@ -58,7 +58,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="T" onMouseClicked="#onDelete" GridPane.columnIndex="1">
+                  <Button mnemonicParsing="false" onMouseClicked="#onDelete" prefHeight="25.0" prefWidth="25.0" text="T" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -70,7 +70,8 @@
                   </Button>
                </children>
             </GridPane>
-            <Label text="" fx:id="errorText" textFill="RED" />
+             <Button mnemonicParsing="false" onMouseClicked="#goToPantryView" prefHeight="25.0" prefWidth="275.0" text="Go To Pantry" />
+            <Label fx:id="errorText" text="" textFill="RED" />
          </children>
          <HBox.margin>
             <Insets />

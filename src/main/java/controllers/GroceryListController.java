@@ -2,11 +2,16 @@ package controllers;
 
 import com.example.definitelynotrobots.GroceryItem;
 import com.example.definitelynotrobots.GroceryListDAO;
+import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GroceryListController {
@@ -132,5 +137,12 @@ public class GroceryListController {
         }
         // Show / hide based on whether there are contacts
         //contactContainer.setVisible(hasList);
+    }
+
+    public void goToPantryView() throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
+        stage.setScene(scene);
     }
 }

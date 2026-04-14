@@ -9,5 +9,6 @@
       <Button mnemonicParsing="false" text="Grocery List" onAction="#goToGroceryList" />
       <Button mnemonicParsing="false" text="Dietary Preferences" onAction="#goToPreferences" />
       <Button mnemonicParsing="false" text="Nutrition Goals" onAction="#goToFitnessTargets" />
+      <Button mnemonicParsing="false" text="Recipe View" onAction="#goToRecipeView" />
    </children>
 </VBox>
