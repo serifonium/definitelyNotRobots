@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -27,18 +28,20 @@ public class GroceryListController {
     private void selectGroceryItem(GroceryItem groceryItem) {
         groceryListView.getSelectionModel().select(groceryItem);
         itemNameField.setText(groceryItem.getName());
-        itemAmountField.setText(groceryItem.getAmount().toString());
+        itemAmountField.setText(groceryItem.getAmount().toString() + groceryItem.getAmountType());
         itemNotesField.setText(groceryItem.getNotes());
     }
 
     @FXML
     private void onEditConfirm() {
-        try {
-            Integer.parseInt(itemAmountField.getText());
-        } catch (NumberFormatException e) {
-            errorText.setText("Amount field must be an integer");
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
             return;
         }
+        Integer amount = Integer.parseInt(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
 
         // Get the selected contact from the list view
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
@@ -46,7 +49,8 @@ public class GroceryListController {
 
 
         selectedItem.setName(itemNameField.getText());
-        selectedItem.setAmount(Integer.parseInt(itemAmountField.getText()));
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
         selectedItem.setNotes(itemNotesField.getText());
         selectedItem.setFoodType(foodTypeField.getValue());
 
@@ -142,10 +146,26 @@ public class GroceryListController {
         }
     }
 
+    public void onPushToPantry() {
+        GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+
+    }
+
     public void goToPantryView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
+        Scene scene = new Scene(fxmlLoader.load(), 720, 420);
         stage.setScene(scene);
+    }
+
+    public void EnterToSave(javafx.scene.input.KeyEvent event) {
+        if(event.getCode().equals(KeyCode.ENTER)) onEditConfirm();
+    }
+
+    public void EnterToSelect(javafx.scene.input.KeyEvent event) {
+        if(!event.getCode().equals(KeyCode.ENTER)) return;
+        selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
     }
 }
