@@ -21,6 +21,8 @@ public class GroceryListDAO {
                             + "userId INTEGER NOT NULL, "
                             + "item VARCHAR NOT NULL, "
                             + "amount INTEGER NOT NULL, "
+                            + "amountType VARCHAR DEFAULT 'x',"
+                            + "foodType VARCHAR NOT NULL,"
                             + "notes VARCHAR "
                             + ")"
             );
@@ -28,16 +30,19 @@ public class GroceryListDAO {
             System.err.println(ex);
         }
     }
+    // ENUM('Baking', 'Seasoning', 'Oil', 'Starch', 'Dairy', 'Meat', 'Fruit', 'Vegetable')
 
     public void insertGroceryItem(GroceryItem groceryItem) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO groceryList (userId, item, amount, notes) VALUES (?, ?, ?, ?)"
+                    "INSERT INTO groceryList (userId, item, amount, amountType, foodType, notes) VALUES (?, ?, ?, ?, ?, ?)"
             );
             insertStatement.setInt(1, groceryItem.getUserID());
             insertStatement.setString(2, groceryItem.getName());
             insertStatement.setInt(3, groceryItem.getAmount());
-            insertStatement.setString(4, groceryItem.getNotes());
+            insertStatement.setString(4, groceryItem.getAmountType());
+            insertStatement.setString(5, groceryItem.getFoodType().toString());
+            insertStatement.setString(6, groceryItem.getNotes());
             insertStatement.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -47,12 +52,14 @@ public class GroceryListDAO {
     public void updateGroceryItem(GroceryItem groceryItem) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "UPDATE groceryList SET item = ?, amount = ?, notes = ? WHERE id = ?"
+                    "UPDATE groceryList SET item = ?, amount = ?, amountType = ?, foodType = ?, notes = ? WHERE id = ?"
             );
             preparedStatement.setString(1, groceryItem.getName());
             preparedStatement.setInt(2, groceryItem.getAmount());
-            preparedStatement.setString(3, groceryItem.getNotes());
-            preparedStatement.setInt(4, groceryItem.getID());
+            preparedStatement.setString(3, groceryItem.getAmountType());
+            preparedStatement.setString(4, groceryItem.getFoodType().toString());
+            preparedStatement.setString(5, groceryItem.getNotes());
+            preparedStatement.setInt(6, groceryItem.getID());
             preparedStatement.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -69,10 +76,10 @@ public class GroceryListDAO {
         }
     }
 
-    public List<GroceryItem> getByID(Integer id) {
+    public List<GroceryItem> getByUserID(Integer userID) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM groceryList WHERE userId = ?");
-            preparedStatement.setInt(1, id);
+            preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             List<GroceryItem> groceryList = new ArrayList<GroceryItem>() {};
@@ -83,6 +90,8 @@ public class GroceryListDAO {
                         resultSet.getInt("userId"),
                         resultSet.getString("item"),
                         resultSet.getInt("amount"),
+                        resultSet.getString("amountType"),
+                        FoodTypesEnum.valueOf(resultSet.getString("foodType")),
                         resultSet.getString("notes")
                 ));
             }

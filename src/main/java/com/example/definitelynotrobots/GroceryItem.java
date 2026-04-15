@@ -21,33 +21,29 @@ public class GroceryItem {
     public String getNotes() { return Notes; }
     public void setNotes(String notes) { Notes = notes; }
 
-    public GroceryItem(String name, Integer amount) {
-        Name = name;
-        Amount = amount;
-        Notes = "";
-    }
-    public GroceryItem(String name, Integer amount, String notes) {
-        Name = name;
-        Amount = amount;
-        Notes = notes;
-    }
-    public GroceryItem(Integer userID, String name, Integer amount) {
+    private String AmountType;
+    public String getAmountType() { return AmountType; }
+    public void setAmountType(String amountType) { AmountType = amountType; }
+
+    private FoodTypesEnum FoodType;
+    public FoodTypesEnum getFoodType() { return FoodType; }
+    public void setFoodType(FoodTypesEnum foodType) { FoodType = foodType; }
+
+    public GroceryItem(Integer userID, String name, Integer amount, String amountType, FoodTypesEnum foodType, String notes) {
         UserID = userID;
         Name = name;
         Amount = amount;
-        Notes = "";
-    }
-    public GroceryItem(Integer userID, String name, Integer amount, String notes) {
-        UserID = userID;
-        Name = name;
-        Amount = amount;
+        AmountType = amountType;
+        FoodType = foodType;
         Notes = notes;
     }
-    public GroceryItem(Integer id, Integer userID, String name, Integer amount, String notes) {
+    public GroceryItem(Integer id, Integer userID, String name, Integer amount, String amountType, FoodTypesEnum foodType, String notes) {
         ID = id;
         UserID = userID;
         Name = name;
         Amount = amount;
+        AmountType = amountType;
+        FoodType = foodType;
         Notes = notes;
     }
 
@@ -58,6 +54,8 @@ public class GroceryItem {
                 ", UserID=" + UserID +
                 ", Name='" + Name + '\'' +
                 ", Amount=" + Amount +
+                ", AmountType='" + AmountType + '\'' +
+                ", FoodType='" + FoodType + '\'' +
                 ", Notes='" + Notes + '\'' +
                 '}';
     }

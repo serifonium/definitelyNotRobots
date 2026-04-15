@@ -1,9 +1,6 @@
 package controllers;
 
-import com.example.definitelynotrobots.GroceryItem;
-import com.example.definitelynotrobots.GroceryListDAO;
-import com.example.definitelynotrobots.HelloApplication;
-import com.example.definitelynotrobots.UserAccountDAO;
+import com.example.definitelynotrobots.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,6 +21,7 @@ public class GroceryListController {
     public TextField itemNameField;
     public TextField itemAmountField;
     public TextArea itemNotesField;
+    public ChoiceBox<FoodTypesEnum> foodTypeField;
 
     @FXML
     private void selectGroceryItem(GroceryItem groceryItem) {
@@ -44,14 +42,17 @@ public class GroceryListController {
 
         // Get the selected contact from the list view
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            selectedItem.setName(itemNameField.getText());
-            selectedItem.setAmount(Integer.parseInt(itemAmountField.getText()));
-            selectedItem.setNotes(itemNotesField.getText());
-            groceryListDAO.updateGroceryItem(selectedItem);
-            syncGroceryList();
-            selectGroceryItem(selectedItem);
-        }
+        if (selectedItem == null) return;
+
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(Integer.parseInt(itemAmountField.getText()));
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        groceryListDAO.updateGroceryItem(selectedItem);
+        syncGroceryList();
+        selectGroceryItem(selectedItem);
     }
 
     private ListCell<GroceryItem> renderCell(ListView<GroceryItem> contactListView) {
@@ -79,7 +80,7 @@ public class GroceryListController {
                     setText(null);
                     super.setOnMouseClicked(this::onContactSelected);
                 } else {
-                    setText(groceryItem.getAmount().toString() + "x " + groceryItem.getName());
+                    setText(groceryItem.getAmount().toString() + groceryItem.getAmountType() + " " + groceryItem.getName());
                 }
             }
         };
@@ -87,7 +88,6 @@ public class GroceryListController {
 
     @FXML
     private void onDelete() {
-        // Get the selected contact from the list view
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             groceryListDAO.deleteGroceryItem(selectedItem.getID());
@@ -100,11 +100,13 @@ public class GroceryListController {
         final String DEFAULT_NAME = "Name";
         final Integer DEFAULT_AMOUNT = 0;
         final String DEFAULT_NOTES = "";
-        GroceryItem newItem = new GroceryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_NOTES);
+        final String DEFAULT_AMOUNT_TYPE = "x";
+        final FoodTypesEnum DEFAULT_FOOD_TYPE = FoodTypesEnum.Baking;
+        GroceryItem newItem = new GroceryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_AMOUNT_TYPE, DEFAULT_FOOD_TYPE, DEFAULT_NOTES);
 
         groceryListDAO.insertGroceryItem(newItem);
         syncGroceryList();
-        selectGroceryItem(newItem);
+        selectGroceryItem(groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
     }
 
@@ -118,6 +120,9 @@ public class GroceryListController {
 
     @FXML
     public void initialize() {
+        foodTypeField.getItems().setAll(FoodTypesEnum.values());
+        foodTypeField.setValue(FoodTypesEnum.Oil);
+
         groceryListView.setCellFactory(this::renderCell);
         syncGroceryList();
 
@@ -130,13 +135,11 @@ public class GroceryListController {
 
     private void syncGroceryList() {
         groceryListView.getItems().clear();
-        List<GroceryItem> groceries = groceryListDAO.getByID(UserAccountDAO.currentAccount.getID());
+        List<GroceryItem> groceries = groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID());
         boolean hasList = !groceries.isEmpty();
         if (hasList) {
             groceryListView.getItems().addAll(groceries);
         }
-        // Show / hide based on whether there are contacts
-        //contactContainer.setVisible(hasList);
     }
 
     public void goToPantryView() throws IOException {
