@@ -17,7 +17,7 @@ public class MainController {
     public Label testLabel;
 
     public void initialize() {
-        testLabel.setText("Current User: " + UserAccountDAO.currentAccount.getUsername());
+        testLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getUsername() + "!");
     }
 
     public void goToGroceryList() throws IOException {
