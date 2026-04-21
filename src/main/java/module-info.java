@@ -12,6 +12,8 @@ module com.example.definitelynotrobots {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires java.desktop;
+    requires openai.java.core;
+    requires openai.java.client.okhttp;
 
     opens com.example.definitelynotrobots to javafx.fxml;
     exports com.example.definitelynotrobots;

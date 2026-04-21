@@ -47,4 +47,15 @@ public class MainController {
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }
+    public void goToAIPage() throws IOException {
+        Stage stage = (Stage) testLabel.getScene().getWindow();
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(HelloApplication.class.getResource("ai-view.fxml"));
+        Scene scene = new Scene(
+                fxmlLoader.load(),
+                HelloApplication.WIDTH,
+                HelloApplication.HEIGHT
+        );
+        stage.setScene(scene);
+    }
 }
