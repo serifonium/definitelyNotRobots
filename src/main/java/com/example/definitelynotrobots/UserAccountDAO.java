@@ -22,7 +22,8 @@ public class UserAccountDAO {
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "username VARCHAR NOT NULL, "
                     + "password VARCHAR NOT NULL, "
-                    + "firstname VARCHAR NOT NULL"
+                    + "firstname VARCHAR NOT NULL,"
+                    + "lastname VARCHAR NOT NULL"
                     + ")"
             );
         } catch (SQLException ex) {
@@ -33,11 +34,12 @@ public class UserAccountDAO {
     public void insertUser(UserAccount userAccount) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
-                "INSERT INTO userAccounts (username, password, firstname) VALUES (?, ?, ?)"
+                "INSERT INTO userAccounts (username, password, firstname, lastname) VALUES (?, ?, ?, ?)"
             );
             insertStatement.setString(1, userAccount.getUsername());
             insertStatement.setString(2, userAccount.getPassword());
             insertStatement.setString(3, userAccount.getFirstname());
+            insertStatement.setString(4, userAccount.getLastname());
             insertStatement.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -78,8 +80,8 @@ public class UserAccountDAO {
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
-                        resultSet.getString("firstname")
-
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname")
                     )
                 );
             }
@@ -99,7 +101,8 @@ public class UserAccountDAO {
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
-                        resultSet.getString("firstname")
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname")
                 );
             }
         } catch (SQLException ex) {
