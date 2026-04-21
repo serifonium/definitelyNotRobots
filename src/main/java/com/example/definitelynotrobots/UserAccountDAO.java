@@ -122,7 +122,8 @@ public class UserAccountDAO {
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
                         resultSet.getString("password"),
-                        resultSet.getString("firstname")
+                        resultSet.getString("firstname"),
+                        resultSet.getString("lastname")
                 );
             }
         } catch (SQLException ex) {

@@ -21,6 +21,7 @@ public class SignUpController {
     public TextField usernameInput;
     public PasswordField passwordInput;
     public TextField firstnameInput;
+    public TextField lastnameInput;
     public Button signInButton;
     public Label errorText;
 
@@ -28,13 +29,14 @@ public class SignUpController {
         String inputUsername = usernameInput.getText();
         String inputPassword = passwordInput.getText();
         String inputFirstname = firstnameInput.getText();
+        String inputLastname = lastnameInput.getText();
 
         // Handle user errors
         if(Objects.equals(inputUsername, "")) { errorText.setText("Username field is empty"); return; }
         if(Objects.equals(inputPassword, "")) { errorText.setText("Password field is empty"); return; }
         errorText.setText("");
 
-        userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword, inputFirstname));
+        userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword, inputFirstname, inputLastname));
         goToSignIn();
     }
 
