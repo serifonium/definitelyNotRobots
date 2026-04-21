@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     public static final String TITLE = "Not A Chef";
-    public static int WIDTH = 720;
-    public static int HEIGHT = 480;
+    public static int WIDTH = 1920/2;
+    public static int HEIGHT = 1080/2;
     // 320, 240
 
     @Override
@@ -20,5 +20,6 @@ public class HelloApplication extends Application {
         stage.setTitle(TITLE);
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
     }
 }
