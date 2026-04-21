@@ -5,6 +5,15 @@
 Install `org.xerial:sqlite-jdbc:3.36.0.3` to Maven Addons  
 _(Project Structure --> Libraries --> [+] New Project Libraries --> From Maven...)_
 
+To use AI features:
+
+MAC:  
+- run `nano ~/.zshrc`
+- Add this line at the bottom: 
+  - `export OPENAI_API_KEY="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"`
+- Save & Exit
+  - `Ctrl+O`, `Enter`, `Ctrl+X`
+- Restart IntelliJ
 
 Meal Creator:
 
