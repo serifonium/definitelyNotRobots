@@ -28,19 +28,20 @@ public class GroceryListController {
     private void selectGroceryItem(GroceryItem groceryItem) {
         groceryListView.getSelectionModel().select(groceryItem);
         itemNameField.setText(groceryItem.getName());
-        itemAmountField.setText(groceryItem.getAmount().toString() + groceryItem.getAmountType());
+        itemAmountField.setText(groceryItem.getAmountToString() + groceryItem.getAmountType());
         itemNotesField.setText(groceryItem.getNotes());
     }
 
     @FXML
     private void onEditConfirm() {
-        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9]+ ?[a-zA-Z]*");
+        errorText.setText("");
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
         if(!amountIsCorrect) {
             errorText.setText("Amount field must be an integer with optional unit");
             return;
         }
-        Integer amount = Integer.parseInt(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
-        String amountType = itemAmountField.getText().replaceAll("[0-9]+", "").replaceAll(" +", "");
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
         if(amountType.isEmpty()) amountType = "x";
 
         // Get the selected contact from the list view
@@ -54,7 +55,7 @@ public class GroceryListController {
         selectedItem.setNotes(itemNotesField.getText());
         selectedItem.setFoodType(foodTypeField.getValue());
 
-        groceryListDAO.updateGroceryItem(selectedItem);
+        groceryListDAO.updateItem(selectedItem);
         syncGroceryList();
         selectGroceryItem(selectedItem);
     }
@@ -84,7 +85,7 @@ public class GroceryListController {
                     setText(null);
                     super.setOnMouseClicked(this::onContactSelected);
                 } else {
-                    setText(groceryItem.getAmount().toString() + groceryItem.getAmountType() + " " + groceryItem.getName());
+                    setText(groceryItem.getAmountToString() + groceryItem.getAmountType() + " " + groceryItem.getName());
                 }
             }
         };
@@ -94,7 +95,7 @@ public class GroceryListController {
     private void onDelete() {
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            groceryListDAO.deleteGroceryItem(selectedItem.getID());
+            groceryListDAO.deleteItem(selectedItem.getID());
             syncGroceryList();
         }
     }
@@ -102,13 +103,13 @@ public class GroceryListController {
     @FXML
     private void onAdd() {
         final String DEFAULT_NAME = "Name";
-        final Integer DEFAULT_AMOUNT = 0;
+        final Double DEFAULT_AMOUNT = 0d;
         final String DEFAULT_NOTES = "";
         final String DEFAULT_AMOUNT_TYPE = "x";
-        final FoodTypesEnum DEFAULT_FOOD_TYPE = FoodTypesEnum.Baking;
+        final FoodTypesEnum DEFAULT_FOOD_TYPE = FoodTypesEnum.Oil;
         GroceryItem newItem = new GroceryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_AMOUNT_TYPE, DEFAULT_FOOD_TYPE, DEFAULT_NOTES);
 
-        groceryListDAO.insertGroceryItem(newItem);
+        groceryListDAO.insertItem(newItem);
         syncGroceryList();
         selectGroceryItem(groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
@@ -131,9 +132,9 @@ public class GroceryListController {
         syncGroceryList();
 
         groceryListView.getSelectionModel().selectFirst();
-        GroceryItem firstContact = groceryListView.getSelectionModel().getSelectedItem();
-        if (firstContact != null) {
-            selectGroceryItem(firstContact);
+        GroceryItem firstItem = groceryListView.getSelectionModel().getSelectedItem();
+        if (firstItem != null) {
+            selectGroceryItem(firstItem);
         }
     }
 

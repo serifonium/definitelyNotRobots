@@ -10,7 +10,7 @@ public class GroceryItemTest {
 
     @BeforeEach
     public void setUp() {
-        groceryItem = new GroceryItem(1, 3, "Bread", 2, "x", FoodTypesEnum.Baking, "Get before Friday");
+        groceryItem = new GroceryItem(1, 3, "Bread", 2d, "x", FoodTypesEnum.Baking, "Get before Friday");
     }
 
     @Test
@@ -20,7 +20,7 @@ public class GroceryItemTest {
     @Test
     public void testGetName() { assertEquals("Bread", groceryItem.getName()); }
     @Test
-    public void testGetAmount() { assertEquals(2, groceryItem.getAmount()); }
+    public void testGetAmount() { assertEquals(2d, groceryItem.getAmount()); }
     @Test
     public void testGetAmountType() { assertEquals("x", groceryItem.getAmountType()); }
     @Test
@@ -35,7 +35,7 @@ public class GroceryItemTest {
     @Test
     public void testSetName() { groceryItem.setName("Steak"); assertEquals("Steak", groceryItem.getName()); }
     @Test
-    public void testSetAmount() { groceryItem.setAmount(400); assertEquals(400, groceryItem.getAmount()); }
+    public void testSetAmount() { groceryItem.setAmount(420.5); assertEquals(420.5, groceryItem.getAmount()); }
     @Test
     public void testSetAmountType() { groceryItem.setAmountType("g"); assertEquals("g", groceryItem.getAmountType()); }
     @Test

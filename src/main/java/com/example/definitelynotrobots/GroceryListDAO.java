@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroceryListDAO {
+public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
     private final Connection connection;
 
     public GroceryListDAO() {
@@ -20,7 +20,7 @@ public class GroceryListDAO {
                             + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                             + "userId INTEGER NOT NULL, "
                             + "item VARCHAR NOT NULL, "
-                            + "amount INTEGER NOT NULL, "
+                            + "amount DOUBLE NOT NULL, "
                             + "amountType VARCHAR DEFAULT 'x',"
                             + "foodType VARCHAR NOT NULL,"
                             + "notes VARCHAR "
@@ -32,14 +32,14 @@ public class GroceryListDAO {
     }
     // ENUM('Baking', 'Seasoning', 'Oil', 'Starch', 'Dairy', 'Meat', 'Fruit', 'Vegetable')
 
-    public void insertGroceryItem(GroceryItem groceryItem) {
+    public void insertItem(GroceryItem groceryItem) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO groceryList (userId, item, amount, amountType, foodType, notes) VALUES (?, ?, ?, ?, ?, ?)"
             );
             insertStatement.setInt(1, groceryItem.getUserID());
             insertStatement.setString(2, groceryItem.getName());
-            insertStatement.setInt(3, groceryItem.getAmount());
+            insertStatement.setDouble(3, groceryItem.getAmount());
             insertStatement.setString(4, groceryItem.getAmountType());
             insertStatement.setString(5, groceryItem.getFoodType().toString());
             insertStatement.setString(6, groceryItem.getNotes());
@@ -49,13 +49,13 @@ public class GroceryListDAO {
         }
     }
 
-    public void updateGroceryItem(GroceryItem groceryItem) {
+    public void updateItem(GroceryItem groceryItem) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
                     "UPDATE groceryList SET item = ?, amount = ?, amountType = ?, foodType = ?, notes = ? WHERE id = ?"
             );
             preparedStatement.setString(1, groceryItem.getName());
-            preparedStatement.setInt(2, groceryItem.getAmount());
+            preparedStatement.setDouble(2, groceryItem.getAmount());
             preparedStatement.setString(3, groceryItem.getAmountType());
             preparedStatement.setString(4, groceryItem.getFoodType().toString());
             preparedStatement.setString(5, groceryItem.getNotes());
@@ -66,7 +66,7 @@ public class GroceryListDAO {
         }
     }
 
-    public void deleteGroceryItem(Integer id) {
+    public void deleteItem(Integer id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM groceryList WHERE id = ?");
             preparedStatement.setInt(1, id);
@@ -89,7 +89,7 @@ public class GroceryListDAO {
                         resultSet.getInt("id"),
                         resultSet.getInt("userId"),
                         resultSet.getString("item"),
-                        resultSet.getInt("amount"),
+                        resultSet.getDouble("amount"),
                         resultSet.getString("amountType"),
                         FoodTypesEnum.valueOf(resultSet.getString("foodType")),
                         resultSet.getString("notes")

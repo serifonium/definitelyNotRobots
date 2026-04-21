@@ -1,21 +1,21 @@
 package com.example.definitelynotrobots;
 
-public class GroceryItem {
+public class PantryItem {
     private Integer ID;
     public Integer getID() { return ID; }
-    public void setID(Integer id) { ID = id; }
+    public PantryItem setID(Integer id) { ID = id; return this; }
 
     private Integer UserID;
     public Integer getUserID() { return UserID; }
-    public void setUserID(Integer userID) { UserID = userID; }
+    public PantryItem setUserID(Integer userID) { UserID = userID; return this; }
 
     private String Name;
     public String getName() { return Name; }
-    public void setName(String name) { Name = name; }
+    public PantryItem setName(String name) { Name = name; return this; }
 
     private Double Amount;
     public Double getAmount() { return Amount; }
-    public void setAmount(Double amount) { Amount = amount; }
+    public PantryItem setAmount(Double amount) { Amount = amount; return this; }
     public String getAmountToString() {
         if (getAmount() % 1 != 0) return getAmount().toString();
         return Integer.toString(getAmount().intValue());
@@ -23,17 +23,17 @@ public class GroceryItem {
 
     private String Notes;
     public String getNotes() { return Notes; }
-    public void setNotes(String notes) { Notes = notes; }
+    public PantryItem setNotes(String notes) { Notes = notes; return this; }
 
     private String AmountType;
     public String getAmountType() { return AmountType; }
-    public void setAmountType(String amountType) { AmountType = amountType; }
+    public PantryItem setAmountType(String amountType) { AmountType = amountType; return this; }
 
     private FoodTypesEnum FoodType;
     public FoodTypesEnum getFoodType() { return FoodType; }
-    public void setFoodType(FoodTypesEnum foodType) { FoodType = foodType; }
+    public PantryItem setFoodType(FoodTypesEnum foodType) { FoodType = foodType; return this; }
 
-    public GroceryItem(Integer userID, String name, Double amount, String amountType, FoodTypesEnum foodType, String notes) {
+    public PantryItem(Integer userID, String name, Double amount, String amountType, FoodTypesEnum foodType, String notes) {
         UserID = userID;
         Name = name;
         Amount = amount;
@@ -41,7 +41,7 @@ public class GroceryItem {
         FoodType = foodType;
         Notes = notes;
     }
-    public GroceryItem(Integer id, Integer userID, String name, Double amount, String amountType, FoodTypesEnum foodType, String notes) {
+    public PantryItem(Integer id, Integer userID, String name, Double amount, String amountType, FoodTypesEnum foodType, String notes) {
         ID = id;
         UserID = userID;
         Name = name;
@@ -49,6 +49,23 @@ public class GroceryItem {
         AmountType = amountType;
         FoodType = foodType;
         Notes = notes;
+    }
+
+    public PantryItem() {
+        ID = null;
+        UserID = null;
+        Name = null;
+        Amount = null;
+        AmountType = null;
+        FoodType = null;
+        Notes = null;
+    }
+
+    public Double evalNewAmount(Double amount, String amountType) {
+        if(AmountType.equals(amountType)) {
+            return Amount + amount;
+        }
+        return 0d;
     }
 
     @Override
