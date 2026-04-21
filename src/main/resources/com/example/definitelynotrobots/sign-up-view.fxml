@@ -8,12 +8,12 @@
 <HBox alignment="CENTER" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
     <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="400.0" style="-fx-background-color: #2a6c36;">
         <children>
-            <Label style="-fx-text-fill: #442200;" text="Sign up">
+            <Label style="-fx-text-fill: #442200;" text="Welcome!">
                 <font>
                     <Font name="System Bold" size="36.0" />
                 </font>
             </Label>
-            <Label prefHeight="51.0" prefWidth="251.0" style="-fx-text-fill: #442200;" text="Sign up to Not A Chef and start making your next masterpiece today." wrapText="true" />
+            <Label prefHeight="51.0" prefWidth="251.0" style="-fx-text-fill: #442200;" text="Thank you for choosing Not A Chef for your cooking needs. You can begin generating recipes after you log in or sign up." wrapText="true" />
         </children>
         <HBox.margin>
             <Insets />
@@ -35,10 +35,7 @@
             <VBox.margin>
                 <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
             </VBox.margin></TextField>
-        <TextField fx:id="lastnameinput" onKeyPressed="#handleArrowNavigation" promptText="Last name" style="-fx-background-color: #2a6c36;">
-            <VBox.margin>
-                <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
-            </VBox.margin></TextField>
+
         <TextField fx:id="usernameInput" onKeyPressed="#handleArrowNavigation" promptText="Username" style="-fx-background-color: #2a6c36;">
             <VBox.margin>
                 <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
@@ -47,10 +44,6 @@
             <VBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
             </VBox.margin></PasswordField>
-        <TextField fx:id="Confirmpasswordinput" onKeyPressed="#handleArrowNavigation" promptText="Confirm Password" style="-fx-background-color: #2a6c36;">
-            <VBox.margin>
-                <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
-            </VBox.margin></TextField>
       <HBox alignment="CENTER" prefHeight="30.0" prefWidth="280.0">
          <children>
               <Button onAction="#onSignUpButtonClick" style="-fx-background-color: #ff6600;" text="Create Account">
