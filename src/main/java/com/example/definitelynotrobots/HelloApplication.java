@@ -16,10 +16,11 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle(TITLE);
         stage.setScene(scene);
-        stage.setWidth(1920 * 0.9); //sets the width for every scene
-        stage.setHeight(1080 * 0.9); //sets the height for every scene
-        stage.setFullScreen(false);
-        stage.setFullScreenExitHint(""); // removes annoying message
+
+        stage.setWidth(1920); //sets the width for every scene
+        stage.setHeight(1080); //sets the height for every scene
+
+        stage.setFullScreenExitHint(""); // removes annoying fullscreen message
         stage.show();
     }
 }
