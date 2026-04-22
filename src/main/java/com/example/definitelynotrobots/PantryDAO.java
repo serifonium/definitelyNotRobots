@@ -52,12 +52,31 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
 
     @Override
     public void updateItem(PantryItem item) {
-
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(
+                    "UPDATE pantryList SET item = ?, amount = ?, amountType = ?, foodType = ?, notes = ? WHERE id = ?"
+            );
+            preparedStatement.setString(1, item.getName());
+            preparedStatement.setDouble(2, item.getAmount());
+            preparedStatement.setString(3, item.getAmountType());
+            preparedStatement.setString(4, item.getFoodType().toString());
+            preparedStatement.setString(5, item.getNotes());
+            preparedStatement.setInt(6, item.getID());
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
     }
 
     @Override
     public void deleteItem(Integer id) {
-
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM pantryList WHERE id = ?");
+            preparedStatement.setInt(1, id);
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
     }
 
     @Override

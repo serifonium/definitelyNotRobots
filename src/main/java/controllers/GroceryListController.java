@@ -44,7 +44,6 @@ public class GroceryListController {
         String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
         if(amountType.isEmpty()) amountType = "x";
 
-        // Get the selected contact from the list view
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem == null) return;
 
@@ -157,7 +156,7 @@ public class GroceryListController {
     public void goToPantryView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 420);
+        Scene scene = new Scene(fxmlLoader.load(), 720, 400);
         stage.setScene(scene);
     }
 

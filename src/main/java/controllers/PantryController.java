@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -56,9 +57,15 @@ public class PantryController {
         }
     }
     public void goToHomeView() throws IOException {
-        Stage stage = (Stage) backButton.getScene().getWindow();
+        Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
+        stage.setScene(scene);
+    }
+    public void goToGroceryList() throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 720, 400);
         stage.setScene(scene);
     }
 
@@ -93,8 +100,13 @@ public class PantryController {
         };
     }
 
-    public void EnterToSelect() { }
-    public void EnterToSave() { }
+    public void EnterToSelect(javafx.scene.input.KeyEvent event) {
+        if(!event.getCode().equals(KeyCode.ENTER)) return;
+        selectPantryItem(pantryListView.getFocusModel().getFocusedItem());
+    }
+    public void EnterToSave(javafx.scene.input.KeyEvent event) {
+        if(event.getCode().equals(KeyCode.ENTER)) onEditConfirm();
+    }
     public void onAdd() {
         final String DEFAULT_NAME = "Name";
         final Double DEFAULT_AMOUNT = 0d;
@@ -108,17 +120,59 @@ public class PantryController {
         selectPantryItem(pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
     }
-    public void onEditConfirm() { }
+    public void onEditConfirm() {
+        errorText.setText("");
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
+            return;
+        }
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
+
+        PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        pantryDAO.updateItem(selectedItem);
+        syncGroceryList();
+        selectPantryItem(selectedItem);
+    }
     public void onCancel() {
         PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             selectPantryItem(selectedItem);
         }
     }
-    public void onDelete() { }
-    public void markEntry() {
+    public void onDelete() {
+        PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            pantryDAO.deleteItem(selectedItem.getID());
+            syncGroceryList();
+        }
+    }
+    public void markUnavailable() {
         String ACTIVE_TEXT = "( ✕ ) Mark As Unavailable";
         String INACTIVE_TEXT = "( ✓ ) Mark As Available";
+
+        PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
+        GroceryItem groceryItem = new GroceryItem(
+                selectedItem.getUserID(),
+                selectedItem.getName(),
+                selectedItem.getAmount(),
+                selectedItem.getAmountType(),
+                selectedItem.getFoodType(),
+                selectedItem.getNotes()
+        );
+
+        System.out.print(groceryItem);
     }
 
 }

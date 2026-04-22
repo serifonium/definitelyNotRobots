@@ -64,7 +64,7 @@
                      </GridPane.margin></ChoiceBox>
                </children>
             </GridPane>
-            <Button fx:id="markButton" mnemonicParsing="false" onMouseClicked="#markEntry" prefHeight="26.0" prefWidth="300.0" text="( ✕ ) Mark As Unavailable">
+            <Button fx:id="markButton" mnemonicParsing="false" onMouseClicked="#markUnavailable" prefHeight="26.0" prefWidth="300.0" text="Mark As Unavailable">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -95,7 +95,7 @@
                   </Button>
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" text="Go To Grocery List">
+            <Button mnemonicParsing="false" onMouseClicked="#goToGroceryList" prefHeight="25.0" prefWidth="300.0" text="Go To Grocery List">
                <VBox.margin>
                   <Insets top="1.0" />
                </VBox.margin></Button>
