@@ -31,6 +31,15 @@
          <font>
             <Font size="18.0" />
          </font></Label>
+        <TextField fx:id="firstnameInput" onKeyPressed="#handleArrowNavigation" promptText="First name" style="-fx-background-color: #2a6c36;">
+            <VBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin></TextField>
+        <TextField fx:id="lastnameInput" onKeyPressed="#handleArrowNavigation" promptText="Last name" style="-fx-background-color: #2a6c36;">
+            <VBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+            </VBox.margin></TextField>
+
         <TextField fx:id="usernameInput" onKeyPressed="#handleArrowNavigation" promptText="Username" style="-fx-background-color: #2a6c36;">
             <VBox.margin>
                 <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />

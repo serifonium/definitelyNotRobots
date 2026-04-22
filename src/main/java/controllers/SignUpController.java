@@ -20,19 +20,23 @@ public class SignUpController {
 
     public TextField usernameInput;
     public PasswordField passwordInput;
+    public TextField firstnameInput;
+    public TextField lastnameInput;
     public Button signInButton;
     public Label errorText;
 
     public void onSignUpButtonClick() throws IOException {
         String inputUsername = usernameInput.getText();
         String inputPassword = passwordInput.getText();
+        String inputFirstname = firstnameInput.getText();
+        String inputLastname = lastnameInput.getText();
 
         // Handle user errors
         if(Objects.equals(inputUsername, "")) { errorText.setText("Username field is empty"); return; }
         if(Objects.equals(inputPassword, "")) { errorText.setText("Password field is empty"); return; }
         errorText.setText("");
 
-        userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword));
+        userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword, inputFirstname, inputLastname));
         goToSignIn();
     }
 
@@ -58,6 +62,7 @@ public class SignUpController {
         Node nextNode = null;
         if(focused.getId().equals("usernameInput") && keyCode.equals("Down")) nextNode = passwordInput;
         if(focused.getId().equals("passwordInput") && keyCode.equals("Up")) nextNode = usernameInput;
+        if(focused.getId().equals("firstnameInput") && keyCode.equals("Up")) nextNode = passwordInput;
 
         if(nextNode == null) return;
 
