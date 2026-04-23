@@ -31,12 +31,10 @@ public class SignUpController {
         String inputPassword = passwordInput.getText();
         String inputFirstname = firstnameInput.getText();
         String inputLastname = lastnameInput.getText();
-        String inputConfirmation = confirmationInput.getText();
 
         // Handle user errors
         if(Objects.equals(inputUsername, "")) { errorText.setText("Username field is empty"); return; }
         if(Objects.equals(inputPassword, "")) { errorText.setText("Password field is empty"); return; }
-        if(!Objects.equals(inputConfirmation, inputPassword)) { errorText.setText("Password does not match"); return; }
         errorText.setText("");
 
         userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword, inputFirstname, inputLastname));

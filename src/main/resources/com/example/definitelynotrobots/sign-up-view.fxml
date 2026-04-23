@@ -48,10 +48,6 @@
             <VBox.margin>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
             </VBox.margin></PasswordField>
-        <PasswordField fx:id="confirmationInput" onKeyPressed="#handleArrowNavigation" promptText="Confirm Password" style="-fx-background-color: #2a6c36;">
-            <VBox.margin>
-                <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
-            </VBox.margin></PasswordField>
       <HBox alignment="CENTER" prefHeight="30.0" prefWidth="280.0">
          <children>
               <Button onAction="#onSignUpButtonClick" style="-fx-background-color: #ff6600;" text="Create Account">
