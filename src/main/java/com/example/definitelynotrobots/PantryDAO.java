@@ -53,7 +53,19 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
 
     public void insertItem(PantryItem inputItem) {
         class MetricConversion {
+            private final String amountTypeA;
+            private final String amountTypeB;
+            private final Double aToBFactor;
 
+            public MetricConversion(String amountTypeA, String amountTypeB, Double aToBFactor) {
+                this.amountTypeA = amountTypeA;
+                this.amountTypeB = amountTypeB;
+                this.aToBFactor = aToBFactor;
+            }
+
+            public Boolean isApplicableTypes(String typeA, String typeB) {
+                return false;
+            }
         }
         /*
             Check for duplicate name
