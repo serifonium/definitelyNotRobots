@@ -52,21 +52,6 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
     }
 
     public void insertItem(PantryItem inputItem) {
-        class MetricConversion {
-            private final String amountTypeA;
-            private final String amountTypeB;
-            private final Double aToBFactor;
-
-            public MetricConversion(String amountTypeA, String amountTypeB, Double aToBFactor) {
-                this.amountTypeA = amountTypeA;
-                this.amountTypeB = amountTypeB;
-                this.aToBFactor = aToBFactor;
-            }
-
-            public Boolean isApplicableTypes(String typeA, String typeB) {
-                return false;
-            }
-        }
         /*
             Check for duplicate name
                 > Insert Item with appropriate amountType conversion
@@ -82,17 +67,28 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
                 break;
             }
         }
-        if(matchingItem == null) {
-            addItem(inputItem);
-            return;
-        }
+        if(matchingItem == null) { addItem(inputItem); return; }
+
         if(matchingItem.getAmountType().equals(inputItem.getAmountType())) {
             inputItem.setID(matchingItem.getID());
             inputItem.setAmount(matchingItem.getAmount() + inputItem.getAmount());
             updateItem(inputItem);
-        } else {
-
+            return;
         }
+
+        List<MetricConversion> metricConversionList = new ArrayList<MetricConversion>();
+        metricConversionList.add(new MetricConversion("mL", "L", 1000d));
+
+        for (MetricConversion metricConversion : metricConversionList) {
+            if(metricConversion.isApplicableTypes(inputItem.getAmountType(), matchingItem.getAmountType())) {
+                Double newAmount = metricConversion.addValues(inputItem.getAmount(), matchingItem.getAmount(), inputItem.getAmountType());
+                inputItem.setID(matchingItem.getID());
+                inputItem.setAmount(newAmount);
+                inputItem.setAmountType(matchingItem.getAmountType());
+                updateItem(inputItem);
+            }
+        }
+
 
     }
 
