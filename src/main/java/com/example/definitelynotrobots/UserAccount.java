@@ -13,15 +13,27 @@ public class UserAccount {
     public String getPassword() { return Password; }
     public void setPassword(String password) { Password = password; }
 
-    public UserAccount(Integer id, String username, String password) {
+    private String Firstname;
+    public String getFirstname() { return Firstname; }
+    public void setFirstname(String firstname) { Firstname = firstname; }
+
+    private String Lastname;
+    public String getLastname() { return Lastname; }
+    public void setLastname(String lastname) { Lastname = lastname; }
+
+    public UserAccount(Integer id, String username, String password, String firstname, String lastname) {
         ID = id;
         Username = username;
         Password = password;
+        Firstname = firstname;
+        Lastname = lastname;
     }
 
-    public UserAccount(String username, String password) {
+    public UserAccount(String username, String password, String firstname, String lastname) {
         Username = username;
         Password = password;
+        Firstname = firstname;
+        Lastname = lastname;
     }
 
     @Override
@@ -30,6 +42,8 @@ public class UserAccount {
             "ID=" + ID +
             ", Username='" + Username + '\'' +
             ", Password='" + Password + '\'' +
+            ", Firstname='" + Firstname + '\'' +
+            ", Lastname='" + Lastname + '\'' +
             '}';
     }
 }
