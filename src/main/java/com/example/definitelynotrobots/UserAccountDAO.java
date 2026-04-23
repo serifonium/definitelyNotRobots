@@ -14,6 +14,17 @@ public class UserAccountDAO {
         createTable();
     }
 
+    public void dropTable() {
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement(
+                    "DROP TABLE userAccounts"
+            );
+            insertStatement.execute();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
     public void createTable() {
         try {
             Statement createTable = connection.createStatement();

@@ -10,6 +10,7 @@
    <children>
    <VBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="78.0">
          <Button mnemonicParsing="false" onAction="#goToGroceryList" text="Grocery List" />
+         <Button text="AI Page" onAction="#goToAIPage"/>
          <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
             <VBox.margin>
                <Insets bottom="10.0" top="10.0" />
