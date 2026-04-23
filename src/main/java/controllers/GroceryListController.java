@@ -108,7 +108,7 @@ public class GroceryListController {
         final FoodTypesEnum DEFAULT_FOOD_TYPE = FoodTypesEnum.Oil;
         GroceryItem newItem = new GroceryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_AMOUNT_TYPE, DEFAULT_FOOD_TYPE, DEFAULT_NOTES);
 
-        groceryListDAO.insertItem(newItem);
+        groceryListDAO.addItem(newItem);
         syncGroceryList();
         selectGroceryItem(groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
@@ -150,7 +150,16 @@ public class GroceryListController {
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem == null) return;
 
-
+        PantryDAO pantryDAO = new PantryDAO();
+        PantryItem pantryItem = new PantryItem(
+                selectedItem.getUserID(),
+                selectedItem.getName(),
+                selectedItem.getAmount(),
+                selectedItem.getAmountType(),
+                selectedItem.getFoodType(),
+                selectedItem.getNotes()
+        );
+        pantryDAO.insertItem(pantryItem);
     }
 
     public void goToPantryView() throws IOException {

@@ -3,6 +3,7 @@ package com.example.definitelynotrobots;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class PantryDAO implements InterfaceDAO<PantryItem> {
     private final Connection connection;
@@ -33,7 +34,7 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
     }
 
     @Override
-    public void insertItem(PantryItem item) {
+    public void addItem(PantryItem item) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO pantryList (userId, item, amount, amountType, foodType, notes) VALUES (?, ?, ?, ?, ?, ?)"
@@ -48,6 +49,39 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
         } catch (SQLException ex) {
             System.err.println(ex);
         }
+    }
+
+    public void insertItem(PantryItem inputItem) {
+        class MetricConversion {
+
+        }
+        /*
+            Check for duplicate name
+                > Insert Item with appropriate amountType conversion
+            Else
+                > Add Item
+        */
+        List<PantryItem> allItems = getByUserID(inputItem.getUserID());
+
+        PantryItem matchingItem = null;
+        for (PantryItem item : allItems) {
+            if(item.getName().equals(inputItem.getName())) {
+                matchingItem = item;
+                break;
+            }
+        }
+        if(matchingItem == null) {
+            addItem(inputItem);
+            return;
+        }
+        if(matchingItem.getAmountType().equals(inputItem.getAmountType())) {
+            inputItem.setID(matchingItem.getID());
+            inputItem.setAmount(matchingItem.getAmount() + inputItem.getAmount());
+            updateItem(inputItem);
+        } else {
+
+        }
+
     }
 
     @Override

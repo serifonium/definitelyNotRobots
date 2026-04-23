@@ -32,7 +32,7 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
     }
     // ENUM('Baking', 'Seasoning', 'Oil', 'Starch', 'Dairy', 'Meat', 'Fruit', 'Vegetable')
 
-    public void insertItem(GroceryItem groceryItem) {
+    public void addItem(GroceryItem groceryItem) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "INSERT INTO groceryList (userId, item, amount, amountType, foodType, notes) VALUES (?, ?, ?, ?, ?, ?)"

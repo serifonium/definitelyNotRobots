@@ -115,7 +115,7 @@ public class PantryController {
         final FoodTypesEnum DEFAULT_FOOD_TYPE = FoodTypesEnum.Oil;
         PantryItem newItem = new PantryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_AMOUNT_TYPE, DEFAULT_FOOD_TYPE, DEFAULT_NOTES);
 
-        pantryDAO.insertItem(newItem);
+        pantryDAO.addItem(newItem);
         syncGroceryList();
         selectPantryItem(pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();

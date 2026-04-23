@@ -70,7 +70,7 @@
                </VBox.margin>
             </Button>
             <Button mnemonicParsing="false" onMouseClicked="#onCancel" prefHeight="25.0" prefWidth="300.0" text="Discard Changes" />
-            <GridPane onMouseClicked="#onPushToPantry" prefHeight="30.0" prefWidth="327.0">
+            <GridPane prefHeight="30.0" prefWidth="327.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="277.0" />
                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="28.0" />
@@ -84,7 +84,7 @@
                         <Insets right="2.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="272.0" text="Push To Pantry">
+                  <Button mnemonicParsing="false" prefHeight="25.0" onMouseClicked="#onPushToPantry" prefWidth="272.0" text="Push To Pantry">
                      <GridPane.margin>
                         <Insets left="3.0" />
                      </GridPane.margin>
