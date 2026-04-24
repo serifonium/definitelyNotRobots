@@ -161,6 +161,8 @@ public class GroceryListController {
                 selectedItem.getNotes()
         );
         pantryDAO.insertItem(pantryItem);
+        groceryListDAO.deleteItem(selectedItem.getID());
+        syncGroceryList();
     }
 
     public void goToPantryView() throws IOException {

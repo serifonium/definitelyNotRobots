@@ -64,7 +64,7 @@
                      </GridPane.margin></ChoiceBox>
                </children>
             </GridPane>
-            <Button fx:id="markButton" mnemonicParsing="false" onMouseClicked="#markUnavailable" prefHeight="26.0" prefWidth="300.0" text="Mark As Unavailable">
+            <Button fx:id="markButton" mnemonicParsing="false" onMouseClicked="#markUnavailable" prefHeight="26.0" prefWidth="300.0" text="Move to Grocery List">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>

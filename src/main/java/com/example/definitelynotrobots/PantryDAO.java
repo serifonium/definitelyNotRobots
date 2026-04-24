@@ -76,7 +76,7 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
             return;
         }
 
-        List<MetricConversion> metricConversionList = new ArrayList<MetricConversion>();
+        List<MetricConversion> metricConversionList = new ArrayList<>();
         metricConversionList.add(new MetricConversion("L", "mL", 1000d));
 
         for (MetricConversion metricConversion : metricConversionList) {
@@ -88,8 +88,6 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
                 updateItem(inputItem);
             }
         }
-
-
     }
 
     @Override
