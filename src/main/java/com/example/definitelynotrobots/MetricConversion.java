@@ -1,6 +1,6 @@
 package com.example.definitelynotrobots;
 
-class MetricConversion {
+public class MetricConversion {
     private final String amountTypeA;
     private final String amountTypeB;
     private final Double aToBFactor;
@@ -19,7 +19,7 @@ class MetricConversion {
 
     public Double addValues(Double mainValue, Double secondaryValue, String returnType) {
         if(returnType.equals(amountTypeA)) return mainValue + secondaryValue / aToBFactor;
-        if(returnType.equals(amountTypeB)) return mainValue + secondaryValue * aToBFactor;
+        if(returnType.equals(amountTypeB)) return mainValue * aToBFactor + secondaryValue;
         return 0d;
     }
 }

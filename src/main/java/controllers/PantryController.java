@@ -33,8 +33,9 @@ public class PantryController {
         itemNameField.setText(pantryItem.getName());
         itemAmountField.setText(pantryItem.getAmountToString() + pantryItem.getAmountType());
         itemNotesField.setText(pantryItem.getNotes());
+        foodTypeField.setValue(pantryItem.getFoodType());
     }
-    private void syncGroceryList() {
+    private void syncPantry() {
         pantryListView.getItems().clear();
         List<PantryItem> groceries = pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID());
         boolean hasList = !groceries.isEmpty();
@@ -48,7 +49,7 @@ public class PantryController {
         foodTypeField.setValue(FoodTypesEnum.Oil);
 
         pantryListView.setCellFactory(this::renderCell);
-        syncGroceryList();
+        syncPantry();
 
         pantryListView.getSelectionModel().selectFirst();
         PantryItem firstContact = pantryListView.getSelectionModel().getSelectedItem();
@@ -116,7 +117,7 @@ public class PantryController {
         PantryItem newItem = new PantryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_AMOUNT_TYPE, DEFAULT_FOOD_TYPE, DEFAULT_NOTES);
 
         pantryDAO.addItem(newItem);
-        syncGroceryList();
+        syncPantry();
         selectPantryItem(pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
     }
@@ -142,7 +143,7 @@ public class PantryController {
         selectedItem.setFoodType(foodTypeField.getValue());
 
         pantryDAO.updateItem(selectedItem);
-        syncGroceryList();
+        syncPantry();
         selectPantryItem(selectedItem);
     }
     public void onCancel() {
@@ -155,7 +156,7 @@ public class PantryController {
         PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             pantryDAO.deleteItem(selectedItem.getID());
-            syncGroceryList();
+            syncPantry();
         }
     }
     public void markUnavailable() {

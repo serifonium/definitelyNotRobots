@@ -30,6 +30,7 @@ public class GroceryListController {
         itemNameField.setText(groceryItem.getName());
         itemAmountField.setText(groceryItem.getAmountToString() + groceryItem.getAmountType());
         itemNotesField.setText(groceryItem.getNotes());
+        foodTypeField.setValue(groceryItem.getFoodType());
     }
 
     @FXML

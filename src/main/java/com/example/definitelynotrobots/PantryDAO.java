@@ -77,11 +77,11 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
         }
 
         List<MetricConversion> metricConversionList = new ArrayList<MetricConversion>();
-        metricConversionList.add(new MetricConversion("mL", "L", 1000d));
+        metricConversionList.add(new MetricConversion("L", "mL", 1000d));
 
         for (MetricConversion metricConversion : metricConversionList) {
             if(metricConversion.isApplicableTypes(inputItem.getAmountType(), matchingItem.getAmountType())) {
-                Double newAmount = metricConversion.addValues(inputItem.getAmount(), matchingItem.getAmount(), inputItem.getAmountType());
+                Double newAmount = metricConversion.addValues(matchingItem.getAmount(), inputItem.getAmount(), matchingItem.getAmountType());
                 inputItem.setID(matchingItem.getID());
                 inputItem.setAmount(newAmount);
                 inputItem.setAmountType(matchingItem.getAmountType());
