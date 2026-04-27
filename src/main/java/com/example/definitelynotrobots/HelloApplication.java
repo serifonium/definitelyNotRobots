@@ -9,16 +9,20 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     public static final String TITLE = "Not A Chef";
-    public static int WIDTH = 920;
-    public static int HEIGHT = 1080;
-    // 320, 240
+    public static final Integer WIDTH = 1920;
+    public static final Integer HEIGHT = 1920;
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle(TITLE);
         stage.setScene(scene);
+
+        stage.setWidth(1920); //sets the width for every scene
+        stage.setHeight(1080); //sets the height for every scene
+
+        stage.setFullScreenExitHint(""); // removes annoying fullscreen message
         stage.show();
     }
 }
