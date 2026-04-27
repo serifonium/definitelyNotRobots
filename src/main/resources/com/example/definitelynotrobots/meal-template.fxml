@@ -5,6 +5,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <HBox maxHeight="148.0" maxWidth="323.0" minHeight="148.0" minWidth="323.0" prefHeight="148.0"
       prefWidth="323.0">
 <children>
@@ -40,10 +42,23 @@
                 </VBox.margin>
             </Label>
         </children></VBox>
-    <Button maxHeight="148.0" maxWidth="148.0" minHeight="148.0" minWidth="148.0" mnemonicParsing="false" text="Image (PlaceHolder)">
+    <Button maxHeight="148.0" maxWidth="148.0"
+            minHeight="148.0" minWidth="148.0"
+            prefHeight="148.0" prefWidth="148.0"
+            mnemonicParsing="false"
+            style="-fx-background-color: transparent; -fx-padding: 0;">
+        <graphic>
+            <ImageView fitHeight="148.0" fitWidth="148.0" preserveRatio="false">
+                <image>
+                    <Image url="@images/ImagePlaceholder.png" />
+                </image>
+            </ImageView>
+        </graphic>
+
         <HBox.margin>
             <Insets left="1.0" right="6.0" />
-        </HBox.margin></Button>
+        </HBox.margin>
+    </Button>
 </children>
 </HBox>
 

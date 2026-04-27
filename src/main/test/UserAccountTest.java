@@ -9,7 +9,7 @@ public class UserAccountTest {
 
     @BeforeEach
     public void setUp() {
-        userAccount = new UserAccount("John", "myP4ssword$%^");
+        userAccount = new UserAccount("John", "myP4ssword$%^", "", "");
     }
 
     @Test
