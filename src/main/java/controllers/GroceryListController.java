@@ -158,7 +158,7 @@ public class GroceryListController {
     public void goToPantryView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
