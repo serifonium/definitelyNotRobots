@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -46,18 +45,22 @@
             <Insets />
          </opaqueInsets></AnchorPane>
    <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="695.0">
-         <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="626.0">
+         <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="696.0">
             <children>
             <Label fx:id="testLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Welcome, ________!" textAlignment="CENTER" textFill="#573c2a">
                 <font>
                      <Font size="36.0" />
                   </font>
                </Label>
-               <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="192.0" text="Start Cooking! (Placeholder)">
+               <Button mnemonicParsing="false" prefHeight="78.0" prefWidth="239.0" style="-fx-background-radius: 50;-fx-background-color: #fb7827;" text="Start Cooking!">
                   <HBox.margin>
                      <Insets left="10.0" />
-                  </HBox.margin></Button>
-               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="10.0" maxHeight="88.0" maxWidth="260.0" minHeight="60.0" minWidth="92.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="92.0" style="             -fx-background-color: white;             -fx-background-radius: 30;             -fx-border-radius: 30;             -fx-padding: 0;             -fx-border-color: lightgray;         " HBox.hgrow="ALWAYS">
+                  </HBox.margin>
+                  <font>
+                     <Font name="System Bold" size="22.0" />
+                  </font></Button>
+               <AnchorPane prefHeight="78.0" prefWidth="10.0" />
+               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="325.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="78.0" prefWidth="105.0" style="             -fx-background-color: white;             -fx-background-radius: 30;             -fx-border-radius: 30;             -fx-padding: 0;             -fx-border-color: lightgray;         " HBox.hgrow="ALWAYS">
                   <graphic>
                      <ImageView fitHeight="40.0" fitWidth="220.0" preserveRatio="true" scaleX="1.5" scaleY="1.5">
                         <image>
@@ -148,10 +151,8 @@
                                  </Label>
                               </children>
                            </HBox>
-                           <ProgressBar prefHeight="18.0" prefWidth="317.0" progress="0.85">
-                              <effect>
-                                 <ColorAdjust hue="-0.86" />
-                              </effect></ProgressBar>
+                           <ProgressBar prefHeight="18.0" prefWidth="317.0" progress="0.85" style="-fx-accent: #fb7827;">
+                           </ProgressBar>
                         </children>
                         <padding>
                            <Insets left="15.0" />
