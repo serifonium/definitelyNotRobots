@@ -170,4 +170,16 @@ public class GroceryListController {
         if(!event.getCode().equals(KeyCode.ENTER)) return;
         selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
     }
+
+    public void goToPage(String fxmlName) throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
+    public void goToAIPage() throws IOException { goToPage("ai-view"); }
+    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
+    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
+    public void goToRecipeView() throws IOException { goToPage("recipe-view"); }
 }

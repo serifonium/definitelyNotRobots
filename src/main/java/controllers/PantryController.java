@@ -63,12 +63,6 @@ public class PantryController {
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }
-    public void goToGroceryList() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
-        stage.setScene(scene);
-    }
 
     private ListCell<PantryItem> renderCell(ListView<PantryItem> contactListView) {
         return new ListCell<>() {
@@ -172,4 +166,15 @@ public class PantryController {
         System.out.print(groceryItem);
     }
 
+    public void goToPage(String fxmlName) throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
+    public void goToAIPage() throws IOException { goToPage("ai-view"); }
+    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
+    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
+    public void goToRecipeView() throws IOException { goToPage("recipe-view"); }
 }
