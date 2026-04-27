@@ -3,14 +3,16 @@ package com.example.definitelynotrobots;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class HelloApplication extends Application {
     public static final String TITLE = "Not A Chef";
     public static final Integer WIDTH = 1920;
-    public static final Integer HEIGHT = 1920;
+    public static final Integer HEIGHT = 1080;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -22,10 +24,11 @@ public class HelloApplication extends Application {
         stage.setTitle(TITLE);
         stage.setScene(scene);
 
-        stage.setWidth(1920); //sets the width for every scene
-        stage.setHeight(1080); //sets the height for every scene
+        stage.setWidth(WIDTH); //sets the width for every scene
+        stage.setHeight(HEIGHT); //sets the height for every scene
 
-        stage.setFullScreenExitHint(""); // removes annoying fullscreen message
+        stage.setMaximized(true); //maximizes the app window
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("images/Textlesslogo.png")))); //sets the app's icon
         stage.show();
     }
 }
