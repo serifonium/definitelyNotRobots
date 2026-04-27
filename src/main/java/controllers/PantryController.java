@@ -66,27 +66,17 @@ public class PantryController {
     public void goToGroceryList() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 400);
+        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }
 
     private ListCell<PantryItem> renderCell(ListView<PantryItem> contactListView) {
         return new ListCell<>() {
-            /**
-             * Handles the event when a contact is selected in the list view.
-             * @param mouseEvent The event to handle.
-             */
             private void onItemSelected(MouseEvent mouseEvent) {
                 ListCell<PantryItem> clickedCell = (ListCell<PantryItem>) mouseEvent.getSource();
                 PantryItem selectedItem = clickedCell.getItem();
                 if (selectedItem != null) selectPantryItem(selectedItem);
             }
-
-            /**
-             * Updates the item in the cell by setting the text to the contact's full name.
-             * @param pantryItem The contact to update the cell with.
-             * @param empty Whether the cell is empty.
-             */
 
             protected void updateItem(PantryItem pantryItem, boolean empty) {
                 super.updateItem(pantryItem, empty);
@@ -164,6 +154,9 @@ public class PantryController {
         String INACTIVE_TEXT = "( ✓ ) Mark As Available";
 
         PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+        GroceryListDAO groceryListDAO = new GroceryListDAO();
         GroceryItem groceryItem = new GroceryItem(
                 selectedItem.getUserID(),
                 selectedItem.getName(),
@@ -172,6 +165,9 @@ public class PantryController {
                 selectedItem.getFoodType(),
                 selectedItem.getNotes()
         );
+        groceryListDAO.insertItem(groceryItem);
+        pantryDAO.deleteItem(selectedItem.getID());
+        syncPantry();
 
         System.out.print(groceryItem);
     }

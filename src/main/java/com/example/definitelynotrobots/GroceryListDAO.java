@@ -49,6 +49,39 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
         }
     }
 
+    public void insertItem(GroceryItem inputItem) {
+        List<GroceryItem> allItems = getByUserID(inputItem.getUserID());
+
+        GroceryItem matchingItem = null;
+        for (GroceryItem item : allItems) {
+            if(item.getName().equals(inputItem.getName())) {
+                matchingItem = item;
+                break;
+            }
+        }
+        if(matchingItem == null) { addItem(inputItem); return; }
+
+        if(matchingItem.getAmountType().equals(inputItem.getAmountType())) {
+            inputItem.setID(matchingItem.getID());
+            inputItem.setAmount(matchingItem.getAmount() + inputItem.getAmount());
+            updateItem(inputItem);
+            return;
+        }
+
+        List<MetricConversion> metricConversionList = new ArrayList<>();
+        metricConversionList.add(new MetricConversion("L", "mL", 1000d));
+
+        for (MetricConversion metricConversion : metricConversionList) {
+            if(metricConversion.isApplicableTypes(inputItem.getAmountType(), matchingItem.getAmountType())) {
+                Double newAmount = metricConversion.addValues(matchingItem.getAmount(), inputItem.getAmount(), matchingItem.getAmountType());
+                inputItem.setID(matchingItem.getID());
+                inputItem.setAmount(newAmount);
+                inputItem.setAmountType(matchingItem.getAmountType());
+                updateItem(inputItem);
+            }
+        }
+    }
+
     public void updateItem(GroceryItem groceryItem) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(

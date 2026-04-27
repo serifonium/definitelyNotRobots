@@ -52,12 +52,6 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
     }
 
     public void insertItem(PantryItem inputItem) {
-        /*
-            Check for duplicate name
-                > Insert Item with appropriate amountType conversion
-            Else
-                > Add Item
-        */
         List<PantryItem> allItems = getByUserID(inputItem.getUserID());
 
         PantryItem matchingItem = null;

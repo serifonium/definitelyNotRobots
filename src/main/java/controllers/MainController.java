@@ -23,7 +23,7 @@ public class MainController {
     public void goToGroceryList() throws IOException {
         Stage stage = (Stage) testLabel.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 400);
+        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }
 

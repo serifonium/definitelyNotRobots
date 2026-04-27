@@ -62,21 +62,11 @@ public class GroceryListController {
 
     private ListCell<GroceryItem> renderCell(ListView<GroceryItem> contactListView) {
         return new ListCell<>() {
-            /**
-             * Handles the event when a contact is selected in the list view.
-             * @param mouseEvent The event to handle.
-             */
             private void onContactSelected(MouseEvent mouseEvent) {
                 ListCell<GroceryItem> clickedCell = (ListCell<GroceryItem>) mouseEvent.getSource();
                 GroceryItem selectedItem = clickedCell.getItem();
                 if (selectedItem != null) selectGroceryItem(selectedItem);
             }
-
-            /**
-             * Updates the item in the cell by setting the text to the contact's full name.
-             * @param groceryItem The contact to update the cell with.
-             * @param empty Whether the cell is empty.
-             */
 
             protected void updateItem(GroceryItem groceryItem, boolean empty) {
                 super.updateItem(groceryItem, empty);
@@ -168,7 +158,7 @@ public class GroceryListController {
     public void goToPantryView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 720, 400);
+        Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
     }
 
