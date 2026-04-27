@@ -1,13 +1,11 @@
 package controllers;
 
-import com.example.definitelynotrobots.GroceryItem;
-import com.example.definitelynotrobots.GroceryListDAO;
-import com.example.definitelynotrobots.HelloApplication;
-import com.example.definitelynotrobots.UserAccountDAO;
+import com.example.definitelynotrobots.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -24,53 +22,51 @@ public class GroceryListController {
     public TextField itemNameField;
     public TextField itemAmountField;
     public TextArea itemNotesField;
+    public ChoiceBox<FoodTypesEnum> foodTypeField;
 
     @FXML
     private void selectGroceryItem(GroceryItem groceryItem) {
         groceryListView.getSelectionModel().select(groceryItem);
         itemNameField.setText(groceryItem.getName());
-        itemAmountField.setText(groceryItem.getAmount().toString());
+        itemAmountField.setText(groceryItem.getAmountToString() + groceryItem.getAmountType());
         itemNotesField.setText(groceryItem.getNotes());
+        foodTypeField.setValue(groceryItem.getFoodType());
     }
 
     @FXML
     private void onEditConfirm() {
-        try {
-            Integer.parseInt(itemAmountField.getText());
-        } catch (NumberFormatException e) {
-            errorText.setText("Amount field must be an integer");
+        errorText.setText("");
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
             return;
         }
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
 
-        // Get the selected contact from the list view
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            selectedItem.setName(itemNameField.getText());
-            selectedItem.setAmount(Integer.parseInt(itemAmountField.getText()));
-            selectedItem.setNotes(itemNotesField.getText());
-            groceryListDAO.updateGroceryItem(selectedItem);
-            syncGroceryList();
-            selectGroceryItem(selectedItem);
-        }
+        if (selectedItem == null) return;
+
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        groceryListDAO.updateItem(selectedItem);
+        syncGroceryList();
+        selectGroceryItem(selectedItem);
     }
 
     private ListCell<GroceryItem> renderCell(ListView<GroceryItem> contactListView) {
         return new ListCell<>() {
-            /**
-             * Handles the event when a contact is selected in the list view.
-             * @param mouseEvent The event to handle.
-             */
             private void onContactSelected(MouseEvent mouseEvent) {
                 ListCell<GroceryItem> clickedCell = (ListCell<GroceryItem>) mouseEvent.getSource();
                 GroceryItem selectedItem = clickedCell.getItem();
                 if (selectedItem != null) selectGroceryItem(selectedItem);
             }
-
-            /**
-             * Updates the item in the cell by setting the text to the contact's full name.
-             * @param groceryItem The contact to update the cell with.
-             * @param empty Whether the cell is empty.
-             */
 
             protected void updateItem(GroceryItem groceryItem, boolean empty) {
                 super.updateItem(groceryItem, empty);
@@ -79,7 +75,7 @@ public class GroceryListController {
                     setText(null);
                     super.setOnMouseClicked(this::onContactSelected);
                 } else {
-                    setText(groceryItem.getAmount().toString() + "x " + groceryItem.getName());
+                    setText(groceryItem.getAmountToString() + groceryItem.getAmountType() + " " + groceryItem.getName());
                 }
             }
         };
@@ -87,10 +83,9 @@ public class GroceryListController {
 
     @FXML
     private void onDelete() {
-        // Get the selected contact from the list view
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            groceryListDAO.deleteGroceryItem(selectedItem.getID());
+            groceryListDAO.deleteItem(selectedItem.getID());
             syncGroceryList();
         }
     }
@@ -98,13 +93,15 @@ public class GroceryListController {
     @FXML
     private void onAdd() {
         final String DEFAULT_NAME = "Name";
-        final Integer DEFAULT_AMOUNT = 0;
+        final Double DEFAULT_AMOUNT = 0d;
         final String DEFAULT_NOTES = "";
-        GroceryItem newItem = new GroceryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_NOTES);
+        final String DEFAULT_AMOUNT_TYPE = "x";
+        final FoodTypesEnum DEFAULT_FOOD_TYPE = FoodTypesEnum.Oil;
+        GroceryItem newItem = new GroceryItem(UserAccountDAO.currentAccount.getID(), DEFAULT_NAME, DEFAULT_AMOUNT, DEFAULT_AMOUNT_TYPE, DEFAULT_FOOD_TYPE, DEFAULT_NOTES);
 
-        groceryListDAO.insertGroceryItem(newItem);
+        groceryListDAO.addItem(newItem);
         syncGroceryList();
-        selectGroceryItem(newItem);
+        selectGroceryItem(groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
     }
 
@@ -118,25 +115,44 @@ public class GroceryListController {
 
     @FXML
     public void initialize() {
+        foodTypeField.getItems().setAll(FoodTypesEnum.values());
+        foodTypeField.setValue(FoodTypesEnum.Oil);
+
         groceryListView.setCellFactory(this::renderCell);
         syncGroceryList();
 
         groceryListView.getSelectionModel().selectFirst();
-        GroceryItem firstContact = groceryListView.getSelectionModel().getSelectedItem();
-        if (firstContact != null) {
-            selectGroceryItem(firstContact);
+        GroceryItem firstItem = groceryListView.getSelectionModel().getSelectedItem();
+        if (firstItem != null) {
+            selectGroceryItem(firstItem);
         }
     }
 
     private void syncGroceryList() {
         groceryListView.getItems().clear();
-        List<GroceryItem> groceries = groceryListDAO.getByID(UserAccountDAO.currentAccount.getID());
+        List<GroceryItem> groceries = groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID());
         boolean hasList = !groceries.isEmpty();
         if (hasList) {
             groceryListView.getItems().addAll(groceries);
         }
-        // Show / hide based on whether there are contacts
-        //contactContainer.setVisible(hasList);
+    }
+
+    public void onPushToPantry() {
+        GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+        PantryDAO pantryDAO = new PantryDAO();
+        PantryItem pantryItem = new PantryItem(
+                selectedItem.getUserID(),
+                selectedItem.getName(),
+                selectedItem.getAmount(),
+                selectedItem.getAmountType(),
+                selectedItem.getFoodType(),
+                selectedItem.getNotes()
+        );
+        pantryDAO.insertItem(pantryItem);
+        groceryListDAO.deleteItem(selectedItem.getID());
+        syncGroceryList();
     }
 
     public void goToPantryView() throws IOException {
@@ -145,4 +161,25 @@ public class GroceryListController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+
+    public void EnterToSave(javafx.scene.input.KeyEvent event) {
+        if(event.getCode().equals(KeyCode.ENTER)) onEditConfirm();
+    }
+
+    public void EnterToSelect(javafx.scene.input.KeyEvent event) {
+        if(!event.getCode().equals(KeyCode.ENTER)) return;
+        selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
+    }
+
+    public void goToPage(String fxmlName) throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
+    public void goToAIPage() throws IOException { goToPage("ai-view"); }
+    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
+    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
+    public void goToRecipeView() throws IOException { goToPage("recipe-view"); }
 }

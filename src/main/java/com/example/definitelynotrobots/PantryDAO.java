@@ -3,20 +3,22 @@ package com.example.definitelynotrobots;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
+public class PantryDAO implements InterfaceDAO<PantryItem> {
     private final Connection connection;
 
-    public GroceryListDAO() {
+    public PantryDAO() {
         connection = DatabaseConnection.getInstance();
         createTable();
     }
 
+    @Override
     public void createTable() {
         try {
             Statement createTable = connection.createStatement();
             createTable.execute(
-                    "CREATE TABLE IF NOT EXISTS groceryList ("
+                    "CREATE TABLE IF NOT EXISTS pantryList ("
                             + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                             + "userId INTEGER NOT NULL, "
                             + "item VARCHAR NOT NULL, "
@@ -30,30 +32,30 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
             System.err.println(ex);
         }
     }
-    // ENUM('Baking', 'Seasoning', 'Oil', 'Starch', 'Dairy', 'Meat', 'Fruit', 'Vegetable')
 
-    public void addItem(GroceryItem groceryItem) {
+    @Override
+    public void addItem(PantryItem item) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
-                    "INSERT INTO groceryList (userId, item, amount, amountType, foodType, notes) VALUES (?, ?, ?, ?, ?, ?)"
+                    "INSERT INTO pantryList (userId, item, amount, amountType, foodType, notes) VALUES (?, ?, ?, ?, ?, ?)"
             );
-            insertStatement.setInt(1, groceryItem.getUserID());
-            insertStatement.setString(2, groceryItem.getName());
-            insertStatement.setDouble(3, groceryItem.getAmount());
-            insertStatement.setString(4, groceryItem.getAmountType());
-            insertStatement.setString(5, groceryItem.getFoodType().toString());
-            insertStatement.setString(6, groceryItem.getNotes());
+            insertStatement.setInt(1, item.getUserID());
+            insertStatement.setString(2, item.getName());
+            insertStatement.setDouble(3, item.getAmount());
+            insertStatement.setString(4, item.getAmountType());
+            insertStatement.setString(5, item.getFoodType().toString());
+            insertStatement.setString(6, item.getNotes());
             insertStatement.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
     }
 
-    public void insertItem(GroceryItem inputItem) {
-        List<GroceryItem> allItems = getByUserID(inputItem.getUserID());
+    public void insertItem(PantryItem inputItem) {
+        List<PantryItem> allItems = getByUserID(inputItem.getUserID());
 
-        GroceryItem matchingItem = null;
-        for (GroceryItem item : allItems) {
+        PantryItem matchingItem = null;
+        for (PantryItem item : allItems) {
             if(item.getName().equals(inputItem.getName())) {
                 matchingItem = item;
                 break;
@@ -82,26 +84,28 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
         }
     }
 
-    public void updateItem(GroceryItem groceryItem) {
+    @Override
+    public void updateItem(PantryItem item) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(
-                    "UPDATE groceryList SET item = ?, amount = ?, amountType = ?, foodType = ?, notes = ? WHERE id = ?"
+                    "UPDATE pantryList SET item = ?, amount = ?, amountType = ?, foodType = ?, notes = ? WHERE id = ?"
             );
-            preparedStatement.setString(1, groceryItem.getName());
-            preparedStatement.setDouble(2, groceryItem.getAmount());
-            preparedStatement.setString(3, groceryItem.getAmountType());
-            preparedStatement.setString(4, groceryItem.getFoodType().toString());
-            preparedStatement.setString(5, groceryItem.getNotes());
-            preparedStatement.setInt(6, groceryItem.getID());
+            preparedStatement.setString(1, item.getName());
+            preparedStatement.setDouble(2, item.getAmount());
+            preparedStatement.setString(3, item.getAmountType());
+            preparedStatement.setString(4, item.getFoodType().toString());
+            preparedStatement.setString(5, item.getNotes());
+            preparedStatement.setInt(6, item.getID());
             preparedStatement.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
     }
 
+    @Override
     public void deleteItem(Integer id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM groceryList WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM pantryList WHERE id = ?");
             preparedStatement.setInt(1, id);
             preparedStatement.execute();
         } catch (SQLException ex) {
@@ -109,16 +113,17 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
         }
     }
 
-    public List<GroceryItem> getByUserID(Integer userID) {
+    @Override
+    public List<PantryItem> getByUserID(Integer userID) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM groceryList WHERE userId = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM pantryList WHERE userId = ?");
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            List<GroceryItem> groceryList = new ArrayList<GroceryItem>() {};
+            List<PantryItem> groceryList = new ArrayList<PantryItem>() {};
 
             while(resultSet.next()) {
-                groceryList.add(new GroceryItem(
+                groceryList.add(new PantryItem(
                         resultSet.getInt("id"),
                         resultSet.getInt("userId"),
                         resultSet.getString("item"),
