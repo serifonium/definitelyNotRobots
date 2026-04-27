@@ -1,6 +1,4 @@
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
+package PACKAGE_NAME;
 
-public class RecipeViewTest{
-
+public class RecipeTest {
 }
