@@ -7,11 +7,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080" prefWidth="1920" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<HBox fx:id="mainRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480" prefWidth="888" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
-   <VBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="78.0">
-         <Button mnemonicParsing="false" onAction="#goToGroceryList" text="Grocery List" />
-         <Button text="AI Page" onAction="#goToAIPage"/>
+      <AnchorPane layoutX="146.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
+   <VBox alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="108.4">
+         <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToGroceryList" text="Grocery List" />
+         <Button alignment="CENTER" onAction="#goToAIPage" text="AI Page" />
          <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
             <VBox.margin>
                <Insets bottom="10.0" top="10.0" />
@@ -28,14 +33,19 @@
            </VBox.margin></AnchorPane>
          <Button mnemonicParsing="false" onAction="#goToRecipeView" text="Recipe View" />
    </VBox>
+      <AnchorPane layoutX="161.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </AnchorPane>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="2.0" style="-fx-background-color: #2a6c36;">
          <HBox.margin>
-            <Insets left="4.0" right="4.0" />
+            <Insets right="4.0" />
          </HBox.margin>
          <opaqueInsets>
             <Insets />
          </opaqueInsets></AnchorPane>
-   <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="626.0">
+   <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="695.0">
          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="626.0">
             <children>
             <Label fx:id="testLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Welcome, ________!" textAlignment="CENTER" textFill="#573c2a">
@@ -66,7 +76,7 @@
            <VBox.margin>
                <Insets bottom="15.0" left="5.0" top="4.0" />
            </VBox.margin></AnchorPane>
-         <VBox prefHeight="365.0" prefWidth="622.0">
+         <VBox prefHeight="366.0" prefWidth="613.0">
             <children>
                <HBox prefHeight="342.0" prefWidth="618.0">
                   <children>
@@ -146,6 +156,7 @@
                         <padding>
                            <Insets left="15.0" />
                         </padding></VBox>
+                     <AnchorPane prefHeight="342.0" prefWidth="45.0" />
                      <VBox layoutX="10.0" layoutY="10.0" prefHeight="342.0" prefWidth="332.0" style="-fx-background-color: #1e8648;">
                         <children>
                             <ScrollPane hbarPolicy="NEVER" prefHeight="361.0" prefWidth="249.0" style="-fx-background-color: #1e86 #1e864848;" vbarPolicy="ALWAYS">

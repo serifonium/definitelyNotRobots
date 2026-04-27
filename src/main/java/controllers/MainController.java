@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -17,11 +18,14 @@ public class MainController {
     @FXML
     public Label testLabel; //This label prints the "Welcome (user)!" text
     public VBox SavedMeals; //This Vbox holds the list of saved meals.
+    public HBox mainRoot; //This Hbox is the main root.
 
     public void initialize() {
         SetName();
         SetSavedMeals();
+        ScaleMainView();
     }
+
     public void SetName()
     {
         testLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getUsername() + "!"); //prints the welcome text
@@ -35,6 +39,11 @@ public class MainController {
 
             SavedMeals.getChildren().add(meal);
         }
+    }
+
+    private void ScaleMainView() {
+        mainRoot.setScaleX(1.6); //Scales root parent by 1.5
+        mainRoot.setScaleY(1.6);
     }
 
     public void goToGroceryList() throws IOException {
