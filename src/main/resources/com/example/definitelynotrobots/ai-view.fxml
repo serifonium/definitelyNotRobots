@@ -118,7 +118,7 @@
 
                 <HBox alignment="CENTER_RIGHT" spacing="8">
                     <HBox alignment="CENTER_RIGHT" spacing="8">
-
+                        <Button text="Go to Recipe" fx:id="recipeViewButton" onAction="#goToRecipeView"/>
                         <Button text="Send"
                                 onAction="#onChatbotInputButtonClick"
                                 style="-fx-background-color: #ff6600;

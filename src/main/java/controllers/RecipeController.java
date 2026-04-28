@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import java.awt.*;
 
 public class RecipeController {
+
     @FXML
     public Button homeButton;
     @FXML
@@ -42,8 +43,20 @@ public class RecipeController {
     public Button fitnessTargetsButton;
     @FXML
     public Button preferencesButton;
+    @FXML
+    private AiController aiController;
+    @FXML
+    public Recipe currentRecipe;
+    @FXML
+    public TextField recipeText;
+    public void setCurrentRecipe(){currentRecipe = aiController.getGeneratedRecipe();}
+
+    public Recipe getCurrentRecipe(){return currentRecipe;}
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
+    public void initialize(){
+        recipeText.setText(currentRecipe.getRecipeText());
+    }
 
     public void goToHomeView() throws IOException {
         Stage stage = (Stage) homeButton.getScene().getWindow();
@@ -95,7 +108,16 @@ public class RecipeController {
     }
 
     public void saveRecipe() throws IOException{
-        saveRecipeButton.setText("Recipe saved!");
+        Recipe recipe = aiController.getGeneratedRecipe();
 
+        recipe.setIsSaved(true);
+
+        new SavedRecipesDAO().insertRecipe(recipe);
+
+        saveRecipeButton.setText("Recipe Saved!");
     }
+    public void setAiController(AiController aiController) {
+        this.aiController = aiController;
+    }
+
 }

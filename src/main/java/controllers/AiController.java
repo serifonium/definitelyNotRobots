@@ -14,17 +14,21 @@ import com.example.definitelynotrobots.HelloApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
+import java.awt.*;
 import java.io.IOException;
 
 public class AiController {
-
+    @FXML
+    public Button recipeViewButton;
     @FXML
     private TextArea chatbotInput;
 
     @FXML
     private TextArea chatbotOutput;
     @FXML
-    private Recipe generatedRecipe;
+    public static Recipe generatedRecipe;
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
@@ -73,29 +77,19 @@ public class AiController {
                     .findFirst()
                     .orElse("No response");
 
-            System.out.println("AI says: " + text);
             chatbotOutput.setText(text);
-            String title = extract(text, "Title:");
-            String prep = extract(text, "PrepTime:");
-            String cook = extract(text, "CookTime:");
-            String servings = extract(text, "Servings:");
-            String ingredients = extract(text, "Ingredients:");
-            String method = extract(text, "Method:");
 
-            generatedRecipe = new Recipe(
-                    null,
-                    title,
-                    Integer.parseInt(prep.trim()),
-                    Integer.parseInt(cook.trim()),
-                    Integer.parseInt(servings.trim()),
-                    false,
-                    ingredients,
-                    method
-            );
+
+/*
+            generatedRecipe.setRecipeText(text);
+*/
+
+            System.out.println("AI says: " + text);
         } catch (Exception e) {
             e.printStackTrace();
             chatbotOutput.setText("Error: " + e.getMessage());
         }
+        return;
     }
 
     private void loadScene(String fxmlFile) throws IOException {
@@ -127,8 +121,7 @@ public class AiController {
 
     @FXML
     public void goToRecipeView() throws IOException {
-        loadScene("recipe-view.fxml");
-    }
+        loadScene("recipe-view.fxml");  }
     @FXML
     public Recipe getGeneratedRecipe() {
         return generatedRecipe;

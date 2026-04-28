@@ -2,7 +2,9 @@ package com.example.definitelynotrobots;
 import javafx.scene.image.Image;
 
 public class Recipe {
-
+    private String RecipeText;
+    public String getRecipeText(){return RecipeText;}
+    public void setRecipeText(String recipeText){RecipeText = recipeText;}
     private Integer UserAccountIDRecipe;
     public Integer getUserAccountIDRecipe(){return UserAccountIDRecipe;}
 
@@ -58,5 +60,8 @@ public class Recipe {
         IsSaved = isSaved;
         Ingredients = ingredients;
         Method = method;
+    }
+    public Recipe(String recipeText){
+        RecipeText = recipeText;
     }
 }
