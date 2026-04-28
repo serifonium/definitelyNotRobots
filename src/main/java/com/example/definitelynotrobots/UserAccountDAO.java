@@ -14,7 +14,7 @@ public class UserAccountDAO {
         createTable();
     }
 
-    public void dropTable() {
+    public UserAccountDAO dropTable() {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
                     "DROP TABLE userAccounts"
@@ -23,6 +23,7 @@ public class UserAccountDAO {
         } catch (SQLException ex) {
             System.err.println(ex);
         }
+        return null;
     }
 
     public void createTable() {

@@ -1,18 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER"
-      prefHeight="400.0" prefWidth="382.0"
+<HBox alignment="CENTER"
+      prefHeight="480.0"
+      prefWidth="720.0"
+      style="-fx-background-color: #eae8e2;"
       xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controllers.AiController">
 
     <children>
-        <Label text="This is the AI page" />
-        <TextField fx:id="chatbotInput" promptText="Ask something..." />
-        <Button text="Send" onAction="#onChatbotInputButtonClick"/>
-        <TextArea fx:id="chatbotOutput" />
+
+        <!-- Sidebar -->
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0" />
+
+        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="108.4">
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToGroceryList" prefHeight="75.0" prefWidth="75.0" text="Grocery List" />
+
+            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </VBox.margin>
+            </AnchorPane>
+
+            <Button mnemonicParsing="false" onAction="#goToPreferences" prefHeight="75.0" prefWidth="75.0" text="Dietary Preferences" />
+
+            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </VBox.margin>
+            </AnchorPane>
+
+            <Button mnemonicParsing="false" onAction="#goToFitnessTargets" prefHeight="75.0" prefWidth="75.0" text="Nutrition Goals" />
+
+            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </VBox.margin>
+            </AnchorPane>
+
+            <Button mnemonicParsing="false" onAction="#goToRecipeView" prefHeight="75.0" prefWidth="75.0" text="Recipe View" />
+
+            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets bottom="10.0" top="10.0" />
+                </VBox.margin>
+            </AnchorPane>
+
+            <Button alignment="CENTER" onAction="#goToAIPage" prefHeight="75.0" prefWidth="75.0" text="AI Page" />
+
+            <HBox.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </HBox.margin>
+        </VBox>
+
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0" />
+
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="2.0" style="-fx-background-color: #2a6c36;">
+            <HBox.margin>
+                <Insets right="4.0" />
+            </HBox.margin>
+        </AnchorPane>
+
+
+
+        <!-- AI content -->
+        <VBox alignment="CENTER"
+              prefHeight="480.0"
+              prefWidth="626.0"
+              spacing="25"
+              style="-fx-background-color: #eae8e2;">
+
+            <padding>
+                <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+            </padding>
+
+            <Label text="Hi there, what can I ‘cook’ for you today?"
+                   wrapText="true"
+                   textAlignment="CENTER"
+                   alignment="CENTER"
+                   textFill="#573c2a"
+                   style="-fx-font-weight: bold;"
+                   prefWidth="560.0">
+                <font>
+                    <Font size="34.0" />
+                </font>
+            </Label>
+
+            <VBox prefWidth="520.0"
+                  prefHeight="150.0"
+                  style="-fx-background-color: #eae8e2;
+                 -fx-border-color: #ff6600 #2a6c36 #2a6c36 #ff6600;
+                 -fx-border-width: 5;
+                 -fx-border-radius: 18;
+                 -fx-background-radius: 18;">
+
+                <padding>
+                    <Insets bottom="10.0" left="12.0" right="12.0" top="10.0" />
+                </padding>
+
+                <TextArea fx:id="chatbotInput"
+                          promptText="Input your prompt here..."
+                          wrapText="true"
+                          prefHeight="100.0"
+                          prefWidth="500.0"
+                          style="-fx-background-color: transparent;
+                         -fx-control-inner-background: #eae8e2;
+                         -fx-text-fill: #573c2a;
+                         -fx-prompt-text-fill: #573c2a;
+                         -fx-font-size: 20px;
+                         -fx-font-weight: bold;
+                         -fx-background-radius: 18;" />
+
+                <HBox alignment="CENTER_RIGHT" spacing="8">
+                    <HBox alignment="CENTER_RIGHT" spacing="8">
+
+                        <Button text="Send"
+                                onAction="#onChatbotInputButtonClick"
+                                style="-fx-background-color: #ff6600;
+                   -fx-text-fill: white;
+                   -fx-font-size: 16px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 10;
+                   -fx-padding: 8 18 8 18;" />
+
+                    </HBox>
+                </HBox>
+            </VBox>
+
+            <TextArea fx:id="chatbotOutput"
+                      editable="false"
+                      wrapText="true"
+                      prefHeight="170.0"
+                      prefWidth="520.0"
+                      style="-fx-control-inner-background: #eae8e2;
+                     -fx-text-fill: #573c2a;
+                     -fx-font-size: 16px;" />
+
+        </VBox>
+
     </children>
-</VBox>
+</HBox>
