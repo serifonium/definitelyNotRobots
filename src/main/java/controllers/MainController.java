@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -15,26 +16,48 @@ import java.io.IOException;
 public class MainController {
 
     @FXML
-    public Label testLabel; //This label prints the "Welcome (user)!" text
-    public VBox SavedMeals; //This Vbox holds the list of saved meals.
-
-    public void initialize() {
+    public void initialize() throws IOException {
         SetName();
         SetSavedMeals();
+        ScaleMainView();
     }
+
+    public Label testLabel; //This label prints the "Welcome (user)!" text
+
     public void SetName()
     {
         testLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getUsername() + "!"); //prints the welcome text
     }
-    public void SetSavedMeals()
-    { //TODO LATER: Change how this works so it actually prints out saved meals in the database.
-        for (int i = 0; i < 8; i++) { //currently just makes a set of empty boxes
-            VBox meal = new VBox();
+
+    public VBox SavedMeals; //This Vbox holds the list of saved meals.
+
+    public void SetSavedMeals() throws IOException {
+        //TODO LATER: Change how this works so it actually prints out saved meals in the database.
+        SavedMeals.getChildren().clear();
+
+        for (int i = 0; i < 8; i++) {
+
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/example/definitelynotrobots/meal-template.fxml")
+            );
+
+            HBox meal = loader.load();
+
             meal.setStyle("-fx-background-color: #1e8648; -fx-padding: 10;");
-            meal.getChildren().add(new Label("Item " + i));
+
+            Label label = new Label("Item " + i);
+            meal.getChildren().add(label);
 
             SavedMeals.getChildren().add(meal);
         }
+    }
+
+    public HBox mainRoot; //This Hbox is the main parent.
+
+
+    private void ScaleMainView() {
+        mainRoot.setScaleX(1.6); //Scales root parent by 1.5
+        mainRoot.setScaleY(1.6);
     }
 
     public void goToGroceryList() throws IOException {
