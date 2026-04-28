@@ -55,7 +55,9 @@ public class RecipeController {
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
     public void initialize(){
-        recipeText.setText(currentRecipe.getRecipeText());
+        if(currentRecipe != null){
+            recipeText.setText(currentRecipe.getRecipeText());
+        }
     }
 
     public void goToHomeView() throws IOException {
