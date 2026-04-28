@@ -12,13 +12,21 @@ import java.io.IOException;
 public class RecipeController {
     @FXML
     public Button homeButton;
+    @FXML
     public Button saveRecipeButton;
+    @FXML
     public Button printButton;
+    @FXML
     public Button profileButton;
+    @FXML
     public Button aiButton;
+    @FXML
     public Button pantryButton;
+    @FXML
     public Button groceryListButton;
+    @FXML
     public Button savedRecipesButton;
+
 
     public void goToHomeView() throws IOException {
         Stage stage = (Stage) homeButton.getScene().getWindow();
@@ -34,7 +42,7 @@ public class RecipeController {
     }
     public void goToAIView() throws IOException{
         Stage stage = (Stage) aiButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ai-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("recipe-ai-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
