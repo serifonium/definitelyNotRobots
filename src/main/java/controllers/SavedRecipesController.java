@@ -24,8 +24,6 @@ public class SavedRecipesController {
     @FXML
     public Button savedRecipesButton;
     @FXML
-    public Button saveRecipeButton;
-    @FXML
     public Recipe currentRecipe;
     @FXML
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();

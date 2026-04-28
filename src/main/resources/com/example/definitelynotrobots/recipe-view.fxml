@@ -16,6 +16,7 @@
         </VBox>
         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="400.0">
             <Label text="Recipe Title(Placeholder)" style="-fx-font-size: 24; -fx-text-fill: #573C2A;"/>
+            <Button mnemonicParsing="false" text="Save Recipe" fx:id="saveRecipeButton" onAction="saveRecipe"/>
         </VBox>
         <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="400.0">
             <Label text="Image (placeholder)"/>
