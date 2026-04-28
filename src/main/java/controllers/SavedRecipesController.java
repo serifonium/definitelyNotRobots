@@ -23,8 +23,9 @@ public class SavedRecipesController {
     public Button groceryListButton;
     @FXML
     public Button savedRecipesButton;
+    public Button fitnessTargetsButton;
     @FXML
-    public Recipe currentRecipe;
+    public Button preferencesButton;
     @FXML
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
@@ -63,11 +64,19 @@ public class SavedRecipesController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-
-    public String saveRecipe() throws IOException{
-        currentRecipe.setIsSaved(true);
-        return "Recipe saved!";
+    public void goToFitnessTargets() throws IOException{
+        Stage stage = (Stage) fitnessTargetsButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
+    public void goToPreferences() throws IOException{
+        Stage stage = (Stage) preferencesButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
     @FXML
     private void onSaveRecipe() {
         final Integer DEFAULT_USERID = null;

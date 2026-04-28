@@ -1,5 +1,6 @@
 package controllers;
 
+import com.example.definitelynotrobots.Recipe;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
@@ -22,6 +23,8 @@ public class AiController {
 
     @FXML
     private TextArea chatbotOutput;
+    @FXML
+    private Recipe generatedRecipe;
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
@@ -46,6 +49,14 @@ public class AiController {
                             - Do not give medical, allergy, or diet advice as guaranteed facts.
                             - If allergies, illness, pregnancy, medication, or serious health issues are mentioned, tell the user to check with a qualified professional.
                             - Keep a friendly, slightly playful cooking personality.
+                            - Return a recipe in this EXACT format:
+                            
+                              Title: ...
+                              PrepTime: ...
+                              CookTime: ...
+                              Servings: ...
+                              Ingredients: ...
+                              Method: ...
                             
                             User request:
                             """ + userInput)
@@ -64,7 +75,23 @@ public class AiController {
 
             System.out.println("AI says: " + text);
             chatbotOutput.setText(text);
+            String title = extract(text, "Title:");
+            String prep = extract(text, "PrepTime:");
+            String cook = extract(text, "CookTime:");
+            String servings = extract(text, "Servings:");
+            String ingredients = extract(text, "Ingredients:");
+            String method = extract(text, "Method:");
 
+            generatedRecipe = new Recipe(
+                    null,
+                    title,
+                    Integer.parseInt(prep.trim()),
+                    Integer.parseInt(cook.trim()),
+                    Integer.parseInt(servings.trim()),
+                    false,
+                    ingredients,
+                    method
+            );
         } catch (Exception e) {
             e.printStackTrace();
             chatbotOutput.setText("Error: " + e.getMessage());
@@ -101,5 +128,21 @@ public class AiController {
     @FXML
     public void goToRecipeView() throws IOException {
         loadScene("recipe-view.fxml");
+    }
+    @FXML
+    public Recipe getGeneratedRecipe() {
+        return generatedRecipe;
+    }
+    @FXML
+    private String extract(String text, String key) {
+        int start = text.indexOf(key);
+        if (start == -1) return "";
+
+        start += key.length();
+        int end = text.indexOf("\n", start);
+
+        return end == -1
+                ? text.substring(start).trim()
+                : text.substring(start, end).trim();
     }
 }

@@ -2,6 +2,7 @@ package com.example.definitelynotrobots;
 import javafx.scene.image.Image;
 
 public class Recipe {
+
     private Integer UserAccountIDRecipe;
     public Integer getUserAccountIDRecipe(){return UserAccountIDRecipe;}
 

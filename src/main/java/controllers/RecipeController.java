@@ -1,6 +1,7 @@
 package controllers;
 
 import com.example.definitelynotrobots.HelloApplication;
+import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.SavedRecipesDAO;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
@@ -38,46 +39,12 @@ public class RecipeController {
     @FXML
     public Button savedRecipesButton;
     @FXML
-    private TextField chatbotInput;
-
+    public Button fitnessTargetsButton;
     @FXML
-    private TextArea chatbotOutput;
+    public Button preferencesButton;
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
-    @FXML
-    protected void onChatbotInputButtonClick() {
-        String userInput = chatbotInput.getText();
-
-        if (userInput.isEmpty()) {
-            chatbotOutput.setText("Type something first.");
-            return;
-        }
-
-        try {
-            ResponseCreateParams params = ResponseCreateParams.builder()
-                    .input(userInput)
-                    .model("gpt-4o-mini")
-                    .build();
-
-            Response response = client.responses().create(params);
-
-            String text = response.output().stream()
-                    .flatMap(item -> item.message().stream())          // Optional → stream
-                    .flatMap(msg -> msg.content().stream())            // list
-                    .flatMap(content -> content.outputText().stream()) // Optional → stream
-                    .map(t -> t.text())                                // NOW this works
-                    .findFirst()
-                    .orElse("No response");
-
-            System.out.println("AI says: " + text);
-            chatbotOutput.setText(text);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            chatbotOutput.setText("Error: " + e.getMessage());
-        }
-    }
     public void goToHomeView() throws IOException {
         Stage stage = (Stage) homeButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
@@ -107,14 +74,28 @@ public class RecipeController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
-    }public void goToSavedRecipesView() throws IOException{
+    }
+    public void goToSavedRecipesView() throws IOException{
         Stage stage = (Stage) savedRecipesButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToFitnessTargets() throws IOException{
+        Stage stage = (Stage) fitnessTargetsButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToPreferences() throws IOException{
+        Stage stage = (Stage) preferencesButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
 
     public void saveRecipe() throws IOException{
         saveRecipeButton.setText("Recipe saved!");
+
     }
 }
