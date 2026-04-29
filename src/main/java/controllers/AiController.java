@@ -34,7 +34,7 @@ public class AiController {
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     @FXML
-    protected void onChatbotInputButtonClick() {
+    public void onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
 
         if (userInput.isEmpty()) {
@@ -150,5 +150,13 @@ public class AiController {
         return end == -1
                 ? text.substring(start).trim()
                 : text.substring(start, end).trim();
+    }
+
+    public void setChatbotInput(TextArea chatbotInput) {
+        this.chatbotInput = chatbotInput;
+    }
+
+    public void setChatbotOutput(TextArea chatbotOutput) {
+        this.chatbotOutput = chatbotOutput;
     }
 }
