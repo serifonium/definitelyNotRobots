@@ -22,6 +22,7 @@ public class SignUpController {
     public PasswordField passwordInput;
     public TextField firstnameInput;
     public TextField lastnameInput;
+    public PasswordField confirmationInput;
     public Button signInButton;
     public Label errorText;
 
