@@ -88,7 +88,7 @@ public void initialize() {
 
 public HBox helloRoot; //This Hbox is the main parent.
 
-
+///TODO LATER: refactor the code in here and other controllers.
 private void ScaleMainView() {
     helloRoot.setScaleX(1.6); //Scales root parent by 1.6
     helloRoot.setScaleY(1.6);
