@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="mainRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480" prefWidth="888" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<HBox fx:id="mainRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480" prefWidth="720" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
       <AnchorPane layoutX="146.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0">
          <opaqueInsets>
@@ -131,11 +131,7 @@
                                           </VBox.margin>
                                        </Label>
                                     </children></VBox>
-                                 <Button maxHeight="148.0" maxWidth="148.0"
-                                         minHeight="148.0" minWidth="148.0"
-                                         prefHeight="148.0" prefWidth="148.0"
-                                         mnemonicParsing="false"
-                                         style="-fx-background-color: transparent; -fx-padding: 0;">
+                                 <Button maxHeight="148.0" maxWidth="148.0" minHeight="148.0" minWidth="148.0" mnemonicParsing="false" prefHeight="148.0" prefWidth="148.0" style="-fx-background-color: transparent; -fx-padding: 0;">
                                     <graphic>
                                        <ImageView fitHeight="148.0" fitWidth="148.0" preserveRatio="false">
                                           <image>

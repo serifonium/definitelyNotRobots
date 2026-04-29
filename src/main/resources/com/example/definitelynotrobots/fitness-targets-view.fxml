@@ -6,10 +6,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx"
+<VBox fx:id = "FitnessTargetRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controllers.FitnessTargetsController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="480.0" prefWidth="720.0">
 
     <children>
         <Label text="This is the Fitness Targets View" />

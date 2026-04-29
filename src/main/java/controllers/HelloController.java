@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.awt.event.KeyEvent;
@@ -80,4 +81,16 @@ public class HelloController {
 
         nextNode.requestFocus();
     }
+
+public void initialize() {
+    ScaleMainView();
+}
+
+public HBox helloRoot; //This Hbox is the main parent.
+
+
+private void ScaleMainView() {
+    helloRoot.setScaleX(1.6); //Scales root parent by 1.6
+    helloRoot.setScaleY(1.6);
+}
 }
