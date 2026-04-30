@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import com.example.definitelynotrobots.HelloApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
@@ -33,7 +34,7 @@ public class AiController {
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     @FXML
-    protected void onChatbotInputButtonClick() {
+    public void onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
 
         if (userInput.isEmpty()) {
@@ -99,6 +100,18 @@ public class AiController {
         stage.setScene(scene);
     }
 
+    public void initialize() {
+        ScaleMainView();
+    }
+
+    public HBox AiRoot; //This Hbox is the main parent.
+
+
+    private void ScaleMainView() {
+        AiRoot.setScaleX(1.6); //Scales root parent by 1.6
+        AiRoot.setScaleY(1.6);
+    }
+
     @FXML
     public void goToGroceryList() throws IOException {
         loadScene("grocery-view.fxml");
@@ -137,5 +150,13 @@ public class AiController {
         return end == -1
                 ? text.substring(start).trim()
                 : text.substring(start, end).trim();
+    }
+
+    public void setChatbotInput(TextArea chatbotInput) {
+        this.chatbotInput = chatbotInput;
+    }
+
+    public void setChatbotOutput(TextArea chatbotOutput) {
+        this.chatbotOutput = chatbotOutput;
     }
 }

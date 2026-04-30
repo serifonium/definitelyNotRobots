@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,6 +57,8 @@ public class PantryController {
         if (firstContact != null) {
             selectPantryItem(firstContact);
         }
+
+        ScaleMainView();
     }
     public void goToHomeView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
@@ -172,9 +175,19 @@ public class PantryController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+
+    public HBox PantryRoot; //This Hbox is the main parent.
+
+
+    private void ScaleMainView() {
+        PantryRoot.setScaleX(1.6); //Scales root parent by 1.6
+        PantryRoot.setScaleY(1.6);
+    }
+
     public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
     public void goToAIPage() throws IOException { goToPage("ai-view"); }
     public void goToPreferences() throws IOException { goToPage("preferences-view"); }
     public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
     public void goToRecipeView() throws IOException { goToPage("recipe-view"); }
 }
+
