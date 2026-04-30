@@ -25,7 +25,7 @@
                 <VBox.margin>
                     <Insets bottom="10.0" top="10.0" />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToRecipeView" text="Recipe View" />
+            <Button mnemonicParsing="false" onAction="#goToSavedRecipeView" text="Saved Recipes" />
         </VBox>
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="2.0" style="-fx-background-color: #2a6c36;">
             <HBox.margin>

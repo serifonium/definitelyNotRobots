@@ -144,8 +144,8 @@ public class AiController {
     }
 
     @FXML
-    public void goToRecipeView() throws IOException {
-        loadScene("recipe-view.fxml");  }
+    public void goToSavedRecipeView() throws IOException {
+        loadScene("saved-recipes-view.fxml");  }
 
     @FXML
     private String extract(String text, String key) {

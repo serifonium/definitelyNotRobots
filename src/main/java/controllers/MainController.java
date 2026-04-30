@@ -80,9 +80,9 @@ public class MainController {
         stage.setScene(scene);
     }
 
-    public void goToRecipeView() throws IOException {
+    public void goToSavedRecipeView() throws IOException {
         Stage stage = (Stage) testLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("recipe-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
