@@ -118,7 +118,15 @@
 
                 <HBox alignment="CENTER_RIGHT" spacing="8">
                     <HBox alignment="CENTER_RIGHT" spacing="8">
-                        <Button text="Go to Recipe" fx:id="recipeViewButton" onAction="#goToRecipeView"/>
+                        <Button text="Save Recipe"
+                                fx:id="saveRecipeButton"
+                                onAction="#saveRecipe"
+                                style="-fx-background-color: #ff6600;
+                   -fx-text-fill: white;
+                   -fx-font-size: 16px;
+                   -fx-font-weight: bold;
+                   -fx-background-radius: 10;
+                   -fx-padding: 8 18 8 18;" />
                         <Button text="Send"
                                 onAction="#onChatbotInputButtonClick"
                                 style="-fx-background-color: #ff6600;
