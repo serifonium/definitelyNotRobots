@@ -74,6 +74,13 @@ public class SavedRecipesController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+    public void goToProfile() throws IOException{
+        Stage stage = (Stage) profileButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
 
     @FXML
     private void onSaveRecipe() {
