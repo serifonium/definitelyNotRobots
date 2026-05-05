@@ -14,6 +14,7 @@ module com.example.definitelynotrobots {
     requires java.desktop;
     requires openai.java.core;
     requires openai.java.client.okhttp;
+    requires annotations;
 
     opens com.example.definitelynotrobots to javafx.fxml;
     exports com.example.definitelynotrobots;

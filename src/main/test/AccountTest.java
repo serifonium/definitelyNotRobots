@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AccountTest {
+public class UserAccountTest {
     private UserAccount userAccount;
 
     @BeforeEach
@@ -33,6 +33,6 @@ public class AccountTest {
     @Test
     public void testSetPassword() {
         userAccount.setPassword("myN3wP4ssword$%#^");
-        assertEquals("myN3wP4ssword$%^", userAccount.getPassword());
+        assertEquals("myN3wP4ssword$%#^", userAccount.getPassword());
     }
 }

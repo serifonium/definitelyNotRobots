@@ -23,7 +23,7 @@
             <VBox.margin>
                <Insets bottom="10.0" top="10.0" />
             </VBox.margin></AnchorPane>
-         <Button mnemonicParsing="false" onAction="#goToRecipeView" text="Recipe View" />
+         <Button mnemonicParsing="false" onAction="#goToSavedRecipeView" text="Saved Recipes" />
       </VBox>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="320.0">
          <children>

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.example.definitelynotrobots.Recipe;
+import com.example.definitelynotrobots.SavedRecipesDAO;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
@@ -16,20 +17,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.io.IOException;
 
 public class AiController {
     @FXML
-    public Button recipeViewButton;
+    public Button saveRecipeButton;
     @FXML
     private TextArea chatbotInput;
 
     @FXML
     private TextArea chatbotOutput;
     @FXML
-    public static Recipe generatedRecipe;
+    public String generatedRecipeText;
+    private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
@@ -79,11 +82,8 @@ public class AiController {
                     .orElse("No response");
 
             chatbotOutput.setText(text);
+            generatedRecipeText = text;
 
-
-/*
-            generatedRecipe.setRecipeText(text);
-*/
 
             System.out.println("AI says: " + text);
         } catch (Exception e) {
@@ -91,6 +91,17 @@ public class AiController {
             chatbotOutput.setText("Error: " + e.getMessage());
         }
         return;
+    }
+    public void saveRecipe(){
+        if(chatbotOutput != null){
+            saveRecipeButton.setText("Recipe Saved!");
+            Recipe savedRecipe = new Recipe(generatedRecipeText);
+            savedRecipesDAO.insertRecipe(savedRecipe);
+        }
+        else{
+            saveRecipeButton.setText("Please generate a recipe first!");
+        }
+
     }
 
     private void loadScene(String fxmlFile) throws IOException {
@@ -133,12 +144,9 @@ public class AiController {
     }
 
     @FXML
-    public void goToRecipeView() throws IOException {
-        loadScene("recipe-view.fxml");  }
-    @FXML
-    public Recipe getGeneratedRecipe() {
-        return generatedRecipe;
-    }
+    public void goToSavedRecipeView() throws IOException {
+        loadScene("saved-recipes-view.fxml");  }
+
     @FXML
     private String extract(String text, String key) {
         int start = text.indexOf(key);

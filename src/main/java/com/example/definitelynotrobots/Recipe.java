@@ -64,4 +64,7 @@ public class Recipe {
     public Recipe(String recipeText){
         RecipeText = recipeText;
     }
+    public Recipe(){
+        RecipeText = "no recipe";
+    }
 }
