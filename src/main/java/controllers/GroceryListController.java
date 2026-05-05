@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -126,6 +127,8 @@ public class GroceryListController {
         if (firstItem != null) {
             selectGroceryItem(firstItem);
         }
+
+        ScaleMainView();
     }
 
     private void syncGroceryList() {
@@ -177,6 +180,14 @@ public class GroceryListController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+
+    public HBox groceryRoot; //This Hbox is the main parent.
+
+    private void ScaleMainView() {
+        groceryRoot.setScaleX(1.6); //Scales root parent by 1.6
+        groceryRoot.setScaleY(1.6);
+    }
+
     public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
     public void goToAIPage() throws IOException { goToPage("ai-view"); }
     public void goToPreferences() throws IOException { goToPage("preferences-view"); }

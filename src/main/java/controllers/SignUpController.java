@@ -3,6 +3,7 @@ package controllers;
 import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.UserAccount;
 import com.example.definitelynotrobots.UserAccountDAO;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,7 +24,6 @@ public class SignUpController {
     public PasswordField passwordInput;
     public TextField firstnameInput;
     public TextField lastnameInput;
-    public PasswordField confirmationInput;
     public Button signInButton;
     public Label errorText;
 
@@ -68,5 +69,18 @@ public class SignUpController {
         if(nextNode == null) return;
 
         nextNode.requestFocus();
+    }
+
+    @FXML
+    public void initialize() throws IOException {
+        ScaleMainView();
+    }
+
+    public HBox signupRoot; //This Hbox is the main parent.
+
+
+    private void ScaleMainView() {
+        signupRoot.setScaleX(1.6); //Scales root parent by 1.6
+        signupRoot.setScaleY(1.6);
     }
 }

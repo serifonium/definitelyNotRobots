@@ -54,9 +54,8 @@ public class MainController {
 
     public HBox mainRoot; //This Hbox is the main parent.
 
-
     private void ScaleMainView() {
-        mainRoot.setScaleX(1.6); //Scales root parent by 1.5
+        mainRoot.setScaleX(1.6); //Scales root parent by 1.6
         mainRoot.setScaleY(1.6);
     }
 
@@ -74,9 +73,9 @@ public class MainController {
         stage.setScene(scene);
     }
 
-    public void goToProfile() throws IOException {
+    public void goToFitnessTargets() throws IOException {
         Stage stage = (Stage) testLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }

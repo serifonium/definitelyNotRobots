@@ -1,5 +1,6 @@
 package controllers;
 
+import com.example.definitelynotrobots.Recipe;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
@@ -12,21 +13,28 @@ import javafx.scene.control.TextField;
 import com.example.definitelynotrobots.HelloApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
+import java.awt.*;
 import java.io.IOException;
 
 public class AiController {
-
+    @FXML
+    public Button recipeViewButton;
     @FXML
     private TextArea chatbotInput;
 
     @FXML
     private TextArea chatbotOutput;
+    @FXML
+    public static Recipe generatedRecipe;
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     @FXML
-    protected void onChatbotInputButtonClick() {
+    public void onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
 
         if (userInput.isEmpty()) {
@@ -46,6 +54,14 @@ public class AiController {
                             - Do not give medical, allergy, or diet advice as guaranteed facts.
                             - If allergies, illness, pregnancy, medication, or serious health issues are mentioned, tell the user to check with a qualified professional.
                             - Keep a friendly, slightly playful cooking personality.
+                            - Return a recipe in this EXACT format:
+                            
+                              Title: ...
+                              PrepTime: ...
+                              CookTime: ...
+                              Servings: ...
+                              Ingredients: ...
+                              Method: ...
                             
                             User request:
                             """ + userInput)
@@ -62,13 +78,19 @@ public class AiController {
                     .findFirst()
                     .orElse("No response");
 
-            System.out.println("AI says: " + text);
             chatbotOutput.setText(text);
 
+
+/*
+            generatedRecipe.setRecipeText(text);
+*/
+
+            System.out.println("AI says: " + text);
         } catch (Exception e) {
             e.printStackTrace();
             chatbotOutput.setText("Error: " + e.getMessage());
         }
+        return;
     }
 
     private void loadScene(String fxmlFile) throws IOException {
@@ -76,6 +98,18 @@ public class AiController {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlFile));
         Scene scene = new Scene(fxmlLoader.load(), HelloApplication.WIDTH, HelloApplication.HEIGHT);
         stage.setScene(scene);
+    }
+
+    public void initialize() {
+        ScaleMainView();
+    }
+
+    public HBox AiRoot; //This Hbox is the main parent.
+
+
+    private void ScaleMainView() {
+        AiRoot.setScaleX(1.6); //Scales root parent by 1.6
+        AiRoot.setScaleY(1.6);
     }
 
     @FXML
@@ -100,6 +134,29 @@ public class AiController {
 
     @FXML
     public void goToRecipeView() throws IOException {
-        loadScene("recipe-view.fxml");
+        loadScene("recipe-view.fxml");  }
+    @FXML
+    public Recipe getGeneratedRecipe() {
+        return generatedRecipe;
+    }
+    @FXML
+    private String extract(String text, String key) {
+        int start = text.indexOf(key);
+        if (start == -1) return "";
+
+        start += key.length();
+        int end = text.indexOf("\n", start);
+
+        return end == -1
+                ? text.substring(start).trim()
+                : text.substring(start, end).trim();
+    }
+
+    public void setChatbotInput(TextArea chatbotInput) {
+        this.chatbotInput = chatbotInput;
+    }
+
+    public void setChatbotOutput(TextArea chatbotOutput) {
+        this.chatbotOutput = chatbotOutput;
     }
 }
