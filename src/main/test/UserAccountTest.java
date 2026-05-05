@@ -32,7 +32,7 @@ public class UserAccountTest {
     }
     @Test
     public void testSetPassword() {
-        userAccount.setPassword("myN3wP4ssword$%^");
-        assertEquals("myN3wP4ssword$%^", userAccount.getPassword());
+        userAccount.setPassword("myN3wP4ssword$%#^");
+        assertEquals("myN3wP4ssword$%#^", userAccount.getPassword());
     }
 }

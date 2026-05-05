@@ -49,7 +49,6 @@ public class RecipeController {
     public Recipe currentRecipe;
     @FXML
     public TextField recipeText;
-    public void setCurrentRecipe(){currentRecipe = aiController.getGeneratedRecipe();}
 
     public Recipe getCurrentRecipe(){return currentRecipe;}
 
@@ -109,15 +108,6 @@ public class RecipeController {
         stage.setScene(scene);
     }
 
-    public void saveRecipe() throws IOException{
-        Recipe recipe = aiController.getGeneratedRecipe();
-
-        recipe.setIsSaved(true);
-
-        new SavedRecipesDAO().insertRecipe(recipe);
-
-        saveRecipeButton.setText("Recipe Saved!");
-    }
     public void setAiController(AiController aiController) {
         this.aiController = aiController;
     }
