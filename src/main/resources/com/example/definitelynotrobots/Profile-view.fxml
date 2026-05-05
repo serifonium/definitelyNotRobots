@@ -54,9 +54,13 @@
                         </font>
                     </Label>
                     <Button maxHeight="100.0" mnemonicParsing="false" text="Logout" fx:id="logOut" onAction="#goToHelloController" />
+                    <Button maxHeight="100.0" mnemonicParsing="false" text="Logout" fx:id="Fitness goals"/>
 
                 </children>
             </VBox>
+            <HBox>
+                    <AnchorPane fx:id="profileContent"/>
+            </HBox>
         </VBox>
         <HBox alignment="CENTER" prefHeight="400" prefWidth="300">
             <Button maxHeight="148.0" maxWidth="148.0" minHeight="200.0" minWidth="200.0" mnemonicParsing="false" text="Image (PlaceHolder)">

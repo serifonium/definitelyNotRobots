@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -18,6 +19,9 @@ public class ProfileController {
     public Label testusername;
     public Label errorText;
     public Button logOut;
+
+    @FXML
+    private AnchorPane profilecontent;
 
     public void initialize() {
         SetName();
