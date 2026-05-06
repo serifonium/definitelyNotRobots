@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class GroceryListController {
+public class GroceryListController extends BaseController {
     @FXML
     private ListView<GroceryItem> groceryListView;
     private final GroceryListDAO groceryListDAO = new GroceryListDAO();
@@ -24,6 +24,8 @@ public class GroceryListController {
     public TextField itemAmountField;
     public TextArea itemNotesField;
     public ChoiceBox<FoodTypesEnum> foodTypeField;
+
+    public HBox groceryRoot; //This Hbox is the main parent.
 
     @FXML
     private void selectGroceryItem(GroceryItem groceryItem) {
@@ -116,6 +118,8 @@ public class GroceryListController {
 
     @FXML
     public void initialize() {
+        init(groceryRoot);
+
         foodTypeField.getItems().setAll(FoodTypesEnum.values());
         foodTypeField.setValue(FoodTypesEnum.Oil);
 
@@ -127,8 +131,6 @@ public class GroceryListController {
         if (firstItem != null) {
             selectGroceryItem(firstItem);
         }
-
-        ScaleMainView();
     }
 
     private void syncGroceryList() {
@@ -158,13 +160,6 @@ public class GroceryListController {
         syncGroceryList();
     }
 
-    public void goToPantryView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
     public void EnterToSave(javafx.scene.input.KeyEvent event) {
         if(event.getCode().equals(KeyCode.ENTER)) onEditConfirm();
     }
@@ -173,24 +168,4 @@ public class GroceryListController {
         if(!event.getCode().equals(KeyCode.ENTER)) return;
         selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
     }
-
-    public void goToPage(String fxmlName) throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public HBox groceryRoot; //This Hbox is the main parent.
-
-    private void ScaleMainView() {
-        groceryRoot.setScaleX(1.6); //Scales root parent by 1.6
-        groceryRoot.setScaleY(1.6);
-    }
-
-    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
-    public void goToAIPage() throws IOException { goToPage("ai-view"); }
-    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
-    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
-    public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
 }
