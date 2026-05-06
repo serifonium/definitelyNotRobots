@@ -3,7 +3,7 @@ package com.example.definitelynotrobots;
 /**
  * An item to be used in the grocery list
  */
-public class GroceryItem extends BaseItem {
+public class GroceryItem extends BaseFoodItem {
     /**
      * An item to be used in the grocery list.
      * @param userID The user ID of the owner.

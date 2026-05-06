@@ -3,7 +3,7 @@ package com.example.definitelynotrobots;
 /**
  * An item to be used in the pantry list
  */
-public class PantryItem extends BaseItem {
+public class PantryItem extends BaseFoodItem {
 
     /**
      * An item to be used in the pantry list.
@@ -53,13 +53,6 @@ public class PantryItem extends BaseItem {
         setAmountType(null);
         setFoodType(null);
         setNotes(null);
-    }
-
-    public Double evalNewAmount(Double amount, String amountType) {
-        if(getAmountType().equals(amountType)) {
-            return getAmount() + amount;
-        }
-        return 0d;
     }
 
     @Override

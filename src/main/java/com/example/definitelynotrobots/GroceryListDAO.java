@@ -39,7 +39,6 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
             System.err.println(ex);
         }
     }
-    // ENUM('Baking', 'Seasoning', 'Oil', 'Starch', 'Dairy', 'Meat', 'Fruit', 'Vegetable')
 
     public void addItem(GroceryItem groceryItem) {
         try {
@@ -59,7 +58,7 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
     }
 
     /**
-     * Insert an item of the same type to fill in matching rows
+     * Insert an item of the same type to fill in matching rows.
      * @param inputItem The item to insert into the database.
      */
     public void insertItem(GroceryItem inputItem) {

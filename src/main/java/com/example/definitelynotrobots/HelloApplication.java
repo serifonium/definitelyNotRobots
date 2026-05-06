@@ -9,9 +9,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Main JavaFX application to use.
+ */
 public class HelloApplication extends Application {
+    /**
+     * Title of the window.
+     */
     public static final String TITLE = "Not A Chef";
+    /**
+     * Width of the window in pixels.
+     */
     public static final Integer WIDTH = 1920;
+    /**
+     * Height of the window in pixels.
+     */
     public static final Integer HEIGHT = 1080;
 
     @Override

@@ -1,6 +1,9 @@
 package com.example.definitelynotrobots;
 
-public abstract class BaseItem {
+/**
+ * The base class for food items.
+ */
+public abstract class BaseFoodItem {
     /**
      * The unique ID of the item.
      */
