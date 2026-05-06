@@ -4,6 +4,7 @@ import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,9 +20,8 @@ public class ProfileController {
     public Label testusername;
     public Label errorText;
     public Button logOut;
+    public Button Fitnessgoals;
 
-    @FXML
-    private AnchorPane profilecontent;
 
     public void initialize() {
         SetName();
@@ -41,6 +41,13 @@ public class ProfileController {
     public void goToHelloController() throws IOException {
         Stage stage = (Stage) logOut.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+
+    public void goToFitnessTargetsController() throws IOException {
+        Stage stage = (Stage) Fitnessgoals.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("FitnessTargetsController.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
