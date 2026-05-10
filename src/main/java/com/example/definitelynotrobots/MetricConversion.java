@@ -49,8 +49,10 @@ public class MetricConversion {
      * @return The value of the result in the form of returnType.
      */
     public Double addValues(Double mainValue, Double secondaryValue, String returnType) {
+        assert (returnType.equals(amountTypeA) || returnType.equals(amountTypeB)) : "returnType is not in MetricConversion";
+
         if(returnType.equals(amountTypeA)) return mainValue + secondaryValue / aToBFactor;
-        if(returnType.equals(amountTypeB)) return mainValue * aToBFactor + secondaryValue;
-        return 0d;
+        return mainValue * aToBFactor + secondaryValue;
+//        return 0d;
     }
 }

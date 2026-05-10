@@ -1,10 +1,9 @@
-import com.example.definitelynotrobots.FoodTypesEnum;
-import com.example.definitelynotrobots.GroceryItem;
 import com.example.definitelynotrobots.MetricConversion;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class MetricConversionTest {
     private MetricConversion metricConversion;
@@ -36,5 +35,12 @@ public class MetricConversionTest {
 
     // Error Cases
     @Test
-    public void testAddIncompatible() { assertEquals(0d, metricConversion.addValues(1d, 100d, "km")); }
+    public void testAddIncompatible() {
+        try {
+            assertEquals(0d, metricConversion.addValues(1d, 100d, "km"));
+            fail("Expected AssertionError was not thrown");
+        } catch (AssertionError e) {
+            assertEquals("returnType is not in MetricConversion", e.getMessage());
+        }
+    }
 }
