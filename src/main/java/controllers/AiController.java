@@ -37,12 +37,12 @@ public class AiController {
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     @FXML
-    public void onChatbotInputButtonClick() {
+    public String onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
 
         if (userInput.isEmpty()) {
             chatbotOutput.setText("Type something first.");
-            return;
+            return null;
         }
 
         try {
@@ -84,13 +84,13 @@ public class AiController {
             chatbotOutput.setText(text);
             generatedRecipeText = text;
 
-
             System.out.println("AI says: " + text);
+            return text;
         } catch (Exception e) {
             e.printStackTrace();
             chatbotOutput.setText("Error: " + e.getMessage());
         }
-        return;
+        return null;
     }
     public void saveRecipe(){
         if(chatbotOutput != null){
@@ -112,7 +112,9 @@ public class AiController {
     }
 
     public void initialize() {
+
         ScaleMainView();
+
     }
 
     public HBox AiRoot; //This Hbox is the main parent.
