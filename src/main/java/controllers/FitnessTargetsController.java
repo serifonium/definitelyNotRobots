@@ -22,15 +22,15 @@ public class FitnessTargetsController {
     }
 
     public void initialize() {
-        ScaleMainView();
+        ScaleMainView(1.65);
     }
 
     public VBox FitnessTargetRoot; //This Vbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
 
 
-    private void ScaleMainView() {
-        FitnessTargetRoot.setScaleX(1.6); //Scales root parent by 1.6
-        FitnessTargetRoot.setScaleY(1.6);
+    private void ScaleMainView(double scale) {
+        FitnessTargetRoot.setScaleX(scale); //Scales root parent by 1.6
+        FitnessTargetRoot.setScaleY(scale);
     }
 }

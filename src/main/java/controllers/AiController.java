@@ -112,15 +112,15 @@ public class AiController {
     }
 
     public void initialize() {
-        ScaleMainView();
+        ScaleMainView(1.65);
     }
 
     public HBox AiRoot; //This Hbox is the main parent.
 
 
-    private void ScaleMainView() {
-        AiRoot.setScaleX(1.6); //Scales root parent by 1.6
-        AiRoot.setScaleY(1.6);
+    private void ScaleMainView(double scale) {
+        AiRoot.setScaleX(scale); //Scales root parent
+        AiRoot.setScaleY(scale);
     }
 
     @FXML

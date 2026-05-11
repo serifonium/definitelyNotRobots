@@ -74,14 +74,14 @@ public class SignUpController {
 
     @FXML
     public void initialize() throws IOException {
-        ScaleMainView();
+        ScaleMainView(1.5);
     }
 
     public HBox signupRoot; //This Hbox is the main parent.
 
 
-    private void ScaleMainView() {
-        signupRoot.setScaleX(1.6); //Scales root parent by 1.6
-        signupRoot.setScaleY(1.6);
+    private void ScaleMainView(double scale) {
+        signupRoot.setScaleX(scale); //Scales root parent
+        signupRoot.setScaleY(scale);
     }
 }

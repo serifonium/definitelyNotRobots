@@ -19,7 +19,7 @@ public class MainController {
     public void initialize() throws IOException {
         SetName();
         SetSavedMeals();
-        ScaleMainView();
+        ScaleMainView(1.65);
     }
 
     public Label testLabel; //This label prints the "Welcome (user)!" text
@@ -53,10 +53,10 @@ public class MainController {
     }
 
     public HBox mainRoot; //This Hbox is the main parent.
-
-    private void ScaleMainView() {
-        mainRoot.setScaleX(1.65); //Scales root parent by 1.6
-        mainRoot.setScaleY(1.65);
+/// TODO LATER: ADD DESCRIPTION for ALL SCALE FUNCTIONS
+    private void ScaleMainView(double scale) {
+        mainRoot.setScaleX(scale); //Scales root parent
+        mainRoot.setScaleY(scale);
     }
 
     public void goToGroceryList() throws IOException {
