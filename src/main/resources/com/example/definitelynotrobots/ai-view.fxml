@@ -8,7 +8,7 @@
 <HBox fx:id="AiRoot"
       alignment="CENTER"
       prefHeight="480.0"
-      prefWidth="720.0"
+      prefWidth="854.0"
       style="-fx-background-color: #eae8e2;"
       xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1"

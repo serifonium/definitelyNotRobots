@@ -55,8 +55,8 @@ public class MainController {
     public HBox mainRoot; //This Hbox is the main parent.
 
     private void ScaleMainView() {
-        mainRoot.setScaleX(1.6); //Scales root parent by 1.6
-        mainRoot.setScaleY(1.6);
+        mainRoot.setScaleX(1.65); //Scales root parent by 1.6
+        mainRoot.setScaleY(1.65);
     }
 
     public void goToGroceryList() throws IOException {
