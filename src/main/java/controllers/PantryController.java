@@ -2,18 +2,14 @@ package controllers;
 
 import com.example.definitelynotrobots.*;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.List;
 
-public class PantryController {
+public class PantryController extends BaseController {
     @FXML
     private ListView<PantryItem> pantryListView;
     private final PantryDAO pantryDAO = new PantryDAO();
@@ -25,8 +21,7 @@ public class PantryController {
     public TextArea itemNotesField;
     public ChoiceBox<FoodTypesEnum> foodTypeField;
 
-    @FXML
-    public Button backButton;
+    public HBox pantryRoot;
 
     @FXML
     private void selectPantryItem(PantryItem pantryItem) {
@@ -46,6 +41,8 @@ public class PantryController {
     }
     @FXML
     public void initialize() {
+        init(pantryRoot);
+
         foodTypeField.getItems().setAll(FoodTypesEnum.values());
         foodTypeField.setValue(FoodTypesEnum.Oil);
 
@@ -57,14 +54,6 @@ public class PantryController {
         if (firstContact != null) {
             selectPantryItem(firstContact);
         }
-
-        ScaleMainView();
-    }
-    public void goToHomeView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
     }
 
     private ListCell<PantryItem> renderCell(ListView<PantryItem> contactListView) {
@@ -168,26 +157,5 @@ public class PantryController {
 
         System.out.print(groceryItem);
     }
-
-    public void goToPage(String fxmlName) throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public HBox PantryRoot; //This Hbox is the main parent.
-
-
-    private void ScaleMainView() {
-        PantryRoot.setScaleX(1.6); //Scales root parent by 1.6
-        PantryRoot.setScaleY(1.6);
-    }
-
-    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
-    public void goToAIPage() throws IOException { goToPage("ai-view"); }
-    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
-    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
-    public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
 }
 

@@ -4,16 +4,31 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object for the user accounts.
+ */
 public class UserAccountDAO {
+    /**
+     * The current account the user is logged into.
+     */
     public static UserAccount currentAccount;
 
+    /**
+     * Driver connection to the database.
+     */
     private final Connection connection;
 
+    /**
+     * Connect driver to the database.
+     */
     public UserAccountDAO() {
         connection = DatabaseConnection.getInstance();
         createTable();
     }
 
+    /**
+     * Drop the table for data reformatting purposes.
+     */
     public UserAccountDAO dropTable() {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
@@ -26,6 +41,9 @@ public class UserAccountDAO {
         return null;
     }
 
+    /**
+     * Create the initial table if it does not exist.
+     */
     public void createTable() {
         try {
             Statement createTable = connection.createStatement();
@@ -43,6 +61,10 @@ public class UserAccountDAO {
         }
     }
 
+    /**
+     * Insert a user in the database.
+     * @param userAccount The user to add to the database.
+     */
     public void insertUser(UserAccount userAccount) {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
@@ -58,6 +80,10 @@ public class UserAccountDAO {
         }
     }
 
+    /**
+     * Update a user in the database with the same UID.
+     * @param userAccount The account to update.
+     */
     public void updateUser(UserAccount userAccount) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE userAccounts SET username = ?, password = ?, firstname = ? WHERE id = ?");
@@ -71,6 +97,10 @@ public class UserAccountDAO {
         }
     }
 
+    /**
+     * Delete a user in the database with the same UID.
+     * @param id The UID of the user to delete.
+     */
     public void deleteUser(Integer id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM userAccounts WHERE id = ?");
@@ -81,6 +111,9 @@ public class UserAccountDAO {
         }
     }
 
+    /**
+     * Get all users from the database.
+     */
     public List<UserAccount> getAllUsers() {
         List<UserAccount> users = new ArrayList<>();
         try {
@@ -103,6 +136,10 @@ public class UserAccountDAO {
         return users;
     }
 
+    /**
+     * Get all users from the database.
+     * @param id The UID of the item to delete.
+     */
     public UserAccount getByID(Integer id) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM userAccounts WHERE id = ?");
@@ -123,6 +160,12 @@ public class UserAccountDAO {
         return null;
     }
 
+    /**
+     * Check for a user with matching username and password.
+     * @param username The username to query for.
+     * @param password The password to query for.
+     * @return A matching userAccount or null if no match is found.
+     */
     public UserAccount queryDetails(String username, String password) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM userAccounts WHERE username = ? AND password = ?");

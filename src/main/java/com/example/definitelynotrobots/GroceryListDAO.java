@@ -4,9 +4,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object for the grocery list.
+ */
 public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
+    /**
+     * Driver connection to the database.
+     */
     private final Connection connection;
 
+    /**
+     * Connect driver to the database
+     */
     public GroceryListDAO() {
         connection = DatabaseConnection.getInstance();
         createTable();
@@ -30,7 +39,6 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
             System.err.println(ex);
         }
     }
-    // ENUM('Baking', 'Seasoning', 'Oil', 'Starch', 'Dairy', 'Meat', 'Fruit', 'Vegetable')
 
     public void addItem(GroceryItem groceryItem) {
         try {
@@ -49,6 +57,10 @@ public class GroceryListDAO implements InterfaceDAO<GroceryItem> {
         }
     }
 
+    /**
+     * Insert an item of the same type to fill in matching rows.
+     * @param inputItem The item to insert into the database.
+     */
     public void insertItem(GroceryItem inputItem) {
         List<GroceryItem> allItems = getByUserID(inputItem.getUserID());
 
