@@ -6,8 +6,8 @@
 <?import javafx.scene.text.*?>
 
 <HBox fx:id="signupRoot" alignment="CENTER" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #2a6c36;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignUpController">
-   <AnchorPane minWidth="-Infinity" prefHeight="480.0" prefWidth="110.0" />
-    <VBox alignment="CENTER" prefHeight="480.0" prefWidth="400.0" style="-fx-background-color: #2a6c36;">
+   <AnchorPane minWidth="-Infinity" prefHeight="480.0" prefWidth="120.0" />
+    <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="345.0" style="-fx-background-color: #2a6c36;">
         <children>
             <Label style="-fx-text-fill: #442200;" text="Welcome!">
                 <font>
@@ -23,7 +23,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
     </VBox>
-    <VBox alignment="CENTER" minWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" style="-fx-background-color: #eee;">
+    <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" style="-fx-background-color: #eee;">
         <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </padding>

@@ -13,7 +13,7 @@
             <Insets />
          </opaqueInsets>
       </AnchorPane>
-   <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="83.0">
+   <VBox alignment="CENTER">
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryList" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
             <ImageView fitHeight="70.0" fitWidth="75.0" preserveRatio="false">
