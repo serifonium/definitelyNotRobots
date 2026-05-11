@@ -12,12 +12,12 @@ import java.io.IOException;
 
 public class FitnessTargetsController {
     @FXML
-    public Button backButton;
+    public Button Submit;
 
 
-    public void goToHomeView() throws IOException {
-        Stage stage = (Stage) backButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
+    public void goToProfile() throws IOException {
+        Stage stage = (Stage) Submit.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
@@ -26,6 +26,7 @@ public class FitnessTargetsController {
         //ScaleMainView();
         System.out.println("Fitness page loaded");
     }
+
 
     public HBox FitnessTargetRoot; //This Vbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.

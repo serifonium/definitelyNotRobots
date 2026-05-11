@@ -39,6 +39,22 @@
             <HBox.margin>
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
+
+
         </VBox>
+        <VBox prefWidth="500" alignment="CENTER">
+            <Label text="Enter your calorie goal"/>
+            <TextField fx:id= "CalorieInput" promptText="calorie goal" maxWidth="100" maxHeight="20"/>
+        </VBox>
+        <VBox prefWidth="500" alignment="CENTER">
+
+            <Button fx:id= "Submit" text="submit" onAction="#goToProfile" maxWidth="100" maxHeight="20"/>
+        </VBox>
+
+
+
     </children>
+
+
+
 </HBox>
