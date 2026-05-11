@@ -5,9 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Data Access Object for the pantry list.
+ */
 public class PantryDAO implements InterfaceDAO<PantryItem> {
+    /**
+     * Driver connection to the database.
+     */
     private final Connection connection;
 
+    /**
+     * Connect driver to the database
+     */
     public PantryDAO() {
         connection = DatabaseConnection.getInstance();
         createTable();
@@ -51,6 +60,10 @@ public class PantryDAO implements InterfaceDAO<PantryItem> {
         }
     }
 
+    /**
+     * Insert an item of the same type to fill in matching rows.
+     * @param inputItem The item to insert into the database.
+     */
     public void insertItem(PantryItem inputItem) {
         List<PantryItem> allItems = getByUserID(inputItem.getUserID());
 
