@@ -2,11 +2,15 @@ package controllers;
 
 import com.example.definitelynotrobots.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class PantryController extends BaseController {
@@ -156,6 +160,13 @@ public class PantryController extends BaseController {
         syncPantry();
 
         System.out.print(groceryItem);
+    }
+
+    public void goToProfile() throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 }
 

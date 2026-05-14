@@ -174,4 +174,11 @@ public class GroceryListController extends BaseController {
         if(!event.getCode().equals(KeyCode.ENTER)) return;
         selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
     }
+
+    public void goToProfile() throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 }
