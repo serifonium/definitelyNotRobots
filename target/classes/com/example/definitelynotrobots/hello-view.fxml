@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="helloRoot" alignment="CENTER" prefHeight="480.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HelloController">
-   <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="400.0" style="-fx-background-color: #2a6c36;">
+<HBox fx:id="helloRoot" alignment="CENTER" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #2a6c36;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HelloController">
+   <AnchorPane prefHeight="480.0" prefWidth="120.0" style="-fx-background-color: #2a6c36;" />
+   <VBox alignment="CENTER" maxWidth="-Infinity" prefHeight="480.0" prefWidth="345.0" style="-fx-background-color: #2a6c36;">
       <children>
          <Label style="-fx-text-fill: #442200;" text="Welcome!">
             <font>
@@ -22,7 +23,7 @@
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>
    </VBox>
-    <VBox alignment="CENTER" prefHeight="480.0" prefWidth="320.0" style="-fx-background-color: #eee;">
+    <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="400.0" style="-fx-background-color: #eee;">
         <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
         </padding>
@@ -31,14 +32,14 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-        <TextField fx:id="usernameInput" onKeyPressed="#handleArrowNavigation" promptText="Username" style="-fx-background-color: #2a6c36;">
-         <VBox.margin>
-            <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
-         </VBox.margin></TextField>
         <PasswordField fx:id="passwordInput" onKeyPressed="#handleArrowNavigation" promptText="Password" style="-fx-background-color: #2a6c36;">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
          </VBox.margin></PasswordField>
+        <TextField fx:id="usernameInput" onKeyPressed="#handleArrowNavigation" promptText="Username" style="-fx-background-color: #2a6c36;">
+         <VBox.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+         </VBox.margin></TextField>
         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="280.0" spacing="20.0">
             <Button onAction="#onLoginButtonClick" style="-fx-background-color: #ff6600;" text="Login" />
             <Button fx:id="signInButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Sign Up" />
