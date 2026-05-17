@@ -42,7 +42,7 @@ public class ProfileController {
     }
 
     public void goToPage(String fxmlName) throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
+        Stage stage = (Stage) testname.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
