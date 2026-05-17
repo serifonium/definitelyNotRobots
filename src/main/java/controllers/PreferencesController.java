@@ -16,16 +16,16 @@ public class PreferencesController {
     public Button backButton;
 
     public void initialize() {
-        ScaleMainView();
+        ScaleMainView(1.65);
     }
 
     public VBox PreferencesRoot; //This Vbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
 
 
-    private void ScaleMainView() {
-        PreferencesRoot.setScaleX(1.6); //Scales root parent by 1.6
-        PreferencesRoot.setScaleY(1.6);
+    private void ScaleMainView(double scale) {
+        PreferencesRoot.setScaleX(scale); //Scales root parent
+        PreferencesRoot.setScaleY(scale);
     }
 
     public void goToHomeView() throws IOException {

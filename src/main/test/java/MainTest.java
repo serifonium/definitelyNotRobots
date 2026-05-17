@@ -1,3 +1,5 @@
+package java;
+
 import com.example.definitelynotrobots.UserAccount;
 import com.example.definitelynotrobots.UserAccountDAO;
 import controllers.MainController;

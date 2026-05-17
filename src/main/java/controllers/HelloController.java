@@ -83,14 +83,13 @@ public class HelloController {
     }
 
 public void initialize() {
-    ScaleMainView();
+    ScaleMainView(1.5);
 }
 
 public HBox helloRoot; //This Hbox is the main parent.
 
-
-private void ScaleMainView() {
-    helloRoot.setScaleX(1.6); //Scales root parent by 1.6
-    helloRoot.setScaleY(1.6);
+private void ScaleMainView(double scale) {
+    helloRoot.setScaleX(scale); //Scales root parent
+    helloRoot.setScaleY(scale);
 }
 }

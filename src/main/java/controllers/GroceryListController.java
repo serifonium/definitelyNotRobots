@@ -26,6 +26,10 @@ public class GroceryListController extends BaseController {
     public ChoiceBox<FoodTypesEnum> foodTypeField;
 
     public HBox groceryRoot; //This Hbox is the main parent.
+    private void ScaleMainView(double scale) {
+        groceryRoot.setScaleX(scale); //Scales root parent by 1.6
+        groceryRoot.setScaleY(scale);
+    }
 
     @FXML
     private void selectGroceryItem(GroceryItem groceryItem) {
@@ -131,6 +135,8 @@ public class GroceryListController extends BaseController {
         if (firstItem != null) {
             selectGroceryItem(firstItem);
         }
+
+        ScaleMainView(1.65);
     }
 
     private void syncGroceryList() {
@@ -167,5 +173,12 @@ public class GroceryListController extends BaseController {
     public void EnterToSelect(javafx.scene.input.KeyEvent event) {
         if(!event.getCode().equals(KeyCode.ENTER)) return;
         selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
+    }
+
+    public void goToProfile() throws IOException {
+        Stage stage = (Stage) errorText.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
     }
 }
