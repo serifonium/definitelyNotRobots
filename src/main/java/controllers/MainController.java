@@ -26,7 +26,7 @@ public class MainController {
 
     public void SetName()
     {
-        testLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getUsername() + "!"); //prints the welcome text
+        testLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getFirstname() + "!"); //prints the welcome text
     }
 
     public VBox SavedMeals; //This Vbox holds the list of saved meals.

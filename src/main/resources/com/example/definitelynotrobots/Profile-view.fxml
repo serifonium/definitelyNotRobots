@@ -15,12 +15,12 @@
                 <VBox.margin>
                     <Insets bottom="10.0" top="10.0" />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToPreferences" text="Dietary Preferences" />
+            <Button mnemonicParsing="false" onAction="#goToPreferencesController" text="Dietary Preferences" />
             <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
                     <Insets bottom="10.0" top="10.0" />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToFitnessTargets" text="Nutrition Goals" />
+
             <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
                     <Insets bottom="10.0" top="10.0" />
@@ -34,7 +34,7 @@
             <opaqueInsets>
                 <Insets />
             </opaqueInsets></AnchorPane>
-        <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="226.0">
+        <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="226.0"/>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="626.0">
                 <children>
                     <Label fx:id="testname" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Name:" textAlignment="LEFT" textFill="#573c2a">
@@ -54,9 +54,10 @@
                         </font>
                     </Label>
                     <Button maxHeight="100.0" mnemonicParsing="false" text="Logout" fx:id="logOut" onAction="#goToHelloController" />
+                    <Button maxHeight="100.0" mnemonicParsing="false" text="Fitness goals" fx:id="Fitnessgoals" onAction="#goToFitnessTargetsController"/>
+                    <Button maxHeight="100.0" mnemonicParsing="false" text="Dietary Requirements" fx:id="Dietarygoals" onAction="#goToPreferencesController"/>
 
                 </children>
-            </VBox>
         </VBox>
         <HBox alignment="CENTER" prefHeight="400" prefWidth="300">
             <Button maxHeight="148.0" maxWidth="148.0" minHeight="200.0" minWidth="200.0" mnemonicParsing="false" text="Image (PlaceHolder)">

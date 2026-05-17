@@ -19,7 +19,7 @@ public class PreferencesController {
         ScaleMainView(1.65);
     }
 
-    public VBox PreferencesRoot; //This Vbox is the main parent.
+    public HBox PreferencesRoot; //This Hbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
 
 
