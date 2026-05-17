@@ -28,7 +28,7 @@ public class FitnessTargetsController {
     }
 
 
-    public HBox FitnessTargetRoot; //This Vbox is the main parent.
+    public HBox FitnessTargetRoot; //This Hbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
 
 

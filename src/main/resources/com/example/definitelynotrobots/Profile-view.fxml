@@ -15,7 +15,7 @@
                 <VBox.margin>
                     <Insets bottom="10.0" top="10.0" />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToPreferences" text="Dietary Preferences" />
+            <Button mnemonicParsing="false" onAction="#goToPreferencesController" text="Dietary Preferences" />
             <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
                     <Insets bottom="10.0" top="10.0" />
@@ -55,6 +55,7 @@
                     </Label>
                     <Button maxHeight="100.0" mnemonicParsing="false" text="Logout" fx:id="logOut" onAction="#goToHelloController" />
                     <Button maxHeight="100.0" mnemonicParsing="false" text="Fitness goals" fx:id="Fitnessgoals" onAction="#goToFitnessTargetsController"/>
+                    <Button maxHeight="100.0" mnemonicParsing="false" text="Dietary Requirements" fx:id="Dietarygoals" onAction="#goToPreferencesController"/>
 
                 </children>
         </VBox>

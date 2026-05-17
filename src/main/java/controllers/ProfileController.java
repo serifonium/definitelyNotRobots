@@ -51,6 +51,12 @@ public class ProfileController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+    public void goToPreferencesController() throws IOException {
+        Stage stage = (Stage) Fitnessgoals.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 
     public void goToPage(String fxmlName) throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
@@ -61,7 +67,6 @@ public class ProfileController {
 
     public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
     public void goToAIPage() throws IOException { goToPage("ai-view"); }
-    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
     public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
 
 }

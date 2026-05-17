@@ -42,19 +42,23 @@
 
 
         </VBox>
-        <VBox prefWidth="500" alignment="CENTER">
+        <VBox prefWidth="500" alignment="TOP_CENTER" spacing="20" style="-fx-padding: 40;" >
             <Label text="Enter your calorie goal"/>
-            <TextField fx:id= "CalorieInput" promptText="calorie goal" maxWidth="100" maxHeight="20"/>
+            <TextField fx:id= "CalorieInput" promptText="Calorie goal" maxWidth="100" maxHeight="20"/>
+
+            <Label text="Enter your Carbohydrate goal"/>
+            <TextField fx:id= "CarbsInput" promptText="Carbs goal" maxWidth="100" maxHeight="20"/>
+
+            <Label text="Enter your Fats goal"/>
+            <TextField fx:id= "FatInput" promptText="Fat goal" maxWidth="100" maxHeight="20"/>
+
+            <Label text="Enter your Protein goal"/>
+            <TextField fx:id= "ProteinInput" promptText="protein goal" maxWidth="100" maxHeight="20"/>
         </VBox>
         <VBox prefWidth="500" alignment="CENTER">
 
             <Button fx:id= "Submit" text="submit" onAction="#goToProfile" maxWidth="100" maxHeight="20"/>
         </VBox>
 
-
-
     </children>
-
-
-
 </HBox>
