@@ -115,6 +115,8 @@
                         </font>
                     </Label>
                     <Button maxHeight="100.0" mnemonicParsing="false" text="Logout" fx:id="logOut" onAction="#goToHelloController" />
+                    <Button maxHeight="100.0" mnemonicParsing="false" text="Fitness goals" fx:id="Fitnessgoals" onAction="#goToFitnessTargets"/>
+                    <Button maxHeight="100.0" mnemonicParsing="false" text="Dietary Requirements" fx:id="Dietarygoals" onAction="#goToPreferences"/>
 
                 </children>
             </VBox>
