@@ -50,6 +50,8 @@ public class ProfileController {
 
     public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
     public void goToAIPage() throws IOException { goToPage("ai-view"); }
+    public void goToHomeView() throws IOException { goToPage("main-view"); }
+    public void goToProfile() throws IOException { goToPage("Profile-view"); }
     public void goToPreferences() throws IOException { goToPage("preferences-view"); }
     public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
     public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }

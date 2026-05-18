@@ -27,7 +27,7 @@
             <VBox.margin>
                <Insets />
             </VBox.margin></AnchorPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToPreferences" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToFitnessTargets" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                <image>
@@ -53,7 +53,7 @@
            <VBox.margin>
                <Insets />
            </VBox.margin></AnchorPane>
-         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToSavedRecipeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
             <graphic>
                <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                   <image>
