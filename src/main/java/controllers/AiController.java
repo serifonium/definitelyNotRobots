@@ -32,6 +32,7 @@ public class AiController {
     private TextArea chatbotOutput;
     @FXML
     public String generatedRecipeText;
+    @FXML
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
@@ -85,12 +86,15 @@ public class AiController {
             generatedRecipeText = text;
 
             System.out.println("AI says: " + text);
-            return text;
+            return generatedRecipeText;
         } catch (Exception e) {
             e.printStackTrace();
             chatbotOutput.setText("Error: " + e.getMessage());
         }
         return null;
+    }
+    public String getRecipeText(){
+        return generatedRecipeText;
     }
     public void saveRecipe(){
         if(chatbotOutput != null){

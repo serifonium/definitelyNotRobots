@@ -57,6 +57,9 @@ public class RecipeController {
         if(currentRecipe != null){
             recipeText.setText(currentRecipe.getRecipeText());
         }
+        if(aiController.getRecipeText() != null){
+            recipeText.setText((aiController.getRecipeText()));
+        }
     }
 
     public void goToHomeView() throws IOException {
