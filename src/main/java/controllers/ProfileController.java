@@ -7,19 +7,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ProfileController {
+public class ProfileController extends BaseController {
     @FXML
     public Label testname;
     public Label testusername;
     public Label errorText;
     public Button logOut;
+    public HBox profileRoot;
 
     public void initialize() {
+        init(profileRoot);
         SetName();
         SetUsername();
     }
@@ -48,12 +51,12 @@ public class ProfileController {
         stage.setScene(scene);
     }
 
-    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
-    public void goToAIPage() throws IOException { goToPage("ai-view"); }
-    public void goToHomeView() throws IOException { goToPage("main-view"); }
-    public void goToProfile() throws IOException { goToPage("Profile-view"); }
-    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
-    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
-    public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
+//    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
+//    public void goToAIPage() throws IOException { goToPage("ai-view"); }
+//    public void goToHomeView() throws IOException { goToPage("main-view"); }
+//    public void goToProfile() throws IOException { goToPage("Profile-view"); }
+//    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
+//    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
+//    public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
 
 }

@@ -46,10 +46,13 @@ public abstract class BaseController {
     }
 
     public void goToHomeView() throws IOException { loadScene("main-view"); }
-    public void goToAIPage() throws IOException { loadScene("ai-view"); }
+    public void goToAIView() throws IOException { loadScene("ai-view"); }
     public void goToPantryView() throws IOException { loadScene("pantry-view");}
-    public void goToGroceryList() throws IOException { loadScene("grocery-view"); }
-    public void goToPreferences() throws IOException { loadScene("preferences-view"); }
-    public void goToFitnessTargets() throws IOException { loadScene("fitness-targets-view"); }
-    public void goToSavedRecipeView() throws IOException { loadScene("saved-recipes-view"); }
+    public void goToGroceryListView() throws IOException { loadScene("grocery-view"); }
+    public void goToPreferencesView() throws IOException { loadScene("preferences-view"); }
+    public void goToFitnessTargetsView() throws IOException { loadScene("fitness-targets-view"); }
+    public void goToSavedRecipesView() throws IOException { loadScene("saved-recipes-view"); }
+    public void goToProfileView() throws IOException { loadScene("Profile-view"); }
+    public void goToLoginView() throws IOException { loadScene("hello-view"); }
+    public void goToSignInView() throws IOException { loadScene("sign-in-view"); }
 }

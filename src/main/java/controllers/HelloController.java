@@ -18,7 +18,7 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelloController {
+public class HelloController extends BaseController {
     private final UserAccountDAO userAccountDAO = new UserAccountDAO();
 
     @FXML
@@ -82,14 +82,16 @@ public class HelloController {
         nextNode.requestFocus();
     }
 
-public void initialize() {
-    ScaleMainView(1.5);
-}
+    public HBox helloRoot; //This Hbox is the main parent.
+    public void initialize() {
+        init(helloRoot);
+//        ScaleMainView(1.5);
+    }
 
-public HBox helloRoot; //This Hbox is the main parent.
 
-private void ScaleMainView(double scale) {
-    helloRoot.setScaleX(scale); //Scales root parent
-    helloRoot.setScaleY(scale);
-}
+
+    private void ScaleMainView(double scale) {
+        helloRoot.setScaleX(scale); //Scales root parent
+        helloRoot.setScaleY(scale);
+    }
 }

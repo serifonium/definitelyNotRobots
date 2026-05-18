@@ -175,19 +175,19 @@ public class GroceryListController extends BaseController {
         selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
     }
 
-    public void goToGroceryList() throws IOException {
+    public void goToGroceryListView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-    public void goToFitnessTargets() throws IOException{
+    public void goToFitnessTargetsView() throws IOException{
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-    public void goToPreferences() throws IOException {
+    public void goToPreferencesView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -201,13 +201,13 @@ public class GroceryListController extends BaseController {
         stage.setScene(scene);
     }
 
-    public void goToSavedRecipeView() throws IOException {
+    public void goToSavedRecipesView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-    public void goToAIPage() throws IOException {
+    public void goToAIView() throws IOException {
         Stage stage = (Stage) errorText.getScene().getWindow();
         FXMLLoader fxmlLoader =
                 new FXMLLoader(HelloApplication.class.getResource("ai-view.fxml"));

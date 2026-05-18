@@ -11,16 +11,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PreferencesController {
+public class PreferencesController extends BaseController {
     @FXML
     public Button backButton;
 
-    public void initialize() {
-        ScaleMainView(1.65);
-    }
-
     public HBox PreferencesRoot; //This Hbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
+    public void initialize() {
+        init(PreferencesRoot);
+//        ScaleMainView(1.65);
+    }
 
 
     private void ScaleMainView(double scale) {
