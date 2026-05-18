@@ -31,6 +31,10 @@ public class HelloApplication extends Application {
         UserAccountDAO userAccountDAO = new UserAccountDAO();
 //        userAccountDAO.dropTable();
 
+        FitnessDAO fitnessDAO = new FitnessDAO();
+        fitnessDAO.dropTable();
+
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle(TITLE);
