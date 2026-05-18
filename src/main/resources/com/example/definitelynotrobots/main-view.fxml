@@ -16,59 +16,72 @@
    <VBox alignment="CENTER">
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryList" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
-            <ImageView fitHeight="70.0" fitWidth="75.0" preserveRatio="false">
+            <ImageView fitHeight="60.0" fitWidth="65.0" preserveRatio="false">
                <image>
                   <Image url="@images/groceries.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-         <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+         <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
             <VBox.margin>
-               <Insets bottom="10.0" top="10.0" />
+               <Insets />
             </VBox.margin></AnchorPane>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToPreferences" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToFitnessTargets" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                <image>
                   <Image url="@images/diet.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-       <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+       <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
            <VBox.margin>
-               <Insets bottom="10.0" top="10.0" />
+               <Insets />
            </VBox.margin></AnchorPane>
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToProfile" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                <image>
                   <Image url="@images/profile.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-       <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+       <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
            <VBox.margin>
-               <Insets bottom="10.0" top="10.0" />
+               <Insets />
            </VBox.margin></AnchorPane>
+         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+            <graphic>
+               <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                  <image>
+                     <Image url="@images/home.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <AnchorPane layoutX="10.0" layoutY="299.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="75.0" style="-fx-background-color: #ff6600;">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin></AnchorPane>
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                <image>
                   <Image url="@images/recipies.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-         <AnchorPane layoutX="10.0" layoutY="311.0" minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+         <AnchorPane layoutX="10.0" layoutY="311.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
             <VBox.margin>
-               <Insets bottom="10.0" top="10.0" />
+               <Insets />
             </VBox.margin></AnchorPane>
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToAIPage" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
-            <ImageView fitHeight="70.0" fitWidth="70.0" preserveRatio="true">
+            <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                <image>
                   <Image url="@images/ai icon.png" />
                </image>
@@ -79,7 +92,7 @@
             <Insets bottom="10.0" top="10.0" />
          </HBox.margin>
    </VBox>
-      <AnchorPane layoutX="161.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="35.0">
+      <AnchorPane layoutX="161.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="18.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

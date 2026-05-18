@@ -80,6 +80,12 @@ public class SavedRecipesController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
+    public void goToHomeView() throws IOException {
+        Stage stage = (Stage) profileButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
 
 
     @FXML

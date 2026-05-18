@@ -5,30 +5,85 @@
 
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RecipeController">
     <children>
-        <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="108.4">
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#goToGroceryListView" prefHeight="75.0" prefWidth="75.0" text="Grocery List" />
-            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+        <VBox alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryListView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="65.0" preserveRatio="false">
+                        <image>
+                            <Image url="@images/groceries.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
-                    <Insets bottom="10.0" top="10.0" />
+                    <Insets />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToPreferences" prefHeight="75.0" prefWidth="75.0" text="Dietary Preferences" />
-            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/diet.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
-                    <Insets bottom="10.0" top="10.0" />
+                    <Insets />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToFitnessTargets" prefHeight="75.0" prefWidth="75.0" text="Nutrition Goals" />
-            <AnchorPane minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToProfileView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/profile.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
-                    <Insets bottom="10.0" top="10.0" />
+                    <Insets />
                 </VBox.margin></AnchorPane>
-            <Button mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" text="Saved Recipes" />
-            <AnchorPane layoutX="10.0" layoutY="311.0" minHeight="-Infinity" prefHeight="2.0" prefWidth="50.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/home.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane layoutX="10.0" layoutY="299.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="75.0" style="-fx-background-color: #ff6600;">
                 <VBox.margin>
-                    <Insets bottom="10.0" top="10.0" />
+                    <Insets />
                 </VBox.margin></AnchorPane>
-            <Button alignment="CENTER" onAction="#goToAIView" prefHeight="75.0" prefWidth="75.0" text="AI Page" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/recipies.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane layoutX="10.0" layoutY="311.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToAIView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/ai icon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
             <HBox.margin>
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>

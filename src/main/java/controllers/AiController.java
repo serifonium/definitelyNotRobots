@@ -128,26 +128,28 @@ public class AiController {
         loadScene("grocery-view.fxml");
     }
 
-    @FXML
     public void goToAIPage() throws IOException {
         loadScene("ai-view.fxml");
     }
 
-    @FXML
+    public void goToHomeView() throws IOException {
+        loadScene("main-view.fxml");
+    }
+    public void goToProfile() throws IOException {
+        loadScene("Profile-view.fxml");
+    }
+
     public void goToPreferences() throws IOException {
         loadScene("preferences-view.fxml");
     }
 
-    @FXML
     public void goToFitnessTargets() throws IOException {
         loadScene("fitness-targets-view.fxml");
     }
 
-    @FXML
     public void goToSavedRecipeView() throws IOException {
         loadScene("saved-recipes-view.fxml");  }
 
-    @FXML
     private String extract(String text, String key) {
         int start = text.indexOf(key);
         if (start == -1) return "";

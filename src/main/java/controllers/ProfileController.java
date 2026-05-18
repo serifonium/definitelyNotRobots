@@ -4,11 +4,9 @@ import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -20,8 +18,6 @@ public class ProfileController {
     public Label testusername;
     public Label errorText;
     public Button logOut;
-    public Button Fitnessgoals;
-
 
     public void initialize() {
         SetName();
@@ -45,21 +41,8 @@ public class ProfileController {
         stage.setScene(scene);
     }
 
-    public void goToFitnessTargetsController() throws IOException {
-        Stage stage = (Stage) Fitnessgoals.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToPreferencesController() throws IOException {
-        Stage stage = (Stage) Fitnessgoals.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
     public void goToPage(String fxmlName) throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
+        Stage stage = (Stage) testname.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
@@ -67,6 +50,10 @@ public class ProfileController {
 
     public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
     public void goToAIPage() throws IOException { goToPage("ai-view"); }
+    public void goToHomeView() throws IOException { goToPage("main-view"); }
+    public void goToProfile() throws IOException { goToPage("Profile-view"); }
+    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
+    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
     public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
 
 }
