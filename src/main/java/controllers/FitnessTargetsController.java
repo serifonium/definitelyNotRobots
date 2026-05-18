@@ -23,6 +23,22 @@ public class FitnessTargetsController {
     public TextField CarbsInput;
     public TextField FatInput;
     public TextField ProteinInput;
+    @FXML
+    public Button profileButton;
+    @FXML
+    public Button aiButton;
+    @FXML
+    public Button pantryButton;
+    @FXML
+    public Button groceryListButton;
+    @FXML
+    public Button savedRecipesButton;
+    @FXML
+    public Button fitnessTargetsButton;
+    @FXML
+    public Button preferencesButton;
+    @FXML
+    public Button homeButton;
 
     public void onSubmitClick() throws IOException {
         double inputCalorie = Double.parseDouble(CalorieInput.getText());
@@ -31,7 +47,7 @@ public class FitnessTargetsController {
         double inputProtein = Double.parseDouble(ProteinInput.getText());
 
         fitnessDAO.insertFitnessgoal(new Fitnessgoal(UserAccountDAO.currentAccount.getID(), inputCalorie, inputCarb, inputFat, inputProtein));
-        goToProfile();
+        goToProfileView();
     }
 
     public void initialize() {
@@ -47,48 +63,51 @@ public class FitnessTargetsController {
         FitnessTargetRoot.setScaleY(scale);
     }
 
-    public void goToGroceryList() throws IOException {
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
+    public void goToHomeView() throws IOException {
+        Stage stage = (Stage) homeButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-    public void goToFitnessTargets() throws IOException{
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToPreferences() throws IOException {
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
+    public void goToProfileView() throws IOException{
+        Stage stage = (Stage) profileButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-
-    public void goToProfile() throws IOException {
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
+    public void goToAIView() throws IOException{
+        Stage stage = (Stage) aiButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("recipe-ai-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-
-    public void goToSavedRecipeView() throws IOException {
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
+    public void goToPantryView() throws IOException{
+        Stage stage = (Stage) pantryButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pantry-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToGroceryListView() throws IOException{
+        Stage stage = (Stage) groceryListButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+    }
+    public void goToSavedRecipesView() throws IOException{
+        Stage stage = (Stage) savedRecipesButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-    public void goToAIPage() throws IOException {
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(HelloApplication.class.getResource("ai-view.fxml"));
+    public void goToFitnessTargets() throws IOException{
+        Stage stage = (Stage) fitnessTargetsButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-    public void goToHomeView() throws IOException {
-        Stage stage = (Stage) FitnessTargetRoot.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
+    public void goToPreferences() throws IOException{
+        Stage stage = (Stage) preferencesButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
