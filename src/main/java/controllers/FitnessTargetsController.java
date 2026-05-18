@@ -1,18 +1,36 @@
 package controllers;
 
-import com.example.definitelynotrobots.HelloApplication;
+import com.example.definitelynotrobots.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class FitnessTargetsController {
+
+    private final FitnessDAO fitnessDAO = new FitnessDAO();
+
     @FXML
     public Button Submit;
+    public TextField CalorieInput;
+    public TextField CarbsInput;
+    public TextField FatInput;
+    public TextField ProteinInput;
+
+    public void onSubmitClick() throws IOException {
+        double inputCalorie = Double.parseDouble(CalorieInput.getText());
+        double inputCarb = Double.parseDouble(CarbsInput.getText());
+        double inputFat = Double.parseDouble(FatInput.getText());
+        double inputProtein = Double.parseDouble(ProteinInput.getText());
+
+        fitnessDAO.insertFitnessgoal(new Fitnessgoal(UserAccountDAO.currentAccount.getID(), inputCalorie, inputCarb, inputFat, inputProtein));
+        goToProfile();
+    }
 
 
     public void goToProfile() throws IOException {

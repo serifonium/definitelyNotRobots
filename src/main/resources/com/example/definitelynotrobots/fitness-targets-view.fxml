@@ -57,7 +57,7 @@
         </VBox>
         <VBox prefWidth="500" alignment="CENTER">
 
-            <Button fx:id= "Submit" text="submit" onAction="#goToProfile" maxWidth="100" maxHeight="20"/>
+            <Button fx:id= "Submit" text="submit" onAction="#onSubmitClick" maxWidth="100" maxHeight="20"/>
         </VBox>
 
     </children>
