@@ -11,10 +11,13 @@ module com.example.definitelynotrobots {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
-    requires openai.java.client.okhttp;
+    requires java.desktop;
     requires openai.java.core;
-
+    requires openai.java.client.okhttp;
+    requires annotations;
 
     opens com.example.definitelynotrobots to javafx.fxml;
     exports com.example.definitelynotrobots;
+    exports controllers;
+    opens controllers to javafx.fxml;
 }

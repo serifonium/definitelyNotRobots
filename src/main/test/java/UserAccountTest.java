@@ -1,3 +1,5 @@
+package java;
+
 import com.example.definitelynotrobots.UserAccount;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,7 @@ public class UserAccountTest {
 
     @BeforeEach
     public void setUp() {
-        userAccount = new UserAccount("John", "myP4ssword$%^");
+        userAccount = new UserAccount("John", "myP4ssword$%^", "", "");
     }
 
     @Test
@@ -32,7 +34,7 @@ public class UserAccountTest {
     }
     @Test
     public void testSetPassword() {
-        userAccount.setPassword("myN3wP4ssword$%^");
-        assertEquals("myN3wP4ssword$%^", userAccount.getPassword());
+        userAccount.setPassword("myN3wP4ssword$%#^");
+        assertEquals("myN3wP4ssword$%#^", userAccount.getPassword());
     }
 }

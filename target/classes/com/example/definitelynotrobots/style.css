@@ -1,0 +1,23 @@
+.green-input {
+    -fx-background-color: #2a6c36;
+    -fx-control-inner-background: #2a6c36;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-text-fill: #fff;
+}
+.green-input:hover {
+    -fx-background-color: #368545;
+    -fx-control-inner-background: #368545;
+    -fx-border-color: #77ea8c;
+    -fx-text-fill: #fff;
+}
+.green-input:focused {
+    -fx-background-color: #40a152;
+    -fx-control-inner-background: #40a152;
+    -fx-text-fill: #000;
+}
+.orange-button {
+    -fx-background-color: #ff6600;
+    -fx-control-inner-background: #ff6600;
+}

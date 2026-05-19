@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="FitnessTargetRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="654.0" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FitnessTargetsController">
+    <children>
+        <VBox alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryListView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="65.0" preserveRatio="false">
+                        <image>
+                            <Image url="@images/groceries.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/diet.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToProfileView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/profile.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/home.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane layoutX="10.0" layoutY="299.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="75.0" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/recipies.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane layoutX="10.0" layoutY="311.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToAIView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/ai icon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <HBox.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </HBox.margin>
+        </VBox>
+        <VBox alignment="CENTER" prefWidth="500" spacing="20" style="-fx-padding: 40;">
+            <Label text="Enter your calorie goal" />
+            <TextField fx:id="CalorieInput" maxHeight="20" maxWidth="100" promptText="Calorie Goal..." />
+
+            <Label text="Enter your Carbohydrate goal" />
+            <TextField fx:id="CarbsInput" maxHeight="20" maxWidth="100" promptText="Carbs Goal..." />
+
+            <Label text="Enter your Fats goal" />
+            <TextField fx:id="FatInput" maxHeight="20" maxWidth="100" promptText="Fat Goal..." />
+
+            <Label text="Enter your Protein goal" />
+            <TextField fx:id="ProteinInput" maxHeight="20" maxWidth="100" promptText="Protein Goal..." />
+            <Label fx:id="errorText" text="" textFill="RED" />
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="480.0" prefWidth="270.0">
+
+            <Button fx:id="profileButton" maxHeight="20" maxWidth="100" onAction="#onSubmitClick" text="submit" />
+        </VBox>
+    </children>
+</HBox>

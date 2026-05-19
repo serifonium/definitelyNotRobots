@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="PreferencesRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="480" prefWidth="854.0" style="-fx-background-color: #eae8e2;"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.PreferencesController">
+    <children>
+        <AnchorPane layoutX="146.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </AnchorPane>
+        <VBox alignment="CENTER">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryListView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="65.0" preserveRatio="false">
+                        <image>
+                            <Image url="@images/groceries.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToFitnessTargetsView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/diet.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToProfileView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/profile.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/home.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane layoutX="10.0" layoutY="299.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="75.0" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/recipies.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <AnchorPane layoutX="10.0" layoutY="311.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="2.0" prefWidth="80.0" scaleX="0.9" style="-fx-background-color: #ff6600;">
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin></AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToAIView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
+                        <image>
+                            <Image url="@images/ai icon.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <HBox.margin>
+                <Insets bottom="10.0" top="10.0" />
+            </HBox.margin>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="480.0" prefWidth="742.0">
+            <Label text="Enter a preference below" />
+            <HBox>
+                <ChoiceBox fx:id="preferenceTypeField" >
+                    <GridPane.margin>
+                        <Insets bottom="1.0" top="1.0" />
+                    </GridPane.margin>
+                </ChoiceBox>
+                <TextField fx:id="preferenceContentField" maxHeight="20" maxWidth="100" promptText="Item..." />
+            </HBox>
+
+            <Button mnemonicParsing="false" prefHeight="25.0" onMouseClicked="#onAdd" prefWidth="272.0" text="Add Preference"></Button>
+
+            <TextArea fx:id="preferenceList" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-control-inner-background: #eae8e2;                      -fx-text-fill: #573c2a;                      -fx-font-size: 16px;">
+                <VBox.margin>
+                   <Insets left="60.0" right="60.0" top="20.0" />
+                </VBox.margin>
+            </TextArea>
+
+            <Label fx:id="errorText" text="" textFill="RED" />
+        </VBox>
+
+
+
+    </children>
+
+
+
+</HBox>
