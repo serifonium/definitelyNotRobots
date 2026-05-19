@@ -88,8 +88,6 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="400.0">
-            <Label text="Image (placeholder)"/>
         <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="800.0">
             <Label fx:id="recipeTitleLabel" style="-fx-font-size: 24; -fx-text-fill: #573C2A;"/>
             <Label fx:id="prepTimeLabel"/>
