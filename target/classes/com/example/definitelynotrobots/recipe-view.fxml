@@ -23,7 +23,7 @@
                 <VBox.margin>
                     <Insets />
                 </VBox.margin></AnchorPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+            <Button fx:id="savedRecipesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                         <image>
@@ -88,8 +88,28 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="400.0">
-            <Label text="Image (placeholder)"/>
-        </VBox>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #EAE8E2;">
+            <content>
+                <VBox alignment="TOP_LEFT" spacing="10" style="-fx-background-color: #EAE8E2;">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <Label fx:id="recipeTitleLabel" style="-fx-font-size: 24; -fx-text-fill: #573C2A;"/>
+
+                    <Label fx:id="prepTimeLabel"/>
+                    <Label fx:id="cookTimeLabel"/>
+                    <Label fx:id="servingsLabel"/>
+                    <Button fx:id="saveRecipeButton" onAction="#saveRecipe" style="-fx-background-color: #ff6600;                    -fx-text-fill: white;                    -fx-font-size: 16px;                    -fx-font-weight: bold;                    -fx-background-radius: 10;                    -fx-padding: 8 18 8 18;" text="Save Recipe" />
+
+
+                    <Label text="Ingredients:" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                    <Label fx:id="ingredientsLabel" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #573C2A;"/>
+
+                    <Label text="Method:" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                    <Label fx:id="methodLabel" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #573C2A;"/>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </HBox>

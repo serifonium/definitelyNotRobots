@@ -7,6 +7,9 @@ public class Recipe {
     public void setRecipeText(String recipeText){RecipeText = recipeText;}
     private Integer UserAccountIDRecipe;
     public Integer getUserAccountIDRecipe(){return UserAccountIDRecipe;}
+    public void setUserAccountIDRecipe(Integer userAccountIDRecipe) {
+        UserAccountIDRecipe = userAccountIDRecipe;
+    }
 
     private Image RecipeImage;
     public Image getRecipeImage(){return RecipeImage;}
