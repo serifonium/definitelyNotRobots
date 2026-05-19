@@ -23,7 +23,7 @@
                 <VBox.margin>
                     <Insets />
                 </VBox.margin></AnchorPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+            <Button fx:id="savedRecipesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                         <image>

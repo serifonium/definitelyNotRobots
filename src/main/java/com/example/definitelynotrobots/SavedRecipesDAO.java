@@ -29,6 +29,14 @@ public class SavedRecipesDAO {
                             + "method TEXT NOT NULL"
                             + ")"
             );
+            try {
+                createTable.execute("ALTER TABLE savedRecipes ADD COLUMN userAccountIDRecipe INTEGER DEFAULT 0");
+            } catch (SQLException ignore) {
+            }
+            try {
+                createTable.execute("ALTER TABLE savedRecipes ADD COLUMN userAccountRecipeID INTEGER DEFAULT 0");
+            } catch (SQLException ignore) {
+            }
 
         } catch (SQLException ex) {
             System.err.println(ex);
