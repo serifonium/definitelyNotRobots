@@ -44,8 +44,7 @@ public class RecipeController {
     public Button fitnessTargetsButton;
     @FXML
     public Button preferencesButton;
-    @FXML
-    public Recipe currentRecipe;
+
     @FXML
     public TextField recipeText;
     @FXML private Label recipeTitleLabel;
@@ -55,9 +54,9 @@ public class RecipeController {
     @FXML private Label cookTimeLabel;
     @FXML private Label servingsLabel;
 
-    private Recipe recipe;
+    private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
-    public Recipe getCurrentRecipe(){return currentRecipe;}
+    private Recipe recipe;
 
 
     public void setRecipe(Recipe recipe) {
@@ -71,9 +70,14 @@ public class RecipeController {
         cookTimeLabel.setText("Cook: " + recipe.getCookTime() + " min");
         servingsLabel.setText("Servings: " + recipe.getServings());
     }
-    public void saveRecipe(){
+    @FXML
+    private void saveRecipe() {
+        if (recipe == null) return;
 
+        recipe.setIsSaved(true);
+        savedRecipesDAO.insertRecipe(recipe);
 
+        saveRecipeButton.setText("Recipe Saved!");
     }
 
     public void goToHomeView() throws IOException {
