@@ -136,7 +136,7 @@ public class GroceryListController extends BaseController {
             selectGroceryItem(firstItem);
         }
 
-        ScaleMainView(1.65);
+//        ScaleMainView(1.65);
     }
 
     private void syncGroceryList() {
