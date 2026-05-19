@@ -1,17 +1,16 @@
 package controllers;
 
-import com.example.definitelynotrobots.Recipe;
-import com.example.definitelynotrobots.SavedRecipesDAO;
+import com.example.definitelynotrobots.*;
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import com.example.definitelynotrobots.HelloApplication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -32,17 +31,18 @@ public class AiController {
     private TextArea chatbotOutput;
     @FXML
     public String generatedRecipeText;
+    @FXML
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
     @FXML
-    public void onChatbotInputButtonClick() {
+    public String onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
 
         if (userInput.isEmpty()) {
             chatbotOutput.setText("Type something first.");
-            return;
+            return null;
         }
 
         try {
@@ -84,13 +84,16 @@ public class AiController {
             chatbotOutput.setText(text);
             generatedRecipeText = text;
 
-
             System.out.println("AI says: " + text);
+            return generatedRecipeText;
         } catch (Exception e) {
             e.printStackTrace();
             chatbotOutput.setText("Error: " + e.getMessage());
         }
-        return;
+        return null;
+    }
+    public String getRecipeText(){
+        return generatedRecipeText;
     }
     public void saveRecipe(){
         if(chatbotOutput != null){
@@ -114,6 +117,28 @@ public class AiController {
     public void initialize() {
         ScaleMainView(1.65);
     }
+    @FXML
+    private void openRecipeView() {
+        String aiText = chatbotOutput.getText();
+
+        Recipe recipe = RecipeParser.parse(aiText, UserAccountDAO.currentAccount.getID());
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/definitelynotrobots/recipe-view.fxml"));
+            Parent root = loader.load();
+
+            RecipeController controller = loader.getController();
+            controller.setRecipe(recipe);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Recipe");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public HBox AiRoot; //This Hbox is the main parent.
 
