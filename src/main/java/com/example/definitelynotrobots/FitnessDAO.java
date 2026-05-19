@@ -36,7 +36,7 @@ public class FitnessDAO {
                             + "Calories DOUBLE NOT NULL, "
                             + "Carbs DOUBLE NOT NULL, "
                             + "Fats DOUBLE NOT NULL,"
-                            + "Proteins DOUBLE NOT NULL"
+                            + "Protein DOUBLE NOT NULL"
                             + ")"
             );
         } catch (SQLException ex) {
@@ -47,7 +47,7 @@ public class FitnessDAO {
     public void insertFitnessgoal(Fitnessgoal fitnessgoal) {
         try {
                 PreparedStatement insertStatement = connection.prepareStatement(
-                        "INSERT INTO Fitnessgoals (userID, Calories, Carbs, Fats, Proteins) VALUES ( ?, ?, ?, ?, ?)"
+                        "INSERT INTO Fitnessgoals (userID, Calories, Carbs, Fats, Protein) VALUES ( ?, ?, ?, ?, ?)"
                 );
                 insertStatement.setDouble(1, fitnessgoal.getUserID());
                 insertStatement.setDouble(2, fitnessgoal.getCalories());
@@ -74,7 +74,7 @@ public class FitnessDAO {
                         rs.getDouble("calories"),
                         rs.getDouble("carbs"),
                         rs.getDouble("fats"),
-                        rs.getDouble("proteins")
+                        rs.getDouble("protein")
                 ));
             }
 

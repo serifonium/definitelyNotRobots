@@ -43,6 +43,7 @@ public class FitnessTargetsController extends BaseController {
     @FXML
     public Label errorText;
 
+
     public void onSubmitClick() throws IOException {
         if(Objects.equals(CalorieInput.getText(), "")) { errorText.setText("Please enter a calorie goal."); return; }
         if(Objects.equals(CarbsInput.getText(), "")) { errorText.setText("Please enter a carbs goal."); return; }

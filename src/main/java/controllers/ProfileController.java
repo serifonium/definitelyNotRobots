@@ -1,5 +1,7 @@
 package controllers;
 
+import com.example.definitelynotrobots.FitnessDAO;
+import com.example.definitelynotrobots.Fitnessgoal;
 import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
@@ -20,11 +22,32 @@ public class ProfileController extends BaseController {
     public Label errorText;
     public Button logOut;
     public HBox profileRoot;
+    public Label calorieLabel;
+    public Label carbLabel;
+    public Label fatLabel;
+    public Label proteinLabel;
+
+    public final FitnessDAO fitnessDAO = new FitnessDAO();
 
     public void initialize() {
         init(profileRoot);
         SetName();
         SetUsername();
+
+        Fitnessgoal goal =
+                fitnessDAO.getByUserID(UserAccountDAO.currentAccount.getID());
+
+        if (goal != null) {
+            calorieLabel.setText("Calories: " + goal.getCalories());
+            carbLabel.setText("Carbs: " + goal.getCarbs());
+            fatLabel.setText("Fats: " + goal.getFats());
+            proteinLabel.setText("Protein: " + goal.getProtein());
+        } else {
+            calorieLabel.setText("No calorie goal set");
+            carbLabel.setText("No carb goal set");
+            fatLabel.setText("No fat goal set");
+            proteinLabel.setText("No protein goal set");
+        }
     }
     public void SetName()
     {

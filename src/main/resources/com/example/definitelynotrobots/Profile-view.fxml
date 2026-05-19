@@ -135,12 +135,12 @@
                 </children>
             </VBox>
         </VBox>
-        <HBox alignment="CENTER" prefHeight="400" prefWidth="300">
-            <Button maxHeight="148.0" maxWidth="148.0" minHeight="200.0" minWidth="200.0" mnemonicParsing="false" text="Image (PlaceHolder)">
-                <HBox.margin>
-                    <Insets left="1.0" right="6.0" />
-                </HBox.margin></Button>
-        </HBox>
+        <VBox alignment="CENTER" prefHeight="400" prefWidth="400" style="-fx-background-color: #2a6c36;">
+            <Label fx:id="calorieLabel" text="Calories: "/>
+            <Label fx:id="carbLabel" text="Carbs: "/>
+            <Label fx:id="fatLabel" text="Fats: "/>
+            <Label fx:id="proteinLabel" text="Protein: "/>
+        </VBox>
 
     </children>
 </HBox>
