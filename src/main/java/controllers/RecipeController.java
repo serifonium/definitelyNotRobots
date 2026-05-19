@@ -71,6 +71,10 @@ public class RecipeController {
         cookTimeLabel.setText("Cook: " + recipe.getCookTime() + " min");
         servingsLabel.setText("Servings: " + recipe.getServings());
     }
+    public void saveRecipe(){
+
+
+    }
 
     public void goToHomeView() throws IOException {
         Stage stage = (Stage) homeButton.getScene().getWindow();
