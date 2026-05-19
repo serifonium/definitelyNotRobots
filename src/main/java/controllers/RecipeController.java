@@ -19,7 +19,8 @@ import com.openai.models.responses.ResponseCreateParams;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
+import javafx.scene.control.Label;
+
 
 public class RecipeController {
 
@@ -44,22 +45,31 @@ public class RecipeController {
     @FXML
     public Button preferencesButton;
     @FXML
-    private AiController aiController;
-    @FXML
     public Recipe currentRecipe;
     @FXML
     public TextField recipeText;
+    @FXML private Label recipeTitleLabel;
+    @FXML private Label ingredientsLabel;
+    @FXML private Label methodLabel;
+    @FXML private Label prepTimeLabel;
+    @FXML private Label cookTimeLabel;
+    @FXML private Label servingsLabel;
+
+    private Recipe recipe;
 
     public Recipe getCurrentRecipe(){return currentRecipe;}
 
-    private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
-    public void initialize(){
-        if(currentRecipe != null){
-            recipeText.setText(currentRecipe.getRecipeText());
-        }
-        if(aiController.getRecipeText() != null){
-            recipeText.setText((aiController.getRecipeText()));
-        }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+
+        recipeTitleLabel.setText(recipe.getRecipeTitle());
+        ingredientsLabel.setText(recipe.getIngredients());
+        methodLabel.setText(recipe.getMethod());
+
+        prepTimeLabel.setText("Prep: " + recipe.getPrepTime() + " min");
+        cookTimeLabel.setText("Cook: " + recipe.getCookTime() + " min");
+        servingsLabel.setText("Servings: " + recipe.getServings());
     }
 
     public void goToHomeView() throws IOException {
@@ -111,8 +121,5 @@ public class RecipeController {
         stage.setScene(scene);
     }
 
-    public void setAiController(AiController aiController) {
-        this.aiController = aiController;
-    }
 
 }
