@@ -113,7 +113,7 @@
                             <Font size="24.0" />
                         </font>
                     </Label>
-                    <Button fx:id="Fitnessgoals" maxHeight="100.0" mnemonicParsing="false" onAction="#goToFitnessTargetsView" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #ff6600;" text="Fitness goals">
+                    <Button fx:id="Fitnessgoals" maxHeight="100.0" mnemonicParsing="false" onAction="#goToFitnessTargetsView" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #ff6600;" text="Fitness Goals">
                   <VBox.margin>
                      <Insets bottom="5.0" />
                   </VBox.margin></Button>
