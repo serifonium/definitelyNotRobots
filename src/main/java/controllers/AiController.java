@@ -57,11 +57,11 @@ public class AiController {
                             - Do not give medical, allergy, or diet advice as guaranteed facts.
                             - If allergies, illness, pregnancy, medication, or serious health issues are mentioned, tell the user to check with a qualified professional.
                             - Keep a friendly, slightly playful cooking personality.
-                            - Return a recipe in this EXACT format:
+                            - Return a recipe in this EXACT format with no asterisks:
                             
                               Title: ...
-                              PrepTime: ...
-                              CookTime: ...
+                              Prep Time: ...
+                              Cook Time: ...
                               Servings: ...
                               Ingredients: ...
                               Method: ...
@@ -130,10 +130,8 @@ public class AiController {
             RecipeController controller = loader.getController();
             controller.setRecipe(recipe);
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Recipe");
-            stage.show();
+            Stage stage = (Stage) chatbotOutput.getScene().getWindow();
+            stage.getScene().setRoot(root);
         } catch (IOException e) {
             e.printStackTrace();
         }

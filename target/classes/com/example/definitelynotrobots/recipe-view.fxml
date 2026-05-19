@@ -88,15 +88,26 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="800.0">
-            <Label fx:id="recipeTitleLabel" style="-fx-font-size: 24; -fx-text-fill: #573C2A;"/>
-            <Label fx:id="prepTimeLabel"/>
-            <Label fx:id="cookTimeLabel"/>
-            <Label fx:id="servingsLabel"/>
-            <Label fx:id="ingredientsLabel" style="-fx-font-size: 12; -fx-text-fill: #573C2A;"/>
-            <Label fx:id="methodLabel" style="-fx-font-size: 12; -fx-text-fill: #573C2A;"/>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #EAE8E2;">
+            <content>
+                <VBox alignment="TOP_LEFT" spacing="10">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
 
+                    <Label fx:id="recipeTitleLabel" style="-fx-font-size: 24; -fx-text-fill: #573C2A;"/>
 
-        </VBox>
+                    <Label fx:id="prepTimeLabel"/>
+                    <Label fx:id="cookTimeLabel"/>
+                    <Label fx:id="servingsLabel"/>
+
+                    <Label text="Ingredients:" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                    <Label fx:id="ingredientsLabel" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #573C2A;"/>
+
+                    <Label text="Method:" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                    <Label fx:id="methodLabel" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #573C2A;"/>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </HBox>
