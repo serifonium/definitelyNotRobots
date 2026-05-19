@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SavedRecipesDAO {
-    public static Recipe currentRecipe;
 
     private final Connection connection;
 
@@ -30,6 +29,14 @@ public class SavedRecipesDAO {
                             + "method TEXT NOT NULL"
                             + ")"
             );
+            try {
+                createTable.execute("ALTER TABLE savedRecipes ADD COLUMN userAccountIDRecipe INTEGER DEFAULT 0");
+            } catch (SQLException ignore) {
+            }
+            try {
+                createTable.execute("ALTER TABLE savedRecipes ADD COLUMN userAccountRecipeID INTEGER DEFAULT 0");
+            } catch (SQLException ignore) {
+            }
 
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -78,17 +85,20 @@ public class SavedRecipesDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM savedRecipes");
 
             while (rs.next()) {
-                recipes.add(new Recipe(
-                        rs.getInt("userAccountIDRecipe"),
-                        rs.getString("recipeTitle"),
-                        rs.getInt("prepTime"),
-                        rs.getInt("cookTime"),
-                        rs.getInt("servings"),
-                        rs.getBoolean("isSaved"),
-                        rs.getString("ingredients"),
-                        rs.getString("method")
-                ));
+                Recipe recipe = new Recipe();
+
+                recipe.setUserAccountIDRecipe(rs.getInt("userAccountIDRecipe"));
+                recipe.setRecipeTitle(rs.getString("recipeTitle"));
+                recipe.setPrepTime(rs.getInt("prepTime"));
+                recipe.setCookTime(rs.getInt("cookTime"));
+                recipe.setServings(rs.getInt("servings"));
+                recipe.setIsSaved(rs.getBoolean("isSaved"));
+                recipe.setIngredients(rs.getString("ingredients"));
+                recipe.setMethod(rs.getString("method"));
+
+                recipes.add(recipe);
             }
+
 
         } catch (SQLException e) {
             e.printStackTrace();

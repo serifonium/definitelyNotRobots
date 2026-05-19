@@ -22,8 +22,7 @@ import java.awt.*;
 import java.io.IOException;
 
 public class AiController {
-    @FXML
-    public Button saveRecipeButton;
+
     @FXML
     private TextArea chatbotInput;
 
@@ -31,8 +30,6 @@ public class AiController {
     private TextArea chatbotOutput;
     @FXML
     public String generatedRecipeText;
-    @FXML
-    private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
@@ -94,17 +91,6 @@ public class AiController {
     }
     public String getRecipeText(){
         return generatedRecipeText;
-    }
-    public void saveRecipe(){
-        if(chatbotOutput != null){
-            saveRecipeButton.setText("Recipe Saved!");
-            Recipe savedRecipe = new Recipe(generatedRecipeText);
-            savedRecipesDAO.insertRecipe(savedRecipe);
-        }
-        else{
-            saveRecipeButton.setText("Please generate a recipe first!");
-        }
-
     }
 
     private void loadScene(String fxmlFile) throws IOException {
