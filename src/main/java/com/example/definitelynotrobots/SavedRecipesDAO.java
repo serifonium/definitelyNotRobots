@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object for generated recipes.
+ */
 public class SavedRecipesDAO {
 
     private final Connection connection;

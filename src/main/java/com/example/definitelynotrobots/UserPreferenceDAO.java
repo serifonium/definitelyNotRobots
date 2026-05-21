@@ -4,6 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object for user preferences.
+ */
 public class UserPreferenceDAO {
     /**
      * Driver connection to the database.
