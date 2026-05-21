@@ -1,5 +1,8 @@
 package com.example.definitelynotrobots;
 
+/**
+ * Parse AI output to Recipe format.
+ * */
 public class RecipeParser {
 
     public static Recipe parse(String aiText, Integer userId) {

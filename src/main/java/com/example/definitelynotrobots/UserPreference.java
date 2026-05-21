@@ -1,5 +1,8 @@
 package com.example.definitelynotrobots;
 
+/**
+ * A dietary preference for a user.
+ * */
 public class UserPreference {
     private Integer ID;
     public Integer getID() { return ID; }
