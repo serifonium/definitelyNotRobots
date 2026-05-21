@@ -179,16 +179,12 @@ public class AiController {
         return "data:" + mimeType + ";base64," + base64Image;
     }
 
-    public void saveRecipe(){
-        if(chatbotOutput != null){
-            saveRecipeButton.setText("Recipe Saved!");
-            Recipe savedRecipe = new Recipe(generatedRecipeText);
-            savedRecipesDAO.insertRecipe(savedRecipe);
-        }
-        else{
-            saveRecipeButton.setText("Please generate a recipe first!");
-        }
 
+
+    @FXML
+    public void openRecipeView() throws IOException {
+        // adjust the path if your FXML is named differently
+        loadScene("recipe-view.fxml");
     }
 
     private void loadScene(String fxmlFile) throws IOException {
@@ -248,6 +244,8 @@ public class AiController {
                 ? text.substring(start).trim()
                 : text.substring(start, end).trim();
     }
+
+
 
     public void setChatbotInput(TextArea chatbotInput) {
         this.chatbotInput = chatbotInput;
