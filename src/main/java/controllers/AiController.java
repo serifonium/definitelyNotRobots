@@ -35,9 +35,11 @@ import java.util.Base64;
 import java.util.List;
 
 import java.io.File;
-
-
 import java.io.IOException;
+import javafx.scene.Parent;
+import com.example.definitelynotrobots.Recipe;
+import com.example.definitelynotrobots.RecipeParser;
+import com.example.definitelynotrobots.UserAccountDAO;
 
 public class AiController {
     @FXML
@@ -179,9 +181,23 @@ public class AiController {
 
 
     @FXML
-    public void openRecipeView() throws IOException {
-        // adjust the path if your FXML is named differently
-        loadScene("recipe-view.fxml");
+    private void openRecipeView() {
+        String aiText = chatbotOutput.getText();
+
+        Recipe recipe = RecipeParser.parse(aiText, UserAccountDAO.currentAccount.getID());
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/definitelynotrobots/recipe-view.fxml"));
+            Parent root = loader.load();
+
+            RecipeController controller = loader.getController();
+            controller.setRecipe(recipe);
+
+            Stage stage = (Stage) chatbotOutput.getScene().getWindow();
+            stage.getScene().setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadScene(String fxmlFile) throws IOException {
