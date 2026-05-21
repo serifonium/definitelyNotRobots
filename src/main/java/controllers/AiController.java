@@ -41,9 +41,6 @@ import java.io.IOException;
 
 public class AiController {
     @FXML
-    public Button saveRecipeButton;
-
-    @FXML
     private TextArea chatbotInput;
 
     @FXML
@@ -222,9 +219,7 @@ public class AiController {
         loadScene("Profile-view.fxml");
     }
 
-    public void goToPreferences() throws IOException {
-        loadScene("preferences-view.fxml");
-    }
+
 
     public void goToFitnessTargets() throws IOException {
         loadScene("fitness-targets-view.fxml");
@@ -233,17 +228,7 @@ public class AiController {
     public void goToSavedRecipeView() throws IOException {
         loadScene("saved-recipes-view.fxml");  }
 
-    private String extract(String text, String key) {
-        int start = text.indexOf(key);
-        if (start == -1) return "";
 
-        start += key.length();
-        int end = text.indexOf("\n", start);
-
-        return end == -1
-                ? text.substring(start).trim()
-                : text.substring(start, end).trim();
-    }
 
 
 
