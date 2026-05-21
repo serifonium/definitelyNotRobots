@@ -116,21 +116,29 @@
                 </font>
             </Label>
 
-            <VBox prefHeight="150.0" prefWidth="520.0" style="-fx-background-color: #eae8e2;                  -fx-border-color: #ff6600 #2a6c36 #2a6c36 #ff6600;                  -fx-border-width: 5;                  -fx-border-radius: 18;                  -fx-background-radius: 18;">
+            <VBox prefHeight="150.0" prefWidth="520.0" style="-fx-background-color: #eae8e2; -fx-border-color: #ff6600 #2a6c36 #2a6c36 #ff6600; -fx-border-width: 5; -fx-border-radius: 18; -fx-background-radius: 18;">
 
                 <padding>
                     <Insets bottom="10.0" left="12.0" right="12.0" top="10.0" />
                 </padding>
 
-                <TextArea fx:id="chatbotInput" prefHeight="100.0" prefWidth="500.0" promptText="Input your prompt here..." style="-fx-background-color: transparent;                          -fx-control-inner-background: #eae8e2;                          -fx-text-fill: #573c2a;                          -fx-prompt-text-fill: #573c2a;                          -fx-font-size: 20px;                          -fx-font-weight: bold;                          -fx-background-radius: 18;" wrapText="true" />
+                <TextArea fx:id="chatbotInput" prefHeight="100.0" prefWidth="500.0" promptText="Input your prompt here..." style="-fx-background-color: transparent -fx-control-inner-background: #eae8e2 -fx-text-fill: #573c2a -fx-prompt-text-fill: #573c2a -fx-font-size: 20px -fx-font-weight: bold -fx-background-radius: 18;" wrapText="true" />
 
                 <HBox alignment="CENTER_RIGHT" spacing="8">
                     <HBox alignment="CENTER_RIGHT" spacing="8">
-                        <Button onAction="#openRecipeView" style="-fx-background-color: #ff6600; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 18 8 18;" text ="View Recipe"/>
-                        <Button onAction="#onChatbotInputButtonClick" style="-fx-background-color: #ff6600;                    -fx-text-fill: white;                    -fx-font-size: 16px;                    -fx-font-weight: bold;                    -fx-background-radius: 10;                    -fx-padding: 8 18 8 18;" text="Send" />
 
+                        <Button onAction="#openRecipeView"
+                                style="-fx-background-color: #ff6600; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 18 8 18;"
+                                text="View Recipe"/>
+
+                        <Button onAction="#onChatbotInputButtonClick" style="-fx-background-color: #ff6600; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 18 8 18;" text="Send" />
                     </HBox>
                 </HBox>
+                <HBox alignment="CENTER" spacing="10">
+                    <Button text="Upload Image" onAction="#onUploadImageClick" style="-fx-background-color: #2a6c36; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 8 18 8 18;" />
+                </HBox>
+
+                <ImageView fx:id="uploadedImagePreview" fitWidth="180.0" fitHeight="120.0" preserveRatio="true" />
             </VBox>
 
             <TextArea fx:id="chatbotOutput" editable="false" prefHeight="170.0" prefWidth="520.0" style="-fx-control-inner-background: #eae8e2;                      -fx-text-fill: #573c2a;                      -fx-font-size: 16px;" wrapText="true" />
