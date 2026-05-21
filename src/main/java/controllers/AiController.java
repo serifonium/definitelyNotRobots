@@ -79,6 +79,7 @@ public class AiController {
                 - Do not give medical, allergy, or diet advice as guaranteed facts.
                 - If allergies, illness, pregnancy, medication, or serious health issues are mentioned, tell the user to check with a qualified professional.
                 - Keep a friendly, slightly playful cooking personality.
+                - When returning Prep Time and Cook Time always return 1 time not a range
                 - Return a recipe in this EXACT format when making a recipe:
 
                   Title: ...
@@ -158,6 +159,8 @@ public class AiController {
         }
 
         selectedImageFile = file;
+        uploadedImagePreview.setVisible(true);
+        uploadedImagePreview.setManaged(true);
 
         Image image = new Image(file.toURI().toString());
         uploadedImagePreview.setImage(image);
