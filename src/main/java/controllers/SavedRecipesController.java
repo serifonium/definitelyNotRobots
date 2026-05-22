@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,11 +18,14 @@ import java.util.List;
 public class SavedRecipesController extends BaseController {
 
     @FXML private ListView<Recipe> recipeListView;
+    public HBox RecipesRoot;
 
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     @FXML
     public void initialize() {
+        init(RecipesRoot);
+
         //Load saved recipes
         List<Recipe> recipes = savedRecipesDAO.getAllSavedRecipes();
 

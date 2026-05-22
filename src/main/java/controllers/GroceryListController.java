@@ -136,7 +136,7 @@ public class GroceryListController extends BaseController {
             selectGroceryItem(firstItem);
         }
 
-        ScaleMainView(1.65);
+//        ScaleMainView(1.65);
     }
 
     private void syncGroceryList() {
@@ -173,51 +173,5 @@ public class GroceryListController extends BaseController {
     public void EnterToSelect(javafx.scene.input.KeyEvent event) {
         if(!event.getCode().equals(KeyCode.ENTER)) return;
         selectGroceryItem(groceryListView.getFocusModel().getFocusedItem());
-    }
-
-    public void goToGroceryListView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToFitnessTargetsView() throws IOException{
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToPreferencesView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public void goToProfile() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public void goToSavedRecipesView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToAIView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(HelloApplication.class.getResource("ai-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToHomeView() throws IOException {
-        Stage stage = (Stage) errorText.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
     }
 }

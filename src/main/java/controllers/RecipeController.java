@@ -23,7 +23,6 @@ import javafx.scene.control.Label;
 
 
 public class RecipeController {
-
     @FXML
     public Button homeButton;
     @FXML
