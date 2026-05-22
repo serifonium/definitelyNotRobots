@@ -3,21 +3,16 @@ package com.example.definitelynotrobots;
 public class RecipeParser {
 
     public static Recipe parse(String aiText, Integer userId) {
-        Recipe recipe = new Recipe();
-
-        recipe.setUserAccountIDRecipe(userId);
-
-        recipe.setRecipeTitle(extract(aiText, "Title:", "Prep Time:"));
-        recipe.setPrepTime(parseInt(extract(aiText, "Prep Time:", "Cook Time:")));
-        recipe.setCookTime(parseInt(extract(aiText, "Cook Time:", "Servings:")));
-        recipe.setServings(parseInt(extract(aiText, "Servings:", "Ingredients:")));
-
-        recipe.setIngredients(extract(aiText, "Ingredients:", "Method:"));
-        recipe.setMethod(extract(aiText, "Method:", null));
-
-        recipe.setIsSaved(true);
-
-        return recipe;
+        return new Recipe(
+                userId,
+                extract(aiText, "Title:", "Prep Time:"),
+                parseInt(extract(aiText, "Prep Time:", "Cook Time:")),
+                parseInt(extract(aiText, "Cook Time:", "Servings:")),
+                parseInt(extract(aiText, "Servings:", "Ingredients:")),
+                true,
+                extract(aiText, "Ingredients:", "Method:"),
+                extract(aiText, "Method:", null)
+        );
     }
 
     private static String extract(String text, String start, String end) {
