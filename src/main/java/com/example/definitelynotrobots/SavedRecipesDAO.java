@@ -32,14 +32,7 @@ public class SavedRecipesDAO {
                             + "method TEXT NOT NULL"
                             + ")"
             );
-            try {
-                createTable.execute("ALTER TABLE savedRecipes ADD COLUMN userAccountIDRecipe INTEGER DEFAULT 0");
-            } catch (SQLException ignore) {
-            }
-            try {
-                createTable.execute("ALTER TABLE savedRecipes ADD COLUMN userAccountRecipeID INTEGER DEFAULT 0");
-            } catch (SQLException ignore) {
-            }
+
 
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -110,6 +103,36 @@ public class SavedRecipesDAO {
         return recipes;
     }
 
+    public List<Recipe> getSavedRecipesForUser(int userId) {
+        List<Recipe> recipes = new ArrayList<>();
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(
+                    "SELECT * FROM savedRecipes WHERE userAccountIDRecipe = ?"
+            );
+            ps.setInt(1, userId);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Recipe recipe = new Recipe();
+                recipe.setUserAccountIDRecipe(rs.getInt("userAccountIDRecipe"));
+                recipe.setRecipeTitle(rs.getString("recipeTitle"));
+                recipe.setPrepTime(rs.getInt("prepTime"));
+                recipe.setCookTime(rs.getInt("cookTime"));
+                recipe.setServings(rs.getInt("servings"));
+                recipe.setIsSaved(rs.getBoolean("isSaved"));
+                recipe.setIngredients(rs.getString("ingredients"));
+                recipe.setMethod(rs.getString("method"));
+                recipes.add(recipe);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return recipes;
+    }
 
     public Recipe getByTitle(String title) {
         try {

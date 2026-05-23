@@ -3,9 +3,11 @@ package controllers;
 import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.SavedRecipesDAO;
+import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
@@ -26,8 +28,9 @@ public class SavedRecipesController extends BaseController {
     public void initialize() {
         init(RecipesRoot);
 
-        //Load saved recipes
-        List<Recipe> recipes = savedRecipesDAO.getAllSavedRecipes();
+        //Load saved recipes for current user
+        int userId = UserAccountDAO.currentAccount.getID();
+        List<Recipe> recipes = savedRecipesDAO.getSavedRecipesForUser(userId);
 
         //Populate the list
         recipeListView.getItems().setAll(recipes);
