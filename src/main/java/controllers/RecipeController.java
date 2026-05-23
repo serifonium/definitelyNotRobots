@@ -22,7 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
 
-public class RecipeController {
+public class RecipeController extends BaseController {
     @FXML
     public Button homeButton;
     @FXML
