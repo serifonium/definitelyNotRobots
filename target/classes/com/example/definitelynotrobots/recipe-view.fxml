@@ -88,7 +88,7 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #EAE8E2;">
+        <ScrollPane fitToWidth="true" style="-fx-background-color: #EAE8E2; -fx-background: #EAE8E2;">
             <content>
                 <VBox alignment="TOP_LEFT" spacing="10" style="-fx-background-color: #EAE8E2;">
                     <padding>

@@ -5,6 +5,7 @@ package com.example.definitelynotrobots;
  * */
 public class RecipeParser {
 
+
     public static Recipe parse(String aiText, Integer userId) {
         return new Recipe(
                 userId,
