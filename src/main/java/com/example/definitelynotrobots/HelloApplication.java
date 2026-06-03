@@ -29,10 +29,10 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         UserAccountDAO userAccountDAO = new UserAccountDAO();
-//       userAccountDAO.dropTable();
+//        userAccountDAO.dropTable();
 
         FitnessDAO fitnessDAO = new FitnessDAO();
-        /* fitnessDAO.dropTable(); */
+//        fitnessDAO.dropTable();
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));

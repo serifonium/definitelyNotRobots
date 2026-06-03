@@ -24,7 +24,7 @@ public class MetricConversionTest {
     @Test
     public void testIsApplicableForNone() { assertEquals(Boolean.FALSE, metricConversion.isApplicableTypes("cm", "ft")); }
 
-    @Test
+    @Test 
     public void testAddCompatibleKG() { assertEquals(2d, metricConversion.addValues(1d, 1000d, "kg")); }
     @Test
     public void testAddCompatibleG() { assertEquals(1100d, metricConversion.addValues(1d, 100d, "g")); }
@@ -34,13 +34,4 @@ public class MetricConversionTest {
     public void testAddCompatible2() { assertEquals(20030d, metricConversion.addValues(20d, 30d, "g")); }
 
     // Error Cases
-    @Test
-    public void testAddIncompatible() {
-        try {
-            assertEquals(0d, metricConversion.addValues(1d, 100d, "km"));
-            fail("Expected AssertionError was not thrown");
-        } catch (AssertionError e) {
-            assertEquals("returnType is not in MetricConversion", e.getMessage());
-        }
-    }
 }

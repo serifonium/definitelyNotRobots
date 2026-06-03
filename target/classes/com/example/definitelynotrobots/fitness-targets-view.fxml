@@ -87,24 +87,22 @@
             </HBox.margin>
         </VBox>
         <VBox alignment="CENTER" prefWidth="500" spacing="20" style="-fx-padding: 40;">
-            <Label text="Enter your calorie goal" textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-            <TextField fx:id="CalorieInput" maxHeight="20" maxWidth="100" promptText="Calorie goal" style="-fx-background-color: #2a6c36;"/>
+            <Label text="Enter your calorie goal" />
+            <TextField fx:id="CalorieInput" maxHeight="20" maxWidth="100" promptText="Calorie Goal..." />
 
-            <Label text="Enter your Carbohydrate goal" textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-            <TextField fx:id="CarbsInput" maxHeight="20" maxWidth="100" promptText="Carbs goal" style="-fx-background-color: #2a6c36;"/>
+            <Label text="Enter your Carbohydrate goal" />
+            <TextField fx:id="CarbsInput" maxHeight="20" maxWidth="100" promptText="Carbs Goal..." />
 
-            <Label text="Enter your Fats goal" textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;" />
-            <TextField fx:id="FatInput" maxHeight="20" maxWidth="100" promptText="Fat goal" style="-fx-background-color: #2a6c36;" />
+            <Label text="Enter your Fats goal" />
+            <TextField fx:id="FatInput" maxHeight="20" maxWidth="100" promptText="Fat Goal..." />
 
-            <Label text="Enter your Protein goal" textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-            <TextField fx:id="ProteinInput" maxHeight="20" maxWidth="100" promptText="protein goal" style="-fx-background-color: #2a6c36;"/>
+            <Label text="Enter your Protein goal" />
+            <TextField fx:id="ProteinInput" maxHeight="20" maxWidth="100" promptText="Protein Goal..." />
             <Label fx:id="errorText" text="" textFill="RED" />
         </VBox>
         <VBox alignment="CENTER" prefHeight="480.0" prefWidth="270.0">
-            <Label fx:id="Error"/>
 
-            <Button fx:id="profileButton" maxHeight="20" maxWidth="100" onAction="#onSubmitClick" text="submit" style="-fx-background-color: #ff6600;" />
-
+            <Button fx:id="profileButton" maxHeight="20" maxWidth="100" onAction="#onSubmitClick" text="submit" />
         </VBox>
     </children>
 </HBox>

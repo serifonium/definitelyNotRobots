@@ -19,10 +19,10 @@ import com.openai.models.responses.ResponseCreateParams;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-import java.awt.*;
+import javafx.scene.control.Label;
 
-public class RecipeController {
 
+public class RecipeController extends BaseController {
     @FXML
     public Button homeButton;
     @FXML
@@ -43,20 +43,40 @@ public class RecipeController {
     public Button fitnessTargetsButton;
     @FXML
     public Button preferencesButton;
-    @FXML
-    private AiController aiController;
-    @FXML
-    public Recipe currentRecipe;
+
     @FXML
     public TextField recipeText;
+    @FXML private Label recipeTitleLabel;
+    @FXML private Label ingredientsLabel;
+    @FXML private Label methodLabel;
+    @FXML private Label prepTimeLabel;
+    @FXML private Label cookTimeLabel;
+    @FXML private Label servingsLabel;
 
-    public Recipe getCurrentRecipe(){return currentRecipe;}
+    private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
-    private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
-    public void initialize(){
-        if(currentRecipe != null){
-            recipeText.setText(currentRecipe.getRecipeText());
-        }
+    private Recipe recipe;
+
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
+
+        recipeTitleLabel.setText(recipe.getRecipeTitle());
+        ingredientsLabel.setText(recipe.getIngredients());
+        methodLabel.setText(recipe.getMethod());
+
+        prepTimeLabel.setText("Prep: " + recipe.getPrepTime() + " min");
+        cookTimeLabel.setText("Cook: " + recipe.getCookTime() + " min");
+        servingsLabel.setText("Servings: " + recipe.getServings());
+    }
+    @FXML
+    private void saveRecipe() {
+        if (recipe == null) return;
+
+        recipe.setIsSaved(true);
+        savedRecipesDAO.insertRecipe(recipe);
+
+        saveRecipeButton.setText("Recipe Saved!");
     }
 
     public void goToHomeView() throws IOException {
@@ -108,8 +128,5 @@ public class RecipeController {
         stage.setScene(scene);
     }
 
-    public void setAiController(AiController aiController) {
-        this.aiController = aiController;
-    }
 
 }

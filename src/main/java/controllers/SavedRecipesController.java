@@ -1,109 +1,78 @@
 package controllers;
 
-import com.example.definitelynotrobots.*;
+import com.example.definitelynotrobots.HelloApplication;
+import com.example.definitelynotrobots.Recipe;
+import com.example.definitelynotrobots.SavedRecipesDAO;
+import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
-public class SavedRecipesController {
-    @FXML
-    public Button homeButton;
-    @FXML
-    public Button profileButton;
-    @FXML
-    public Button aiButton;
-    @FXML
-    public Button pantryButton;
-    @FXML
-    public Button groceryListButton;
-    @FXML
-    public Button savedRecipesButton;
-    public Button fitnessTargetsButton;
-    @FXML
-    public Button preferencesButton;
-    @FXML
-    private ListView<Recipe> recipeListView;
-    @FXML
+public class SavedRecipesController extends BaseController {
+
+    @FXML private ListView<Recipe> recipeListView;
+    public HBox RecipesRoot;
+
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
-/*    @FXML
-    public void initialize() {
-
-        syncRecipeList();
-
-        recipeListView.getSelectionModel().selectFirst();
-        Recipe firstItem = recipeListView.getSelectionModel().getSelectedItem();
-        if (firstItem != null) {
-            selectRecipe(firstItem);
-        }
-    }*/
-
-    public void goToAIView() throws IOException{
-        Stage stage = (Stage) aiButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("recipe-ai-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public void goToGroceryListView() throws IOException{
-        Stage stage = (Stage) groceryListButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }public void goToSavedRecipesView() throws IOException{
-        Stage stage = (Stage) savedRecipesButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToFitnessTargets() throws IOException{
-        Stage stage = (Stage) fitnessTargetsButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToPreferences() throws IOException{
-        Stage stage = (Stage) preferencesButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToProfile() throws IOException{
-        Stage stage = (Stage) profileButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToHomeView() throws IOException {
-        Stage stage = (Stage) profileButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
 
     @FXML
-    private void onSaveRecipe() {
-        final Integer DEFAULT_USERID = null;
-        final Image DEFAULT_IMAGE = null;
-        final String DEFAULT_TITLE = "Recipe Title";
-        final Integer DEFAULT_PREPTIME = 0;
-        final Integer DEFAULT_COOKTIME = 0;
-        final Integer DEFAULT_SERVINGS = 0;
-        final Boolean DEAULT_ISSAVED = true;
-        final String DEFAULT_INGREDIENTS = "ingredient, ingredient, ingredient";
-        final String DEFAULT_METHOD = "1. method, 2. method, 3. method";
-        Recipe newRecipe = new Recipe(SavedRecipesDAO.currentRecipe.getUserAccountIDRecipe(), DEFAULT_IMAGE, DEFAULT_TITLE, DEFAULT_PREPTIME, DEFAULT_COOKTIME, DEFAULT_SERVINGS, DEAULT_ISSAVED, DEFAULT_INGREDIENTS, DEFAULT_METHOD);
+    public void initialize() {
+        init(RecipesRoot);
 
-        savedRecipesDAO.insertRecipe(newRecipe);
+        //Load saved recipes for current user
+        int userId = UserAccountDAO.currentAccount.getID();
+        List<Recipe> recipes = savedRecipesDAO.getSavedRecipesForUser(userId);
+
+        //Populate the list
+        recipeListView.getItems().setAll(recipes);
+
+        //Display recipe titles
+        recipeListView.setCellFactory(list -> new ListCell<>() {
+            @Override
+            protected void updateItem(Recipe recipe, boolean empty) {
+                super.updateItem(recipe, empty);
+                setText(empty || recipe == null ? "" : recipe.getRecipeTitle());
+            }
+        });
+
+        //Enable Double-click to open recipe
+        recipeListView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Recipe selected = recipeListView.getSelectionModel().getSelectedItem();
+                if (selected != null) {
+                    openRecipe(selected);
+                }
+            }
+        });
     }
 
+    private void openRecipe(Recipe recipe) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    HelloApplication.class.getResource("recipe-view.fxml")
+            );
 
+            Stage stage = (Stage) recipeListView.getScene().getWindow();
 
+            Scene scene = new Scene(loader.load());
+
+            // Pass recipe to controller
+            RecipeController controller = loader.getController();
+            controller.setRecipe(recipe);
+
+            stage.setScene(scene);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

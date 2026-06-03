@@ -113,7 +113,7 @@
                             <Font size="24.0" />
                         </font>
                     </Label>
-                    <Button fx:id="Fitnessgoals" maxHeight="100.0" mnemonicParsing="false" onAction="#goToFitnessTargetsView" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #ff6600;" text=" Edit Fitness Goals">
+                    <Button fx:id="Fitnessgoals" maxHeight="100.0" mnemonicParsing="false" onAction="#goToFitnessTargetsView" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #ff6600;" text="Fitness Goals">
                   <VBox.margin>
                      <Insets bottom="5.0" />
                   </VBox.margin></Button>
@@ -135,19 +135,12 @@
                 </children>
             </VBox>
         </VBox>
-        <VBox alignment="CENTER" prefHeight="400" prefWidth="400" style="-fx-background-color: #2a6c36;" spacing="15">
-            <Label alignment="TOP_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Fitness Goals" textAlignment="LEFT" textFill="#573c2a">
-                <font>
-                    <Font size="24.0" />
-                </font>
-            </Label>
-            <Label fx:id="calorieLabel" text="Calories: " textFill="#573c2a" style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
-            <HBox  alignment="CENTER" spacing="60" style="-fx-background-color: #ff6600;" prefHeight="35">
-            <Label fx:id="carbLabel" text="Carbs: " textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-            <Label fx:id="fatLabel" text="Fats: " textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-            <Label fx:id="proteinLabel" text="Protein: " textFill="#573c2a" style="-fx-font-size: 10px; -fx-font-weight: bold;"/>
-            </HBox>
-        </VBox>
+        <HBox alignment="CENTER" prefHeight="400" prefWidth="300">
+            <Button maxHeight="148.0" maxWidth="148.0" minHeight="200.0" minWidth="200.0" mnemonicParsing="false" text="Image (PlaceHolder)">
+                <HBox.margin>
+                    <Insets left="1.0" right="6.0" />
+                </HBox.margin></Button>
+        </HBox>
 
     </children>
 </HBox>

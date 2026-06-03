@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FitnessDAO {
-    public static Fitnessgoal currentFitnessgoal;
+    public static FitnessGoal currentFitnessgoal;
 
     private final Connection connection;
 
@@ -44,7 +44,7 @@ public class FitnessDAO {
         }
     }
 
-    public void insertFitnessgoal(Fitnessgoal fitnessgoal) {
+    public void insertFitnessgoal(FitnessGoal fitnessgoal) {
         try {
                 PreparedStatement insertStatement = connection.prepareStatement(
                         "INSERT INTO Fitnessgoals (userID, Calories, Carbs, Fats, Protein) VALUES ( ?, ?, ?, ?, ?)"
@@ -61,15 +61,15 @@ public class FitnessDAO {
         }
     }
 
-    public List<Fitnessgoal> getAllfitnessgoals() {
-        List<Fitnessgoal> goals = new ArrayList<>();
+    public List<FitnessGoal> getAllfitnessgoals() {
+        List<FitnessGoal> goals = new ArrayList<>();
 
         try {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Fitnessgoals");
 
             while (rs.next()) {
-                goals.add(new Fitnessgoal(
+                goals.add(new FitnessGoal(
                         rs.getInt("userID"),
                         rs.getDouble("calories"),
                         rs.getDouble("carbs"),
@@ -85,19 +85,19 @@ public class FitnessDAO {
         return goals;
     }
 
-    public Fitnessgoal getByUserID(Integer userID) {
+    public FitnessGoal getByUserID(Integer userID) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Fitnessgoals WHERE userID = ?");
             preparedStatement.setInt(1, userID);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                return new Fitnessgoal(
+                return new FitnessGoal(
                         resultSet.getInt("ID"),
                         resultSet.getInt("userID"),
-                        resultSet.getDouble("calories"),
-                        resultSet.getDouble("carbs"),
-                        resultSet.getDouble("fats"),
-                        resultSet.getDouble("protein")
+                        resultSet.getDouble("Calories"),
+                        resultSet.getDouble("Carbs"),
+                        resultSet.getDouble("Fats"),
+                        resultSet.getDouble("Proteins")
                 );
             }
         } catch (SQLException ex) {

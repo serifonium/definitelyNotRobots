@@ -5,7 +5,10 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox fx:id="PreferencesRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480" prefWidth="854.0" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PreferencesController">
+<HBox fx:id="PreferencesRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="480" prefWidth="854.0" style="-fx-background-color: #eae8e2;"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.PreferencesController">
     <children>
         <AnchorPane layoutX="146.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="25.0">
             <opaqueInsets>
@@ -92,8 +95,25 @@
             </HBox.margin>
         </VBox>
         <VBox alignment="CENTER" prefHeight="480.0" prefWidth="742.0">
-            <Label text="Enter your calorie goal" />
-            <TextField fx:id="CalorieInput" maxHeight="20" maxWidth="100" promptText="calorie goal" />
+            <Label text="Enter a preference below" />
+            <HBox>
+                <ChoiceBox fx:id="preferenceTypeField" >
+                    <GridPane.margin>
+                        <Insets bottom="1.0" top="1.0" />
+                    </GridPane.margin>
+                </ChoiceBox>
+                <TextField fx:id="preferenceContentField" maxHeight="20" maxWidth="100" promptText="Item..." />
+            </HBox>
+
+            <Button mnemonicParsing="false" prefHeight="25.0" onMouseClicked="#onAdd" prefWidth="272.0" text="Add Preference"></Button>
+
+            <TextArea fx:id="preferenceList" editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-control-inner-background: #eae8e2;                      -fx-text-fill: #573c2a;                      -fx-font-size: 16px;">
+                <VBox.margin>
+                   <Insets left="60.0" right="60.0" top="20.0" />
+                </VBox.margin>
+            </TextArea>
+
+            <Label fx:id="errorText" text="" textFill="RED" />
         </VBox>
 
 

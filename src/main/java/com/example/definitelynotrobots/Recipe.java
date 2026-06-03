@@ -1,12 +1,25 @@
 package com.example.definitelynotrobots;
 import javafx.scene.image.Image;
 
+/**
+ * A recipe for a meal.
+ * */
 public class Recipe {
+    /**
+     * Instructions to make the recipe.
+     * */
     private String RecipeText;
     public String getRecipeText(){return RecipeText;}
     public void setRecipeText(String recipeText){RecipeText = recipeText;}
+
+    /**
+     * ID of user account which generated the recipe.
+     * */
     private Integer UserAccountIDRecipe;
     public Integer getUserAccountIDRecipe(){return UserAccountIDRecipe;}
+    public void setUserAccountIDRecipe(Integer userAccountIDRecipe) {
+        UserAccountIDRecipe = userAccountIDRecipe;
+    }
 
     private Image RecipeImage;
     public Image getRecipeImage(){return RecipeImage;}

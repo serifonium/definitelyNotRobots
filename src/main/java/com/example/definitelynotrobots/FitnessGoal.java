@@ -1,13 +1,13 @@
 package com.example.definitelynotrobots;
 
-public class Fitnessgoal {
+public class FitnessGoal {
     private Integer ID;
     public Integer getID() { return ID; }
-    public Fitnessgoal setID(Integer id) { ID = id; return this; }
+    public FitnessGoal setID(Integer id) { ID = id; return this; }
 
     private Integer UserID;
     public Integer getUserID() { return UserID; }
-    public Fitnessgoal setUserID(Integer userID) { UserID = userID; return this; }
+    public FitnessGoal setUserID(Integer userID) { UserID = userID; return this; }
 
     private Double Calories;
     public Double getCalories() { return Calories; }
@@ -41,14 +41,14 @@ public class Fitnessgoal {
         return Integer.toString(getProtein().intValue());
     }
 
-    public Fitnessgoal(Integer userID, Double calories, Double carbs, Double fats, Double protein) {
+    public FitnessGoal(Integer userID, Double calories, Double carbs, Double fats, Double protein) {
         UserID = userID;
         Calories = calories;
         Carbs = carbs;
         Fats = fats;
         Protein = protein;
     }
-    public Fitnessgoal(Integer id, Integer userID, Double calories, Double carbs, Double fats, Double protein ) {
+    public FitnessGoal(Integer id, Integer userID, Double calories, Double carbs, Double fats, Double protein ) {
         ID = id;
         UserID = userID;
         Calories = calories;
