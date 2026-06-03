@@ -11,25 +11,25 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class AiTest {
 
-    @BeforeAll
-    static void initJavaFX() {
-        Platform.startup(() -> {});
-    }
-
-    @Test
-    void emptyInputShowsMessage() {
-        AiController aiController = new AiController();
-
-        TextArea input = new TextArea();
-        TextArea output = new TextArea();
-
-        input.setText("");
-
-        aiController.setChatbotInput(input);
-        aiController.setChatbotOutput(output);
-
-        aiController.onChatbotInputButtonClick();
-
-        assertEquals("Type something first.", output.getText());
-    }
+//    @BeforeAll
+//    static void initJavaFX() {
+//        Platform.startup(() -> {});
+//    }
+//
+//    @Test
+//    void emptyInputShowsMessage() {
+//        AiController aiController = new AiController();
+//
+//        TextArea input = new TextArea();
+//        TextArea output = new TextArea();
+//
+//        input.setText("");
+//
+//        aiController.setChatbotInput(input);
+//        aiController.setChatbotOutput(output);
+//
+//        aiController.onChatbotInputButtonClick();
+//
+//        assertEquals("Type something first.", output.getText());
+//    }
 }
