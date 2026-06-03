@@ -1,7 +1,7 @@
 package controllers;
 
 import com.example.definitelynotrobots.FitnessDAO;
-import com.example.definitelynotrobots.Fitnessgoal;
+import com.example.definitelynotrobots.FitnessGoal;
 import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.UserAccountDAO;
 import javafx.fxml.FXML;
@@ -34,7 +34,7 @@ public class ProfileController extends BaseController {
         SetName();
         SetUsername();
 
-        Fitnessgoal goal =
+        FitnessGoal goal =
                 fitnessDAO.getByUserID(UserAccountDAO.currentAccount.getID());
 
         if (goal != null) {
