@@ -51,13 +51,17 @@ public class FitnessTargetsController extends BaseController {
         if(Objects.equals(ProteinInput.getText(), "")) { errorText.setText("Please enter a protein goal."); return; }
         errorText.setText("");
 
-        double inputCalorie = Double.parseDouble(CalorieInput.getText());
-        double inputCarb = Double.parseDouble(CarbsInput.getText());
-        double inputFat = Double.parseDouble(FatInput.getText());
-        double inputProtein = Double.parseDouble(ProteinInput.getText());
+        try {
+            double inputCalorie = Double.parseDouble(CalorieInput.getText());
+            double inputCarb = Double.parseDouble(CarbsInput.getText());
+            double inputFat = Double.parseDouble(FatInput.getText());
+            double inputProtein = Double.parseDouble(ProteinInput.getText());
 
-        fitnessDAO.insertFitnessgoal(new Fitnessgoal(UserAccountDAO.currentAccount.getID(), inputCalorie, inputCarb, inputFat, inputProtein));
-        goToProfileView();
+            fitnessDAO.insertFitnessgoal(new Fitnessgoal(UserAccountDAO.currentAccount.getID(), inputCalorie, inputCarb, inputFat, inputProtein));
+            goToProfileView();
+        } catch (Error error) {
+            errorText.setText("Please enter a valid input"); return;
+        }
     }
 
     public HBox FitnessTargetRoot; //This Vbox is the main parent.
