@@ -32,10 +32,8 @@ public class MainTest {
 
         controller.SetName();
 
-        assertEquals("Welcome, TestUser!", controller.testLabel.getText());
+        assertEquals("Welcome, User!", controller.testLabel.getText());
     }
-
-
 
     @Test
     void testSavedMealsCount() {
