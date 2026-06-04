@@ -3,20 +3,15 @@ package controllers;
 import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.SavedRecipesDAO;
-import com.openai.client.OpenAIClient;
-import com.openai.client.okhttp.OpenAIOkHttpClient;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.openai.models.responses.Response;
-import com.openai.models.responses.ResponseCreateParams;
-
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import javafx.scene.control.Label;
@@ -57,7 +52,9 @@ public class RecipeController extends BaseController {
 
     private Recipe recipe;
 
-
+    public void initialize() throws IOException {
+        ScaleRecipe(1.6);
+    }
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
 
@@ -79,6 +76,12 @@ public class RecipeController extends BaseController {
         saveRecipeButton.setText("Recipe Saved!");
     }
 
+    public HBox RecipeRoot; //This Hbox is the main parent.
+    private void ScaleRecipe(double scale) {
+        RecipeRoot.setScaleX(scale); //Scales root parent
+        RecipeRoot.setScaleY(scale);
+    }
+
     public void goToHomeView() throws IOException {
         Stage stage = (Stage) homeButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
@@ -87,7 +90,7 @@ public class RecipeController extends BaseController {
     }
     public void goToProfileView() throws IOException{
         Stage stage = (Stage) profileButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("profile-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }

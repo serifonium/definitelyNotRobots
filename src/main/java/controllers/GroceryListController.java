@@ -41,6 +41,37 @@ public class GroceryListController extends BaseController {
     }
 
     @FXML
+    private void onEdit() {
+        errorText.setText("");
+        if(groceryListView.getItems().isEmpty()) {
+            errorText.setText("Create an item to edit it's properties");
+            return;
+        }
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
+            return;
+        }
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
+
+        GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        groceryListDAO.updateItem(selectedItem);
+        syncGroceryList();
+
+        groceryListView.getSelectionModel().select(selectedItem);
+    }
+
+    @FXML
     private void onEditConfirm() {
         errorText.setText("");
         boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
@@ -54,7 +85,6 @@ public class GroceryListController extends BaseController {
 
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem == null) return;
-
 
         selectedItem.setName(itemNameField.getText());
         selectedItem.setAmount(amount);
@@ -136,7 +166,7 @@ public class GroceryListController extends BaseController {
             selectGroceryItem(firstItem);
         }
 
-//        ScaleMainView(1.65);
+        errorText.setText("");
     }
 
     private void syncGroceryList() {
@@ -168,6 +198,10 @@ public class GroceryListController extends BaseController {
 
     public void EnterToSave(javafx.scene.input.KeyEvent event) {
         if(event.getCode().equals(KeyCode.ENTER)) onEditConfirm();
+    }
+
+    public void testDebug() {
+        System.out.print(itemAmountField.getText());
     }
 
     public void EnterToSelect(javafx.scene.input.KeyEvent event) {

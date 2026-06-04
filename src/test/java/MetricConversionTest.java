@@ -24,7 +24,7 @@ public class MetricConversionTest {
     @Test
     public void testIsApplicableForNone() { assertEquals(Boolean.FALSE, metricConversion.isApplicableTypes("cm", "ft")); }
 
-    @Test
+    @Test 
     public void testAddCompatibleKG() { assertEquals(2d, metricConversion.addValues(1d, 1000d, "kg")); }
     @Test
     public void testAddCompatibleG() { assertEquals(1100d, metricConversion.addValues(1d, 100d, "g")); }

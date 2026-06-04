@@ -87,14 +87,16 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
+      <AnchorPane prefHeight="200.0" prefWidth="18.0" />
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="2.0" style="-fx-background-color: #2a6c36;">
             <HBox.margin>
-                <Insets left="4.0" right="4.0" />
+                <Insets right="4.0" />
             </HBox.margin>
             <opaqueInsets>
                 <Insets />
             </opaqueInsets></AnchorPane>
-        <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="226.0">
+        <VBox prefWidth="696.0">
+        <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" prefHeight="480.0" prefWidth="695.0">
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="626.0">
                 <children>
                     <Label fx:id="testname" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Name:" textAlignment="LEFT" textFill="#573c2a">
@@ -141,6 +143,8 @@
                     <Insets left="1.0" right="6.0" />
                 </HBox.margin></Button>
         </HBox>
-
+      <AnchorPane prefHeight="200.0" prefWidth="32.0" />
+        </VBox>
+      <AnchorPane prefHeight="200.0" prefWidth="32.0" />
     </children>
 </HBox>

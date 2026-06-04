@@ -19,7 +19,7 @@ public class MainController {
     public void initialize() throws IOException {
         SetName();
         SetSavedMeals();
-        ScaleMainView(1.65);
+        ScaleMainView(1.6);
     }
 
     public Label testLabel; //This label prints the "Welcome (user)!" text

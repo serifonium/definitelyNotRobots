@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RecipeController">
+<HBox fx:id="RecipeRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RecipeController">
     <children>
         <VBox alignment="CENTER">
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryListView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
@@ -23,7 +21,7 @@
                 <VBox.margin>
                     <Insets />
                 </VBox.margin></AnchorPane>
-            <Button fx:id="savedRecipesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
+            <Button fx:id="fitnessTargetsButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToFitnessTargetsView" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #eae8e2" text="">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                         <image>
@@ -36,7 +34,7 @@
                 <VBox.margin>
                     <Insets />
                 </VBox.margin></AnchorPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToProfileView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+            <Button fx:id="profileButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToProfileView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                         <image>
@@ -49,7 +47,7 @@
                 <VBox.margin>
                     <Insets />
                 </VBox.margin></AnchorPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+            <Button fx:id="homeButton" alignment="CENTER" contentDisplay="CENTER" layoutX="12.0" layoutY="213.0" mnemonicParsing="false" onAction="#goToHomeView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                         <image>
@@ -62,7 +60,7 @@
                 <VBox.margin>
                     <Insets />
                 </VBox.margin></AnchorPane>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
+            <Button fx:id="savedRecipesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToSavedRecipesView" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" preserveRatio="true">
                         <image>
@@ -88,28 +86,37 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #EAE8E2; -fx-background: #EAE8E2;">
+        <AnchorPane prefHeight="200.0" prefWidth="18.0" />
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="2.0" style="-fx-background-color: #2a6c36;">
+            <HBox.margin>
+                <Insets right="4.0" />
+            </HBox.margin>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets></AnchorPane>
+        <ScrollPane fitToWidth="true" prefWidth="696.0" style="-fx-background-color: #EAE8E2; -fx-background: #EAE8E2;">
             <content>
-                <VBox alignment="TOP_LEFT" spacing="10" style="-fx-background-color: #EAE8E2;">
+                <VBox alignment="CENTER_LEFT" prefWidth="696.0" spacing="10" style="-fx-background-color: #EAE8E2;">
                     <padding>
-                        <Insets top="20" right="20" bottom="20" left="20"/>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                     </padding>
 
-                    <Label fx:id="recipeTitleLabel" style="-fx-font-size: 24; -fx-text-fill: #573C2A;"/>
+                    <Label fx:id="recipeTitleLabel" style="-fx-font-size: 24; -fx-text-fill: #573C2A;" />
 
-                    <Label fx:id="prepTimeLabel"/>
-                    <Label fx:id="cookTimeLabel"/>
-                    <Label fx:id="servingsLabel"/>
+                    <Label fx:id="prepTimeLabel" />
+                    <Label fx:id="cookTimeLabel" />
+                    <Label fx:id="servingsLabel" />
                     <Button fx:id="saveRecipeButton" onAction="#saveRecipe" style="-fx-background-color: #ff6600;                    -fx-text-fill: white;                    -fx-font-size: 16px;                    -fx-font-weight: bold;                    -fx-background-radius: 10;                    -fx-padding: 8 18 8 18;" text="Save Recipe" />
 
 
-                    <Label text="Ingredients:" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
-                    <Label fx:id="ingredientsLabel" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #573C2A;"/>
+                    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Ingredients:" />
+                    <Label fx:id="ingredientsLabel" style="-fx-font-size: 14; -fx-text-fill: #573C2A;" wrapText="true" />
 
-                    <Label text="Method:" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
-                    <Label fx:id="methodLabel" wrapText="true" style="-fx-font-size: 14; -fx-text-fill: #573C2A;"/>
+                    <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Method:" />
+                    <Label fx:id="methodLabel" style="-fx-font-size: 14; -fx-text-fill: #573C2A;" wrapText="true" />
                 </VBox>
             </content>
         </ScrollPane>
+      <AnchorPane prefHeight="200.0" prefWidth="32.0" />
     </children>
 </HBox>

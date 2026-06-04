@@ -1,4 +1,4 @@
-package java;
+//package java;
 
 import com.example.definitelynotrobots.UserAccount;
 import com.example.definitelynotrobots.UserAccountDAO;
@@ -59,5 +59,4 @@ public class MainTest {
 
         assertEquals(8, controller.SavedMeals.getChildren().size());
     }
-
 }

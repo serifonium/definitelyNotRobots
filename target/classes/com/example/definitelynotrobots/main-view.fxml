@@ -8,11 +8,6 @@
 
 <HBox fx:id="mainRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480" prefWidth="854" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
-      <AnchorPane layoutX="146.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="5.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </AnchorPane>
    <VBox alignment="CENTER">
       <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#goToGroceryList" prefHeight="75.0" prefWidth="88.0" style="-fx-background-color: #eae8e2" text="">
          <graphic>
@@ -104,7 +99,7 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></AnchorPane>
-   <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="695.0">
+   <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="696.0">
          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="696.0">
             <children>
             <Label fx:id="testLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Welcome, ________!" textAlignment="CENTER" textFill="#573c2a">

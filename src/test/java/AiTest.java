@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class AiTest {
-
     @BeforeAll
     static void initJavaFX() {
         Platform.startup(() -> {});
@@ -30,6 +29,6 @@ public class AiTest {
 
         aiController.onChatbotInputButtonClick();
 
-        assertEquals("Type something first.", output.getText());
+        assertEquals("Type something or upload an image first.", output.getText());
     }
 }

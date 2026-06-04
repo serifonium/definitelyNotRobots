@@ -58,6 +58,8 @@ public class PantryController extends BaseController {
         if (firstContact != null) {
             selectPantryItem(firstContact);
         }
+
+        errorText.setText("");
     }
 
     private ListCell<PantryItem> renderCell(ListView<PantryItem> contactListView) {
@@ -100,6 +102,37 @@ public class PantryController extends BaseController {
         syncPantry();
         selectPantryItem(pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
+    }
+    @FXML
+    private void onEdit() {
+        errorText.setText("");
+        if(pantryListView.getItems().isEmpty()) {
+            errorText.setText("Create an item to edit its properties");
+            return;
+        }
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
+            return;
+        }
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
+
+        PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        pantryDAO.updateItem(selectedItem);
+        syncPantry();
+
+        pantryListView.getSelectionModel().select(selectedItem);
     }
     public void onEditConfirm() {
         errorText.setText("");

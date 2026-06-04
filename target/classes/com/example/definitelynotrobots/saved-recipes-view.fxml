@@ -2,10 +2,9 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
 <HBox fx:id="RecipesRoot" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #eae8e2;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SavedRecipesController">
     <children>
         <VBox alignment="CENTER">
@@ -87,13 +86,26 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <ScrollPane fitToWidth="true" style="-fx-background-color: #eae8e2;">
-            <content>
-                <ListView fx:id="recipeListView"
-                          style="-fx-font-size: 12px; -fx-background-color: #eae8e2; -fx-padding: 10 0 0 0;"
-                          prefWidth="400"
-                          prefHeight="600"/>
-            </content>
-        </ScrollPane>
+        <AnchorPane prefHeight="200.0" prefWidth="18.0" />
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="2.0" style="-fx-background-color: #2a6c36;">
+            <HBox.margin>
+                <Insets right="4.0" />
+            </HBox.margin>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets></AnchorPane>
+      <HBox prefHeight="100.0" prefWidth="696.0">
+         <children>
+              <ScrollPane fitToWidth="true" prefHeight="480.0" prefWidth="696.0" style="-fx-background-color: #eae8e2;">
+                  <content>
+                      <ListView fx:id="recipeListView"
+                                style="-fx-font-size: 12px; -fx-background-color: #eae8e2; -fx-padding: 10 0 0 0;"
+                                prefWidth="400"
+                                prefHeight="600"/>
+                  </content>
+              </ScrollPane>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="200.0" prefWidth="32.0" />
     </children>
 </HBox>

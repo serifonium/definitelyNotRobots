@@ -211,7 +211,7 @@ public class AiController {
     }
 
     public void initialize() {
-        ScaleMainView(1.65);
+        ScaleMainView(1.6);
     }
 
     public HBox AiRoot; //This Hbox is the main parent.
