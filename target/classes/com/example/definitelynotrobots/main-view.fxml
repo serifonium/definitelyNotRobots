@@ -138,63 +138,20 @@
             <children>
                <HBox prefHeight="342.0" prefWidth="618.0">
                   <children>
-                     <VBox prefHeight="342.0" prefWidth="394.0">
+                     <VBox prefHeight="342.0" prefWidth="742.0">
                         <children>
                            <Label fx:id="testLabel1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="275.0" style="-fx-font-weight: bold;" text="Current Meal:" textAlignment="CENTER" textFill="#573c2a">
                               <font>
                                  <Font size="24.0" />
                               </font>
                            </Label>
-                           <HBox maxHeight="148.0" maxWidth="323.0" minHeight="148.0" minWidth="323.0" prefHeight="148.0" prefWidth="323.0">
-                              <children>
-                                 <VBox maxHeight="159.0" maxWidth="159.0" prefHeight="159.0" prefWidth="159.0">
-                                    <children>
-                                       <Label fx:id="testLabel11" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="163.0" style="-fx-font-weight: bold;" text="Recipe Name" textAlignment="CENTER" textFill="#573c2a">
-                                          <font>
-                                             <Font size="16.0" />
-                                          </font>
-                                       </Label>
-                                       <Label fx:id="testLabel111" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="163.0" style="-fx-font-weight: bold;" text="Prep:" textAlignment="CENTER" textFill="#573c2a">
-                                          <font>
-                                             <Font size="16.0" />
-                                          </font>
-                                          <VBox.margin>
-                                             <Insets left="4.0" top="2.0" />
-                                          </VBox.margin>
-                                       </Label>
-                                       <Label fx:id="testLabel1111" layoutX="10.0" layoutY="52.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="163.0" style="-fx-font-weight: bold;" text="Cook:" textAlignment="CENTER" textFill="#573c2a">
-                                          <font>
-                                             <Font size="16.0" />
-                                          </font>
-                                          <VBox.margin>
-                                             <Insets left="4.0" top="2.0" />
-                                          </VBox.margin>
-                                       </Label>
-                                       <Label fx:id="testLabel11111" layoutX="14.0" layoutY="63.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="163.0" style="-fx-font-weight: bold;" text="Serves:" textAlignment="CENTER" textFill="#573c2a">
-                                          <font>
-                                             <Font size="16.0" />
-                                          </font>
-                                          <VBox.margin>
-                                             <Insets left="4.0" top="2.0" />
-                                          </VBox.margin>
-                                       </Label>
-                                    </children></VBox>
-                                 <Button maxHeight="148.0" maxWidth="148.0" minHeight="148.0" minWidth="148.0" mnemonicParsing="false" prefHeight="148.0" prefWidth="148.0" style="-fx-background-color: transparent; -fx-padding: 0;">
-                                    <graphic>
-                                       <ImageView fitHeight="148.0" fitWidth="148.0" preserveRatio="false">
-                                          <image>
-                                             <Image url="@images/ImagePlaceholder.png" />
-                                          </image>
-                                       </ImageView>
-                                    </graphic>
+                            <ScrollPane hbarPolicy="NEVER" prefHeight="196.0" prefWidth="682.0" style="-fx-background-color: #1e86 #1e864848;" vbarPolicy="ALWAYS">
+                                <content>
+                                    <VBox fx:id="SavedMeals" prefWidth="266.0" spacing="10" style="-fx-background-color: #1e8648;" />
+                                </content>
 
-                                    <HBox.margin>
-                                       <Insets left="1.0" right="6.0" />
-                                    </HBox.margin>
-                                 </Button>
-                              </children>
-                           </HBox>
-                           <AnchorPane prefHeight="52.0" prefWidth="323.0" />
+                            </ScrollPane>
+                           <AnchorPane prefHeight="11.0" prefWidth="682.0" />
                            <Label fx:id="testLabel12" layoutX="25.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="275.0" style="-fx-font-weight: bold;" text="Calories Today:" textAlignment="CENTER" textFill="#573c2a">
                               <font>
                                  <Font size="17.0" />
@@ -207,7 +164,7 @@
                                        <Font size="14.0" />
                                     </font>
                                  </Label>
-                                 <AnchorPane prefHeight="27.0" prefWidth="250.0" />
+                                 <AnchorPane prefHeight="27.0" prefWidth="94.0" />
                                  <Label fx:id="testLabel1211" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-font-weight: bold;" text="125 cal Left " textAlignment="CENTER" textFill="#573c2a">
                                     <font>
                                        <Font size="14.0" />
@@ -222,15 +179,6 @@
                            <Insets left="15.0" />
                         </padding></VBox>
                      <AnchorPane prefHeight="342.0" prefWidth="45.0" />
-                     <VBox layoutX="10.0" layoutY="10.0" prefHeight="342.0" prefWidth="332.0" style="-fx-background-color: #1e8648;">
-                        <children>
-                            <ScrollPane hbarPolicy="NEVER" prefHeight="361.0" prefWidth="249.0" style="-fx-background-color: #1e86 #1e864848;" vbarPolicy="ALWAYS">
-                                <content>
-                                    <VBox fx:id="SavedMeals" prefWidth="265.0" spacing="10" style="-fx-background-color: #1e8648;" />
-                                </content>
-
-                            </ScrollPane>
-                        </children></VBox>
                   </children>
                </HBox>
             </children></VBox>
