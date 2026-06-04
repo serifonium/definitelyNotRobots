@@ -29,6 +29,6 @@ public class AiTest {
 
         aiController.onChatbotInputButtonClick();
 
-        assertEquals("Type something first.", output.getText());
+        assertEquals("Type something or upload an image first.", output.getText());
     }
 }
