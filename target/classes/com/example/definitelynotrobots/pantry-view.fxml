@@ -98,7 +98,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="400.0" prefWidth="320.0">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#onAdd" text="+ Add Item">
+                  <Button mnemonicParsing="false" onMouseClicked="#onAdd" text="+ Add Item To Pantry">
                      <VBox.margin>
                         <Insets bottom="4.0" />
                      </VBox.margin>
@@ -128,52 +128,45 @@
                      <children>
                         <Label text="Item:" />
                         <Label text="Amount:" GridPane.rowIndex="1" />
-                        <TextField fx:id="itemNameField" onKeyPressed="#EnterToSave" promptText="Enter name of item here..." styleClass="green-input" GridPane.columnIndex="1" />
-                        <TextField fx:id="itemAmountField" onKeyPressed="#EnterToSave" promptText="Enter amount needed here..." styleClass="green-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="itemNameField" onKeyPressed="#EnterToSave" onKeyTyped="#onEdit" promptText="Enter name of item here..." styleClass="green-input" GridPane.columnIndex="1" />
+                        <TextField fx:id="itemAmountField" onKeyPressed="#EnterToSave" onKeyTyped="#onEdit" promptText="Enter amount needed here..." styleClass="green-input" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="Notes:" GridPane.rowIndex="3" />
-                        <TextArea fx:id="itemNotesField" prefHeight="200.0" prefWidth="200.0" styleClass="green-input" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextArea fx:id="itemNotesField" onKeyTyped="#onEdit" prefHeight="200.0" prefWidth="200.0" styleClass="green-input" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets top="3.0" />
                            </GridPane.margin>
                         </TextArea>
                         <Label text="Type:" GridPane.rowIndex="2" />
-                        <ChoiceBox fx:id="foodTypeField" prefHeight="26.0" prefWidth="224.0" styleClass="green-input" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <ChoiceBox fx:id="foodTypeField" onAction="#onEdit" prefHeight="26.0" prefWidth="224.0" styleClass="green-input" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <GridPane.margin>
                               <Insets bottom="1.0" top="1.0" />
                            </GridPane.margin>
                         </ChoiceBox>
                      </children>
                   </GridPane>
-                  <Button fx:id="markButton" mnemonicParsing="false" onMouseClicked="#markUnavailable" prefHeight="26.0" prefWidth="300.0" text="Move to Grocery List">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#onEditConfirm" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: #ff6600;" text="Save Changes">
-                     <VBox.margin>
-                        <Insets bottom="2.0" top="3.0" />
-                     </VBox.margin>
-                  </Button>
                   <GridPane prefHeight="30.0" prefWidth="327.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="277.0" />
-                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="28.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="293.0" minWidth="10.0" prefWidth="242.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="63.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onMouseClicked="#onDelete" prefHeight="25.0" prefWidth="25.0" text="T" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onMouseClicked="#onDelete" prefHeight="25.0" prefWidth="60.0" text="Delete" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="2.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#onCancel" prefHeight="25.0" prefWidth="272.0" text="Discard Changes">
+                        <Button fx:id="markButton" mnemonicParsing="false" onMouseClicked="#markUnavailable" prefHeight="25.0" prefWidth="237.0" text="Move to Grocery List">
                            <GridPane.margin>
                               <Insets left="3.0" />
                            </GridPane.margin>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
                   </GridPane>
                   <Button mnemonicParsing="false" onMouseClicked="#goToGroceryListView" prefHeight="25.0" prefWidth="300.0" text="Go To Grocery List">
                      <VBox.margin>

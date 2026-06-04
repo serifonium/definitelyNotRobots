@@ -96,9 +96,9 @@
             </opaqueInsets></AnchorPane>
       <HBox prefHeight="100.0" prefWidth="696.0">
          <children>
-              <ScrollPane fitToWidth="true" prefHeight="400.0" prefWidth="696.0" style="-fx-background-color: #eae8e2;">
+              <ScrollPane fitToWidth="true" prefHeight="480.0" prefWidth="696.0" style="-fx-background-color: #eae8e2;">
                   <content>
-                      <ListView fx:id="recipeListView" prefWidth="695.0" style="-fx-font-size: 18px; -fx-background-color: #eae8e2;" />
+                      <ListView fx:id="recipeListView" prefHeight="480.0" prefWidth="695.0" style="-fx-font-size: 18px; -fx-background-color: #eae8e2;" />
                   </content>
               </ScrollPane>
          </children>
