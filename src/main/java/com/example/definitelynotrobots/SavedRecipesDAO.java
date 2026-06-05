@@ -61,11 +61,10 @@ public class SavedRecipesDAO {
             System.err.println(ex);
         }
     }
-
     public Recipe getFirstRecipeInList(int userId) {
         List<Recipe> recipes = getSavedRecipesForUser(userId);
 
-        if (recipes.isEmpty()) { //checks if there are no recipes
+        if (recipes.isEmpty()) { //checks if there are no recipies
 
             Recipe noRecipe = new Recipe();
             noRecipe.setRecipeTitle("No recipes found. Please create your first recipe!");
@@ -101,8 +100,8 @@ public class SavedRecipesDAO {
                 recipe.setCookTime(rs.getInt("cookTime"));
                 recipe.setServings(rs.getInt("servings"));
                 recipe.setIsSaved(rs.getBoolean("isSaved"));
-                recipe.setIngredients("Ingredients:\n" + rs.getString("ingredients"));
-                recipe.setMethod("Method:\n" + rs.getString("method"));
+                recipe.setIngredients(rs.getString("ingredients"));
+                recipe.setMethod(rs.getString("method"));
                 recipes.add(recipe);
             }
 
