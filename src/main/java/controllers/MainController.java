@@ -3,26 +3,41 @@ package controllers;
 import com.example.definitelynotrobots.HelloApplication;
 import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.UserAccountDAO;
+import com.example.definitelynotrobots.SavedRecipesDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 
-public class MainController {
+public class MainController{
 
     @FXML
     public void initialize() throws IOException {
         SetName();
         ScaleMainView(1.6);
+        int userId = UserAccountDAO.currentAccount.getID();
+        Recipe recentRecipe = savedRecipesDAO.getFirstRecipeInList(userId);
+        recipeTitle.setText(recentRecipe.getRecipeTitle());
+        recipeIngredients.setText(recentRecipe.getIngredients());
+        recipeMethod.setText(recentRecipe.getMethod());
+        recipeServingsAndTime.setText("Servings: " + recentRecipe.getServings() + "| Cook Time: " + recentRecipe.getCookTime() + "| Prep Time: " + recentRecipe.getPrepTime());
+
     }
 
     public Label testLabel; //This label prints the "Welcome (user)!" text
+    public Label recipeTitle;
+    public Label recipeIngredients;
+    public Label recipeMethod;
+    public Label recipeServingsAndTime;
+    private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     public void SetName()
     {

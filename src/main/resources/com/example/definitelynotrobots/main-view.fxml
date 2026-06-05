@@ -145,9 +145,16 @@
                                  <Font size="24.0" />
                               </font>
                            </Label>
-                            <ScrollPane hbarPolicy="NEVER" prefHeight="196.0" prefWidth="682.0" style="-fx-background-color: #1e86 #1e864848;" vbarPolicy="ALWAYS">
+                            <ScrollPane hbarPolicy="NEVER" prefHeight="196.0" prefWidth="660.0" style="-fx-background-color: #eae8e2;" vbarPolicy="ALWAYS">
                                 <content>
-                                    <VBox fx:id="SavedMeals" prefWidth="266.0" spacing="10" style="-fx-background-color: #1e8648;" />
+                                   <VBox prefWidth="680.0" spacing="10" style="-fx-background-color: #eae8e2; -fx-border-color: #1e8648; -fx-border-width: 2;">
+                                      <Label fx:id="recipeTitle" style="=-fx-font-size: 15px;"/>
+                                      <Label fx:id="recipeServingsAndTime" style="=-fx-font-size: 14px;"/>
+                                      <Label text="Ingredients:" style="-fx-font-size: 14px;"/>
+                                      <Label fx:id="recipeIngredients" style="=-fx-font-size: 12px;"/>
+                                      <Label text="Method:" style="-fx-font-size: 14px;"/>
+                                      <Label fx:id="recipeMethod" style="=-fx-font-size: 12px;"/>
+                                   </VBox>
                                 </content>
 
                             </ScrollPane>

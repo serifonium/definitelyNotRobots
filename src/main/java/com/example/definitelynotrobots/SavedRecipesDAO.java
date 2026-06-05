@@ -61,6 +61,11 @@ public class SavedRecipesDAO {
             System.err.println(ex);
         }
     }
+    public Recipe getFirstRecipeInList(int userId){
+        List<Recipe> recipes = getSavedRecipesForUser(userId);
+        Recipe lastRecipe = recipes.getLast();
+        return lastRecipe;
+    }
 
 
     public List<Recipe> getSavedRecipesForUser(int userId) {
