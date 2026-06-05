@@ -51,8 +51,6 @@ public class MainController{
         mainRoot.setScaleY(scale);
     }
 
-
-
     public void goToGroceryList() throws IOException {
         Stage stage = (Stage) testLabel.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));

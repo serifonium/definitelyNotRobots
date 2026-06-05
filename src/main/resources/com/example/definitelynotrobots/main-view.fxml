@@ -140,20 +140,18 @@
                   <children>
                      <VBox prefHeight="342.0" prefWidth="742.0">
                         <children>
-                           <Label fx:id="testLabel1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="275.0" style="-fx-font-weight: bold;" text="Current Meal:" textAlignment="CENTER" textFill="#573c2a">
+                           <Label fx:id="testLabel1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="275.0" style="-fx-font-weight: bold;" text="Most Recent Meal:" textAlignment="CENTER" textFill="#573c2a">
                               <font>
                                  <Font size="24.0" />
                               </font>
                            </Label>
                             <ScrollPane hbarPolicy="NEVER" prefHeight="196.0" prefWidth="660.0" style="-fx-background-color: #eae8e2;" vbarPolicy="ALWAYS">
                                 <content>
-                                   <VBox prefWidth="680.0" spacing="10" style="-fx-background-color: #eae8e2; -fx-border-color: #1e8648; -fx-border-width: 2;">
-                                      <Label fx:id="recipeTitle" style="=-fx-font-size: 15px;"/>
-                                      <Label fx:id="recipeServingsAndTime" style="=-fx-font-size: 14px;"/>
-                                      <Label text="Ingredients:" style="-fx-font-size: 14px;"/>
-                                      <Label fx:id="recipeIngredients" style="=-fx-font-size: 12px;"/>
-                                      <Label text="Method:" style="-fx-font-size: 14px;"/>
-                                      <Label fx:id="recipeMethod" style="=-fx-font-size: 12px;"/>
+                                   <VBox prefHeight="427.0" prefWidth="667.0" spacing="10" style="-fx-background-color: #eae8e2; -fx-border-color: #1e8648; -fx-border-width: 2;">
+                                      <Label fx:id="recipeTitle" style="=-fx-font-size: 15px;" />
+                                      <Label fx:id="recipeServingsAndTime" style="=-fx-font-size: 14px;" />
+                                      <Label fx:id="recipeIngredients" style="=-fx-font-size: 12px;" />
+                                      <Label fx:id="recipeMethod" style="=-fx-font-size: 12px;" />
                                    </VBox>
                                 </content>
 

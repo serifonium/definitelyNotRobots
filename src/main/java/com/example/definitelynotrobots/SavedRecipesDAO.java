@@ -61,10 +61,24 @@ public class SavedRecipesDAO {
             System.err.println(ex);
         }
     }
-    public Recipe getFirstRecipeInList(int userId){
+
+    public Recipe getFirstRecipeInList(int userId) {
         List<Recipe> recipes = getSavedRecipesForUser(userId);
-        Recipe lastRecipe = recipes.getLast();
-        return lastRecipe;
+
+        if (recipes.isEmpty()) { //checks if there are no recipes
+
+            Recipe noRecipe = new Recipe();
+            noRecipe.setRecipeTitle("No recipes found. Please create your first recipe!");
+            noRecipe.setPrepTime(0);
+            noRecipe.setCookTime(0);
+            noRecipe.setServings(0);
+            noRecipe.setIngredients("");
+            noRecipe.setMethod("");
+
+            return noRecipe;
+        }
+
+        return recipes.getLast();
     }
 
 
@@ -87,8 +101,8 @@ public class SavedRecipesDAO {
                 recipe.setCookTime(rs.getInt("cookTime"));
                 recipe.setServings(rs.getInt("servings"));
                 recipe.setIsSaved(rs.getBoolean("isSaved"));
-                recipe.setIngredients(rs.getString("ingredients"));
-                recipe.setMethod(rs.getString("method"));
+                recipe.setIngredients("Ingredients:\n" + rs.getString("ingredients"));
+                recipe.setMethod("Method:\n" + rs.getString("method"));
                 recipes.add(recipe);
             }
 
