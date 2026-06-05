@@ -38,7 +38,7 @@ public class ProfileController extends BaseController {
                 fitnessDAO.getByUserID(UserAccountDAO.currentAccount.getID());
 
         if (goal != null) {
-            calorieLabel.setText("Calories: " + goal.getCalories() + " kcal");
+            calorieLabel.setText("Calories: " + goal.getCalories() + " kcal/day");
             carbLabel.setText("Carbs: " + goal.getCarbs()+ "g");
             fatLabel.setText("Fats: " + goal.getFats() + "g");
             proteinLabel.setText("Protein: " + goal.getProtein() + "g");

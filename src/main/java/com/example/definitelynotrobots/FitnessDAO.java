@@ -97,7 +97,7 @@ public class FitnessDAO {
                         resultSet.getDouble("Calories"),
                         resultSet.getDouble("Carbs"),
                         resultSet.getDouble("Fats"),
-                        resultSet.getDouble("Proteins")
+                        resultSet.getDouble("Protein")
                 );
             }
         } catch (SQLException ex) {

@@ -86,23 +86,41 @@
                 <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
         </VBox>
-        <VBox alignment="CENTER" prefWidth="500" spacing="20" style="-fx-padding: 40;">
-            <Label text="Enter your calorie goal" />
-            <TextField fx:id="CalorieInput" maxHeight="20" maxWidth="100" promptText="Calorie Goal..." />
+        <VBox alignment="CENTER_LEFT" prefWidth="500" spacing="15" style="-fx-padding: 40;">
 
-            <Label text="Enter your Carbohydrate goal" />
-            <TextField fx:id="CarbsInput" maxHeight="20" maxWidth="100" promptText="Carbs Goal..." />
 
-            <Label text="Enter your Fats goal" />
-            <TextField fx:id="FatInput" maxHeight="20" maxWidth="100" promptText="Fat Goal..." />
+            <Label text="1. Enter your weight and height" />
+            <GridPane hgap="10" vgap="10">
 
-            <Label text="Enter your Protein goal" />
-            <TextField fx:id="ProteinInput" maxHeight="20" maxWidth="100" promptText="Protein Goal..." />
-            <Label fx:id="errorText" text="" textFill="RED" />
-        </VBox>
-        <VBox alignment="CENTER" prefHeight="480.0" prefWidth="270.0">
+                <Label text="Calories:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="Caloriesgoal" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="kcal" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
 
-            <Button fx:id="profileButton" maxHeight="20" maxWidth="100" onAction="#onSubmitClick" text="submit" />
+                <Label text="Target Weight:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="targetWeightField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="kg" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+            </GridPane>
+
+            <Label text="2. (Optional): you can input a custom fitness plan instead" />
+            <GridPane hgap="10" vgap="10">
+
+                <Label text="Fats:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="targetfats" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="g" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+
+                <Label text="Carbohydrates:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="targetcarbs" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="g" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+
+                <Label text="Protein:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="targetproteins" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="g" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+
+
+            </GridPane>
+            <Button fx:id="savedetails" onAction="#onSaveDetails" text="Set Goals"/>
+
         </VBox>
     </children>
 </HBox>

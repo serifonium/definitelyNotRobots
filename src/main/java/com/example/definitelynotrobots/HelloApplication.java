@@ -32,7 +32,7 @@ public class HelloApplication extends Application {
 //        userAccountDAO.dropTable();
 
         FitnessDAO fitnessDAO = new FitnessDAO();
-//        fitnessDAO.dropTable();
+ //       fitnessDAO.dropTable();
 
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
