@@ -145,40 +145,18 @@
                                  <Font size="24.0" />
                               </font>
                            </Label>
-                            <ScrollPane hbarPolicy="NEVER" prefHeight="196.0" prefWidth="660.0" style="-fx-background-color: #eae8e2;" vbarPolicy="ALWAYS">
+                            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" maxHeight="1500.0" prefHeight="309.0" prefWidth="682.0" style="-fx-background-color: #eae8e2;" vbarPolicy="ALWAYS">
                                 <content>
-                                   <VBox prefHeight="427.0" prefWidth="667.0" spacing="10" style="-fx-background-color: #eae8e2; -fx-border-color: #1e8648; -fx-border-width: 2;">
-                                      <Label fx:id="recipeTitle" style="=-fx-font-size: 15px;" />
-                                      <Label fx:id="recipeServingsAndTime" style="=-fx-font-size: 14px;" />
-                                      <Label fx:id="recipeIngredients" style="=-fx-font-size: 12px;" />
-                                      <Label fx:id="recipeMethod" style="=-fx-font-size: 12px;" />
+                                   <VBox spacing="10" style="-fx-background-color: #eae8e2; -fx-border-color: #1e8648; -fx-border-width: 2;">
+                                      <Label fx:id="recipeTitle" style="=-fx-font-size: 15px;" wrapText="true" prefWidth="650.0"/>
+                                      <Label fx:id="recipeServingsAndTime" style="=-fx-font-size: 14px;" wrapText="true" prefWidth="650.0"/>
+                                      <Label fx:id="recipeIngredients" style="=-fx-font-size: 12px;" wrapText="true" prefWidth="650.0"/>
+                                      <Label fx:id="recipeMethod" style="=-fx-font-size: 12px;" wrapText="true" prefWidth="650.0"/>
                                    </VBox>
                                 </content>
 
                             </ScrollPane>
                            <AnchorPane prefHeight="11.0" prefWidth="682.0" />
-                           <Label fx:id="testLabel12" layoutX="25.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="275.0" style="-fx-font-weight: bold;" text="Calories Today:" textAlignment="CENTER" textFill="#573c2a">
-                              <font>
-                                 <Font size="17.0" />
-                              </font>
-                           </Label>
-                           <HBox prefHeight="19.0" prefWidth="323.0">
-                              <children>
-                                 <Label fx:id="testLabel121" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="113.0" style="-fx-font-weight: bold;" text=" 875/1000 cal" textAlignment="CENTER" textFill="#573c2a">
-                                    <font>
-                                       <Font size="14.0" />
-                                    </font>
-                                 </Label>
-                                 <AnchorPane prefHeight="27.0" prefWidth="94.0" />
-                                 <Label fx:id="testLabel1211" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="110.0" style="-fx-font-weight: bold;" text="125 cal Left " textAlignment="CENTER" textFill="#573c2a">
-                                    <font>
-                                       <Font size="14.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </HBox>
-                           <ProgressBar prefHeight="18.0" prefWidth="317.0" progress="0.85" style="-fx-accent: #fb7827;">
-                           </ProgressBar>
                         </children>
                         <padding>
                            <Insets left="15.0" />
