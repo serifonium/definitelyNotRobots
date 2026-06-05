@@ -41,14 +41,27 @@ import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.RecipeParser;
 import com.example.definitelynotrobots.UserAccountDAO;
 
+/**
+ * Controls user input to a GPT-4o model.
+ */
 public class AiController {
+    /**
+     * The text area for a user to input recipe requests.
+     */
     @FXML
     private TextArea chatbotInput;
 
+    /**
+     * The text area for the GPT-4o model to output recipe details.
+     */
     @FXML
     private TextArea chatbotOutput;
 
+    /**
+     * The outputted recipe details.
+     */
     public String generatedRecipeText;
+
 
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
@@ -56,6 +69,9 @@ public class AiController {
     private ImageView uploadedImagePreview;
     private File selectedImageFile;
 
+    /**
+     * Generate a recipe from the user input.
+     */
     @FXML
     public void onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
@@ -138,6 +154,9 @@ public class AiController {
         }
     }
 
+    /**
+     * Generate a recipe from an uploaded image.
+     */
     @FXML
     public void onUploadImageClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -168,6 +187,9 @@ public class AiController {
         chatbotOutput.setText("Image uploaded: " + file.getName());
     }
 
+    /**
+     * Format an uploaded image.
+     */
     private String imageFileToDataUrl(File imageFile) throws IOException {
         String mimeType = Files.probeContentType(imageFile.toPath());
 
@@ -181,8 +203,9 @@ public class AiController {
         return "data:" + mimeType + ";base64," + base64Image;
     }
 
-
-
+    /**
+     * Generate a recipe from the user input.
+     */
     @FXML
     private void openRecipeView() {
         String aiText = chatbotOutput.getText();
