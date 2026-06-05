@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controls the grocery list page for the user.
+ */
 public class GroceryListController extends BaseController {
     @FXML
     private ListView<GroceryItem> groceryListView;
@@ -31,6 +34,9 @@ public class GroceryListController extends BaseController {
         groceryRoot.setScaleY(scale);
     }
 
+    /**
+     * Select a grocery item.
+     */
     @FXML
     private void selectGroceryItem(GroceryItem groceryItem) {
         groceryListView.getSelectionModel().select(groceryItem);
@@ -40,6 +46,43 @@ public class GroceryListController extends BaseController {
         foodTypeField.setValue(groceryItem.getFoodType());
     }
 
+    /**
+     * Edit an item on changing details.
+     */
+    @FXML
+    private void onEdit() {
+        errorText.setText("");
+        if(groceryListView.getItems().isEmpty()) {
+            errorText.setText("Create an item to edit it's properties");
+            return;
+        }
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
+            return;
+        }
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
+
+        GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        groceryListDAO.updateItem(selectedItem);
+        syncGroceryList();
+
+        groceryListView.getSelectionModel().select(selectedItem);
+    }
+
+    /**
+     * Confirm an item edit.
+     */
     @FXML
     private void onEditConfirm() {
         errorText.setText("");
@@ -55,7 +98,6 @@ public class GroceryListController extends BaseController {
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem == null) return;
 
-
         selectedItem.setName(itemNameField.getText());
         selectedItem.setAmount(amount);
         selectedItem.setAmountType(amountType);
@@ -67,6 +109,9 @@ public class GroceryListController extends BaseController {
         selectGroceryItem(selectedItem);
     }
 
+    /**
+     * Render a cell in the list.
+     */
     private ListCell<GroceryItem> renderCell(ListView<GroceryItem> contactListView) {
         return new ListCell<>() {
             private void onContactSelected(MouseEvent mouseEvent) {
@@ -88,6 +133,9 @@ public class GroceryListController extends BaseController {
         };
     }
 
+    /**
+     * Remove an item from the database.
+     */
     @FXML
     private void onDelete() {
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
@@ -97,6 +145,9 @@ public class GroceryListController extends BaseController {
         }
     }
 
+    /**
+     * Add an item to the database.
+     */
     @FXML
     private void onAdd() {
         final String DEFAULT_NAME = "Name";
@@ -112,6 +163,9 @@ public class GroceryListController extends BaseController {
         itemNameField.requestFocus();
     }
 
+    /**
+     * Cancel changes on an item.
+     */
     @FXML
     private void onCancel() {
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
@@ -136,9 +190,12 @@ public class GroceryListController extends BaseController {
             selectGroceryItem(firstItem);
         }
 
-//        ScaleMainView(1.65);
+        errorText.setText("");
     }
 
+    /**
+     * Reload the list of items.
+     */
     private void syncGroceryList() {
         groceryListView.getItems().clear();
         List<GroceryItem> groceries = groceryListDAO.getByUserID(UserAccountDAO.currentAccount.getID());
@@ -148,6 +205,9 @@ public class GroceryListController extends BaseController {
         }
     }
 
+    /**
+     * Move an item to the pantry.
+     */
     public void onPushToPantry() {
         GroceryItem selectedItem = groceryListView.getSelectionModel().getSelectedItem();
         if (selectedItem == null) return;

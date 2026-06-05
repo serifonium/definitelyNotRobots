@@ -1,55 +1,47 @@
 package controllers;
 
 import com.example.definitelynotrobots.HelloApplication;
+import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.UserAccountDAO;
+import com.example.definitelynotrobots.SavedRecipesDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 
-public class MainController {
+public class MainController{
 
     @FXML
     public void initialize() throws IOException {
         SetName();
-        SetSavedMeals();
-        ScaleMainView(1.65);
+        ScaleMainView(1.6);
+        int userId = UserAccountDAO.currentAccount.getID();
+        Recipe recentRecipe = savedRecipesDAO.getFirstRecipeInList(userId);
+        recipeTitle.setText(recentRecipe.getRecipeTitle());
+        recipeIngredients.setText(recentRecipe.getIngredients());
+        recipeMethod.setText(recentRecipe.getMethod());
+        recipeServingsAndTime.setText("Servings: " + recentRecipe.getServings() + "| Cook Time: " + recentRecipe.getCookTime() + "| Prep Time: " + recentRecipe.getPrepTime());
+
     }
 
     public Label testLabel; //This label prints the "Welcome (user)!" text
+    public Label recipeTitle;
+    public Label recipeIngredients;
+    public Label recipeMethod;
+    public Label recipeServingsAndTime;
+    private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
     public void SetName()
     {
         testLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getFirstname() + "!"); //prints the welcome text
-    }
-
-    public VBox SavedMeals; //This Vbox holds the list of saved meals.
-
-    public void SetSavedMeals() throws IOException {
-        //TODO LATER: Change how this works so it actually prints out saved meals in the database.
-        SavedMeals.getChildren().clear();
-
-        for (int i = 0; i < 8; i++) {
-
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/definitelynotrobots/meal-template.fxml")
-            );
-
-            HBox meal = loader.load();
-
-            meal.setStyle("-fx-background-color: #1e8648; -fx-padding: 10;");
-
-            Label label = new Label("Item " + i);
-            meal.getChildren().add(label);
-
-            SavedMeals.getChildren().add(meal);
-        }
     }
 
     public HBox mainRoot; //This Hbox is the main parent.

@@ -4,16 +4,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Access Object for fitness goals that the user has set.
+ * */
 public class FitnessDAO {
-    public static FitnessGoal currentFitnessgoal;
-
+    /**
+     * The connection to the database.
+     * */
     private final Connection connection;
 
-    public FitnessDAO() {
-        connection = DatabaseConnection.getInstance();
-        createTable();
-    }
-
+    /**
+     * Remove the goals table for debugging purposes.
+     * */
     public FitnessDAO dropTable() {
         try {
             PreparedStatement insertStatement = connection.prepareStatement(
@@ -26,6 +28,9 @@ public class FitnessDAO {
         return null;
     }
 
+    /**
+     * Creates the table for fitness goals.
+     * */
     public void createTable() {
         try {
             Statement createTable = connection.createStatement();
@@ -44,6 +49,18 @@ public class FitnessDAO {
         }
     }
 
+    /**
+     * Initializes connection and creates the table.
+     * */
+    public FitnessDAO() {
+        connection = DatabaseConnection.getInstance();
+        createTable();
+    }
+
+    /**
+     * Insert a fitness goal into the database.
+     * @param fitnessgoal The fitness goal to insert into the database.
+     * */
     public void insertFitnessgoal(FitnessGoal fitnessgoal) {
         try {
                 PreparedStatement insertStatement = connection.prepareStatement(
@@ -61,6 +78,10 @@ public class FitnessDAO {
         }
     }
 
+    /**
+     * Get all fitness goal from the database.
+     * @return A list of all returned fitness goals.
+     * */
     public List<FitnessGoal> getAllfitnessgoals() {
         List<FitnessGoal> goals = new ArrayList<>();
 
@@ -85,6 +106,11 @@ public class FitnessDAO {
         return goals;
     }
 
+    /**
+     * Get a fitness goal from the database with the matching userID.
+     * @param userID The id of the user to get goals from.
+     * @return The returned fitness goals from the user ID.
+     * */
     public FitnessGoal getByUserID(Integer userID) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Fitnessgoals WHERE userID = ?");

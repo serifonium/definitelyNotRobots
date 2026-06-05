@@ -74,7 +74,7 @@ public class SignUpController {
 
     @FXML
     public void initialize() throws IOException {
-        ScaleMainView(1.5);
+        ScaleMainView(1.6);
     }
 
     public HBox signupRoot; //This Hbox is the main parent.

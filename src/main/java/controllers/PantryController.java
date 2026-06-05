@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controls the pantry list page for the user.
+ */
 public class PantryController extends BaseController {
     @FXML
     private ListView<PantryItem> pantryListView;
@@ -27,6 +30,9 @@ public class PantryController extends BaseController {
 
     public HBox pantryRoot;
 
+    /**
+     * Select a pantry item.
+     */
     @FXML
     private void selectPantryItem(PantryItem pantryItem) {
         pantryListView.getSelectionModel().select(pantryItem);
@@ -35,6 +41,9 @@ public class PantryController extends BaseController {
         itemNotesField.setText(pantryItem.getNotes());
         foodTypeField.setValue(pantryItem.getFoodType());
     }
+    /**
+     * Reload the list of items.
+     */
     private void syncPantry() {
         pantryListView.getItems().clear();
         List<PantryItem> groceries = pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID());
@@ -58,8 +67,13 @@ public class PantryController extends BaseController {
         if (firstContact != null) {
             selectPantryItem(firstContact);
         }
+
+        errorText.setText("");
     }
 
+    /**
+     * Reload the list of items.
+     */
     private ListCell<PantryItem> renderCell(ListView<PantryItem> contactListView) {
         return new ListCell<>() {
             private void onItemSelected(MouseEvent mouseEvent) {
@@ -88,6 +102,9 @@ public class PantryController extends BaseController {
     public void EnterToSave(javafx.scene.input.KeyEvent event) {
         if(event.getCode().equals(KeyCode.ENTER)) onEditConfirm();
     }
+    /**
+     * Add an item to the database.
+     */
     public void onAdd() {
         final String DEFAULT_NAME = "Name";
         final Double DEFAULT_AMOUNT = 0d;
@@ -101,6 +118,43 @@ public class PantryController extends BaseController {
         selectPantryItem(pantryDAO.getByUserID(UserAccountDAO.currentAccount.getID()).getLast());
         itemNameField.requestFocus();
     }
+    /**
+     * Edit an item on changing details.
+     */
+    @FXML
+    private void onEdit() {
+        errorText.setText("");
+        if(pantryListView.getItems().isEmpty()) {
+            errorText.setText("Create an item to edit its properties");
+            return;
+        }
+        boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
+        if(!amountIsCorrect) {
+            errorText.setText("Amount field must be an integer with optional unit");
+            return;
+        }
+        Double amount = Double.parseDouble(itemAmountField.getText().replaceAll("[a-zA-Z]*", "").replaceAll(" +", ""));
+        String amountType = itemAmountField.getText().replaceAll("[0-9.]+", "").replaceAll(" +", "");
+        if(amountType.isEmpty()) amountType = "x";
+
+        PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) return;
+
+
+        selectedItem.setName(itemNameField.getText());
+        selectedItem.setAmount(amount);
+        selectedItem.setAmountType(amountType);
+        selectedItem.setNotes(itemNotesField.getText());
+        selectedItem.setFoodType(foodTypeField.getValue());
+
+        pantryDAO.updateItem(selectedItem);
+        syncPantry();
+
+        pantryListView.getSelectionModel().select(selectedItem);
+    }
+    /**
+     * Confirm an item edit.
+     */
     public void onEditConfirm() {
         errorText.setText("");
         boolean amountIsCorrect = itemAmountField.getText().matches("[0-9.]+ ?[a-zA-Z]*");
@@ -126,12 +180,18 @@ public class PantryController extends BaseController {
         syncPantry();
         selectPantryItem(selectedItem);
     }
+    /**
+     * Cancel changes on an item.
+     */
     public void onCancel() {
         PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             selectPantryItem(selectedItem);
         }
     }
+    /**
+     * Remove an item from the database.
+     */
     public void onDelete() {
         PantryItem selectedItem = pantryListView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
