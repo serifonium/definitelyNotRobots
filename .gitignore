@@ -44,3 +44,4 @@ build/
 
 /target/
 /target/test-classes
+/target/classes
