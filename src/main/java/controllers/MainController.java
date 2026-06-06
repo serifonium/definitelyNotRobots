@@ -13,15 +13,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 /**
  * Controller for the home page of the application.
  * */
-public class MainController {
+public class MainController extends BaseController{
+    /**
+     Parent node for all elements.
+     **/
+    public HBox mainRoot;
 
     @FXML
     public void initialize() throws IOException {
         SetName();
-        ScaleMainView(1.6);
+        init(mainRoot);
         int userId = UserAccountDAO.currentAccount.getID();
         Recipe recentRecipe = savedRecipesDAO.getFirstRecipeInList(userId);
         recipeTitle.setText(recentRecipe.getRecipeTitle());
@@ -67,61 +72,5 @@ public class MainController {
     public void SetName()
     {
         welcomeLabel.setText("Welcome, " + UserAccountDAO.currentAccount.getFirstname() + "!"); //prints the welcome text
-    }
-
-    /**
-     * Parent node for all elements.
-     * */
-    public HBox mainRoot; //This Hbox is the main parent.
-/// TODO LATER: ADD DESCRIPTION for ALL SCALE FUNCTIONS
-    private void ScaleMainView(double scale) {
-        mainRoot.setScaleX(scale); //Scales root parent
-        mainRoot.setScaleY(scale);
-    }
-
-    public void goToGroceryList() throws IOException {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grocery-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToFitnessTargets() throws IOException{
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fitness-targets-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToPreferences() throws IOException {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("preferences-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public void goToProfile() throws IOException {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Profile-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    public void goToSavedRecipeView() throws IOException {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("saved-recipes-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToAIPage() throws IOException {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(HelloApplication.class.getResource("ai-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-    public void goToHomeView() throws IOException {
-        Stage stage = (Stage) welcomeLabel.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
     }
 }
