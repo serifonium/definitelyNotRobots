@@ -18,15 +18,39 @@ import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelloController extends BaseController {
+/**
+ * Controller for the login page of the application.
+ * */
+public class LoginController extends BaseController {
+    /**
+     * DAO for all user accounts.
+     * */
     private final UserAccountDAO userAccountDAO = new UserAccountDAO();
 
+    /**
+     * Button to sign in.
+     * */
     @FXML
     public Button signInButton;
+
+    /**
+     * Input text box for the user to input a password.
+     * */
     public PasswordField passwordInput;
+
+    /**
+     * Input text box for the user to input a username.
+     * */
     public TextField usernameInput;
+
+    /**
+     * Text label for error feedback.
+     * */
     public Label errorText;
 
+    /**
+     * Attempt to log the user in with the given details.
+     * */
     @FXML
     protected void onLoginButtonClick() throws IOException {
         String inputUsername = usernameInput.getText();
@@ -49,10 +73,9 @@ public class HelloController extends BaseController {
         stage.setScene(scene);
     }
 
-    public void handleArrowNavigation(KeyEvent event) {
-
-    }
-
+    /**
+     * Redirect the user to the sign-up page.
+     * */
     @FXML
     protected void onSignUpButtonClick() throws IOException {
         Stage stage = (Stage) signInButton.getScene().getWindow();
@@ -61,6 +84,9 @@ public class HelloController extends BaseController {
         stage.setScene(scene);
     }
 
+    /**
+     * Handle the user's arrow inputs to navigate.
+     * */
     public void handleArrowNavigation(javafx.scene.input.KeyEvent event) {
         if(!event.getCode().getName().equals("Enter") && !event.getCode().getName().equals("Down") && !event.getCode().getName().equals("Up")) return;
 
@@ -82,16 +108,11 @@ public class HelloController extends BaseController {
         nextNode.requestFocus();
     }
 
+    /**
+     * Parent node for all elements.
+     * */
     public HBox helloRoot; //This Hbox is the main parent.
     public void initialize() {
         init(helloRoot);
-//        ScaleMainView(1.5);
-    }
-
-
-
-    private void ScaleMainView(double scale) {
-        helloRoot.setScaleX(scale); //Scales root parent
-        helloRoot.setScaleY(scale);
     }
 }
