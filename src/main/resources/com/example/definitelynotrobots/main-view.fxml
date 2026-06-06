@@ -102,7 +102,7 @@
    <VBox alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="696.0">
          <HBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="78.0" prefWidth="696.0">
             <children>
-            <Label fx:id="testLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Welcome, ________!" textAlignment="CENTER" textFill="#573c2a">
+            <Label fx:id="welcomeLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="325.0" style="-fx-font-weight: bold;" text="Welcome, ________!" textAlignment="CENTER" textFill="#573c2a">
                 <font>
                      <Font size="36.0" />
                   </font>
