@@ -30,5 +30,5 @@ public class UserPreferenceTest {
     @Test
     public void testSetContent() { userPreference.setContent("Dairy"); assertEquals("Dairy", userPreference.getContent()); }
     @Test
-    public void testSetPreferenceType() { userPreference.setPreferenceType(PreferenceTypeEnum.Inclusion); assertEquals(PreferenceTypeEnum.Inclusion, userPreference.getPreferenceType()); }
+    public void testSetPreferenceType() { userPreference.setPreferenceType(PreferenceTypeEnum.Include); assertEquals(PreferenceTypeEnum.Include, userPreference.getPreferenceType()); }
 }
