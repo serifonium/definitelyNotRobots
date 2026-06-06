@@ -17,13 +17,26 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for the saved recipes page.
+ * */
 public class SavedRecipesController extends BaseController {
 
-    @FXML private ListView<Recipe> recipeListView;
-    public HBox RecipesRoot;
+    /**
+     * Controller for the saved recipes page.
+     * */
+    @FXML
+    private ListView<Recipe> recipeListView;
 
+    /**
+     * DAO for all saved recipes.
+     * */
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
+    /**
+     * Parent node for all elements.
+     * */
+    public HBox RecipesRoot;
     @FXML
     public void initialize() {
         init(RecipesRoot);
@@ -55,6 +68,9 @@ public class SavedRecipesController extends BaseController {
         });
     }
 
+    /**
+     * Open a saved recipe.
+     * */
     private void openRecipe(Recipe recipe) {
         try {
             FXMLLoader loader = new FXMLLoader(
