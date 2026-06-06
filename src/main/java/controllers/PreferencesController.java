@@ -14,18 +14,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Controller for the user preferences page.
+ * */
 public class PreferencesController extends BaseController {
+    /**
+     * DAO for all saved user preferences.
+     * */
     public UserPreferenceDAO userPreferenceDAO = new UserPreferenceDAO();
+    /**
+     * DAO for all saved user accounts.
+     * */
     public UserAccountDAO userAccountDAO = new UserAccountDAO();
 
+    /**
+     * Text area for the user's preferences.
+     * */
     @FXML
-    public Button backButton;
     public TextArea preferenceList;
+
+    /**
+     * Dropdown to choose the preference type.
+     * */
     public ChoiceBox<PreferenceTypeEnum> preferenceTypeField;
+
+    /**
+     * Input text area for the user's preference item.
+     * */
     public TextField preferenceContentField;
+
+    /**
+     * Text label for error feedback.
+     * */
     public Label errorText;
 
-
+    /**
+     * Update the preference list text area with the latest details.
+     * */
     public void updatePreferenceList() {
         List<UserPreference> preferences = userPreferenceDAO.getByUserID(UserAccountDAO.currentAccount.getID());
 
@@ -38,6 +63,9 @@ public class PreferencesController extends BaseController {
         preferenceList.setText(contents.toString());
     }
 
+    /**
+     * Parent node for all elements.
+     * */
     public HBox PreferencesRoot; //This Hbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
     public void initialize() {
@@ -48,6 +76,9 @@ public class PreferencesController extends BaseController {
         updatePreferenceList();
     }
 
+    /**
+     * Add a preference to the database.
+     * */
     public void onAdd() {
         PreferenceTypeEnum preferenceType = preferenceTypeField.getValue();
         String preferenceContent = preferenceContentField.getText();
