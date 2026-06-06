@@ -11,7 +11,7 @@ public class UserPreferenceTest {
 
     @BeforeEach
     public void setUp() {
-        userPreference = new UserPreference(1, 2,"Gluten", PreferenceTypeEnum.Intolerant);
+        userPreference = new UserPreference(1, 2,"Gluten", PreferenceTypeEnum.Exclude);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class UserPreferenceTest {
     @Test
     public void testGetContent() { assertEquals("Gluten", userPreference.getContent()); }
     @Test
-    public void testGetPreferenceType() { assertEquals(PreferenceTypeEnum.Intolerant, userPreference.getPreferenceType()); }
+    public void testGetPreferenceType() { assertEquals(PreferenceTypeEnum.Exclude, userPreference.getPreferenceType()); }
 
     @Test
     public void testSetID() { userPreference.setID(7); assertEquals(7, userPreference.getID()); }
