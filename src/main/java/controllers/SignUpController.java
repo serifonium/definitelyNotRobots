@@ -17,17 +17,48 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Controller for the sign-up page.
+ * */
 public class SignUpController {
+    /**
+     * DAO for all saved user accounts.
+     * */
     private final UserAccountDAO userAccountDAO = new UserAccountDAO();
 
+    /**
+     * Input text field for the username.
+     * */
     public TextField usernameInput;
+
+    /**
+     * Input text field for the password.
+     * */
     public PasswordField passwordInput;
+
+    /**
+     * Input text field for the first name.
+     * */
     public TextField firstnameInput;
+
+    /**
+     * Input text field for the last name.
+     * */
     public TextField lastnameInput;
-    public PasswordField confirmationInput;
+
+    /**
+     * Button to sign in with the inputted details.
+     * */
     public Button signInButton;
+
+    /**
+     * Text label for error feedback.
+     * */
     public Label errorText;
 
+    /**
+     * Attempt to sign the user up with the given details.
+     * */
     public void onSignUpButtonClick() throws IOException {
         String inputUsername = usernameInput.getText();
         String inputPassword = passwordInput.getText();
@@ -43,6 +74,9 @@ public class SignUpController {
         goToSignIn();
     }
 
+    /**
+     * Redirect the user to the login page.
+     * */
     public void goToSignIn() throws IOException {
         Stage stage = (Stage) signInButton.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
@@ -50,6 +84,9 @@ public class SignUpController {
         stage.setScene(scene);
     }
 
+    /**
+     * Handle the user's arrow inputs to navigate.
+     * */
     public void handleArrowNavigation(javafx.scene.input.KeyEvent event) {
         if(!event.getCode().getName().equals("Enter") && !event.getCode().getName().equals("Down") && !event.getCode().getName().equals("Up")) return;
 
@@ -72,13 +109,14 @@ public class SignUpController {
         nextNode.requestFocus();
     }
 
+    /**
+     * Parent node for all elements.
+     * */
+    public HBox signupRoot; //This Hbox is the main parent.
     @FXML
     public void initialize() throws IOException {
         ScaleMainView(1.6);
     }
-
-    public HBox signupRoot; //This Hbox is the main parent.
-
 
     private void ScaleMainView(double scale) {
         signupRoot.setScaleX(scale); //Scales root parent
