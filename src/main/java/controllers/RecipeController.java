@@ -16,45 +16,115 @@ import javafx.scene.control.TextField;
 
 import javafx.scene.control.Label;
 
-
+/**
+ * Controller for each recipe page.
+ * */
 public class RecipeController extends BaseController {
+    /**
+     * Button to redirect to the home page.
+     * */
     @FXML
     public Button homeButton;
+
+    /**
+     * Button to redirect to the saved recipes page.
+     * */
     @FXML
     public Button saveRecipeButton;
-    @FXML
-    public Button printButton;
+
+    /**
+     * Button to redirect to the profile page.
+     * */
     @FXML
     public Button profileButton;
+
+    /**
+     * Button to redirect to the AI page.
+     * */
     @FXML
     public Button aiButton;
+
+    /**
+     * Button to redirect to the pantry page.
+     * */
     @FXML
     public Button pantryButton;
+
+    /**
+     * Button to redirect to the grocery list page.
+     * */
     @FXML
     public Button groceryListButton;
+
+    /**
+     * Button to redirect to the saved recipes page.
+     * */
     @FXML
     public Button savedRecipesButton;
+
+    /**
+     * Button to redirect to the fitness targets page.
+     * */
     @FXML
     public Button fitnessTargetsButton;
+
+    /**
+     * Button to redirect to the preferences page.
+     * */
     @FXML
     public Button preferencesButton;
 
-    @FXML
-    public TextField recipeText;
+    /**
+     * Text label to display the title of the recipe.
+     * */
     @FXML private Label recipeTitleLabel;
+
+    /**
+     * Text label to display the ingredients of the recipe.
+     * */
     @FXML private Label ingredientsLabel;
+
+    /**
+     * Text label to display the method of the recipe.
+     * */
     @FXML private Label methodLabel;
+
+    /**
+     * Text label to display the prep time of the recipe.
+     * */
     @FXML private Label prepTimeLabel;
+
+    /**
+     * Text label to display the title of the recipe.
+     * */
     @FXML private Label cookTimeLabel;
+
+    /**
+     * Text label to display the servings of the recipe.
+     * */
     @FXML private Label servingsLabel;
 
+    /**
+     * DAO for all saved recipes.
+     * */
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
 
+    /**
+     * The current recipe for the page.
+     * */
     private Recipe recipe;
 
+    /**
+     * Parent node for all elements.
+     * */
+    public HBox RecipeRoot; //This Hbox is the main parent.
     public void initialize() throws IOException {
         ScaleRecipe(1.6);
     }
+
+    /**
+     * Changes all text fields for the current recipe.
+     * */
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
 
@@ -66,6 +136,10 @@ public class RecipeController extends BaseController {
         cookTimeLabel.setText("Cook: " + recipe.getCookTime() + " min");
         servingsLabel.setText("Servings: " + recipe.getServings());
     }
+
+    /**
+     * Changes all text fields for the current recipe.
+     * */
     @FXML
     private void saveRecipe() {
         if (recipe == null) return;
@@ -76,7 +150,6 @@ public class RecipeController extends BaseController {
         saveRecipeButton.setText("Recipe Saved!");
     }
 
-    public HBox RecipeRoot; //This Hbox is the main parent.
     private void ScaleRecipe(double scale) {
         RecipeRoot.setScaleX(scale); //Scales root parent
         RecipeRoot.setScaleY(scale);
