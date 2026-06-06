@@ -15,18 +15,60 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller for the profile page.
+ * */
 public class ProfileController extends BaseController {
+
+    /**
+     * Text label for the user's name.
+     * */
     @FXML
     public Label testname;
+
+    /**
+     * Text label for the user's username.
+     * */
     public Label testusername;
+
+    /**
+     * Text label for error feedback.
+     * */
     public Label errorText;
+
+    /**
+     * Button to log the user out of their account.
+     * */
     public Button logOut;
+
+    /**
+     * Parent node for all elements.
+     * */
     public HBox profileRoot;
+
+    /**
+     * Text label for the user's calorie goal.
+     * */
     public Label calorieLabel;
+
+    /**
+     * Text label for the user's carbs goal.
+     * */
     public Label carbLabel;
+
+    /**
+     * Text label for the user's fat goal.
+     * */
     public Label fatLabel;
+
+    /**
+     * Text label for the user's protein goal.
+     * */
     public Label proteinLabel;
 
+    /**
+     * DAO for all saved fitness goals.
+     * */
     public final FitnessDAO fitnessDAO = new FitnessDAO();
 
     public void initialize() {
@@ -49,16 +91,22 @@ public class ProfileController extends BaseController {
             proteinLabel.setText("No protein goal set");
         }
     }
+
+    /**
+     * Set the user's name for the text label.
+     * */
     public void SetName()
     {
         testname.setText("Name: " + UserAccountDAO.currentAccount.getFirstname() + " " + UserAccountDAO.currentAccount.getLastname()); //prints the welcome text
     }
 
+    /**
+     * Set the user's username for the text label.
+     * */
     public void SetUsername()
     {
         testusername.setText("username: " + UserAccountDAO.currentAccount.getUsername());
     }
-
 
     public void goToHelloController() throws IOException {
         Stage stage = (Stage) logOut.getScene().getWindow();
@@ -66,19 +114,4 @@ public class ProfileController extends BaseController {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
     }
-
-    public void goToPage(String fxmlName) throws IOException {
-        Stage stage = (Stage) testname.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(fxmlName+".fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-//    public void goToGroceryList() throws IOException { goToPage("grocery-view"); }
-//    public void goToAIPage() throws IOException { goToPage("ai-view"); }
-//    public void goToHomeView() throws IOException { goToPage("main-view"); }
-//    public void goToProfile() throws IOException { goToPage("Profile-view"); }
-//    public void goToPreferences() throws IOException { goToPage("preferences-view"); }
-//    public void goToFitnessTargets() throws IOException { goToPage("fitness-targets-view"); }
-//    public void goToSavedRecipeView() throws IOException { goToPage("saved-recipes-view"); }
 }
