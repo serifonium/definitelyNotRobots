@@ -10,35 +10,56 @@ import javafx.scene.layout.HBox;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Controller for the fitness targets page.
+ * */
 public class FitnessTargetsController extends BaseController {
+    /**
+     * DAO for fitness goals.
+     * */
     private final FitnessDAO fitnessDAO = new FitnessDAO();
+
+    /**
+     * Input text field for the user's calories goal.
+     * */
     @FXML
     public TextField Caloriesgoal;
+
+    /**
+     * Input text field for the user's target weight.
+     * */
     public TextField targetWeightField;
+
+    /**
+     * Input text field for the user's target fats.
+     * */
     public TextField targetfats;
+
+    /**
+     * Input text field for the user's target carbs.
+     * */
     public TextField targetcarbs;
+
+    /**
+     * Input text field for the user's target proteins.
+     * */
     public TextField targetproteins;
-    @FXML
-    public Button profileButton;
-    @FXML
-    public Button aiButton;
-    @FXML
-    public Button pantryButton;
-    @FXML
-    public Button groceryListButton;
-    @FXML
-    public Button savedRecipesButton;
-    @FXML
-    public Button fitnessTargetsButton;
-    @FXML
-    public Button preferencesButton;
-    @FXML
-    public Button homeButton;
+
+    /**
+     * Text label for error feedback.
+     * */
     @FXML
     public Label errorText;
+
+    /**
+     * Button to save details.
+     * */
     @FXML
     public Button savedetails;
 
+    /**
+     * Saves the user's input for new goals.
+     * */
     public void onSaveDetails() throws IOException {
 
         double inputCalorie = Double.parseDouble(Caloriesgoal.getText());
@@ -70,6 +91,9 @@ public class FitnessTargetsController extends BaseController {
         goToProfileView();
     }
 
+    /**
+     * Check for an existing fitness goal from the same user.
+     * */
     public Boolean checkForExistingRecord() {
         FitnessGoal fitnessGoal = fitnessDAO.getByUserID(UserAccountDAO.currentAccount.getID());
 
@@ -77,6 +101,9 @@ public class FitnessTargetsController extends BaseController {
         return true;
     }
 
+    /**
+     * Parent node for all elements.
+     * */
     public HBox FitnessTargetRoot; //This Vbox is the main parent.
     // If you have any issues later check whether the root was changed to an HBox class.
     public void initialize() {

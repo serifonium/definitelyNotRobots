@@ -9,16 +9,31 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+/**
+ * Controls user input to a GPT-4o model.
+ */
 public class AiController {
 
+    /**
+     * The text area for a user to input recipe requests.
+     */
     @FXML
     private TextField chatbotInput;
 
+    /**
+     * The text area for the GPT-4o model to output recipe details.
+     */
     @FXML
     private TextArea chatbotOutput;
 
+    /**
+     * Connection to a GPT-4o model.
+     */
     private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
 
+    /**
+     * Submit user text to a GPT-4o model.
+     */
     @FXML
     protected void onChatbotInputButtonClick() {
         String userInput = chatbotInput.getText();
