@@ -52,7 +52,7 @@ public class MainController {
     public Label recipeMethod;
 
     /**
-     * Text label to display the current recipe servings & time metrics.
+     * Text label to display the current recipe servings and time metrics.
      * */
     public Label recipeServingsAndTime;
 
