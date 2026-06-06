@@ -42,7 +42,7 @@
          </VBox.margin></PasswordField>
         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="280.0" spacing="20.0">
             <Button onAction="#onLoginButtonClick" style="-fx-background-color: #ff6600;" text="Login" />
-            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Sign Up" />
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#goToSignUpView" text="Sign Up" />
         </HBox>
         <Label fx:id="errorText" textFill="#ab0000" />
         <VBox>

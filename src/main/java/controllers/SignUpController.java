@@ -20,7 +20,7 @@ import java.util.Objects;
 /**
  * Controller for the sign-up page.
  * */
-public class SignUpController {
+public class SignUpController extends BaseController {
     /**
      * DAO for all saved user accounts.
      * */
@@ -71,17 +71,7 @@ public class SignUpController {
         errorText.setText("");
 
         userAccountDAO.insertUser(new UserAccount(inputUsername, inputPassword, inputFirstname, inputLastname));
-        goToSignIn();
-    }
-
-    /**
-     * Redirect the user to the login page.
-     * */
-    public void goToSignIn() throws IOException {
-        Stage stage = (Stage) signInButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
+        goToLoginView();
     }
 
     /**
@@ -115,7 +105,7 @@ public class SignUpController {
     public HBox signupRoot; //This Hbox is the main parent.
     @FXML
     public void initialize() throws IOException {
-        ScaleMainView(1.6);
+        init(signupRoot);
     }
 
     private void ScaleMainView(double scale) {

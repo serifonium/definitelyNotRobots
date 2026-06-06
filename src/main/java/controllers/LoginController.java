@@ -74,17 +74,6 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * Redirect the user to the sign-up page.
-     * */
-    @FXML
-    protected void onSignUpButtonClick() throws IOException {
-        Stage stage = (Stage) signInButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("sign-up-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-    }
-
-    /**
      * Handle the user's arrow inputs to navigate.
      * */
     public void handleArrowNavigation(javafx.scene.input.KeyEvent event) {

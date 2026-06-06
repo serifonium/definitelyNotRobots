@@ -54,5 +54,5 @@ public abstract class BaseController {
     public void goToSavedRecipesView() throws IOException { loadScene("saved-recipes-view"); }
     public void goToProfileView() throws IOException { loadScene("Profile-view"); }
     public void goToLoginView() throws IOException { loadScene("hello-view"); }
-    public void goToSignInView() throws IOException { loadScene("sign-in-view"); }
+    public void goToSignUpView() throws IOException { loadScene("sign-up-view"); }
 }
