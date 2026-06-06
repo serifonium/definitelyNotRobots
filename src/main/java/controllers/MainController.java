@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Parent node for all elements.
+ * Controller for the home page of the application.
  * */
 public class MainController {
 
