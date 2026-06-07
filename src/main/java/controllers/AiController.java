@@ -6,6 +6,7 @@ import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 import com.openai.models.responses.Response;
 import com.openai.models.responses.ResponseCreateParams;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -41,6 +42,7 @@ import com.example.definitelynotrobots.Recipe;
 import com.example.definitelynotrobots.RecipeParser;
 import com.example.definitelynotrobots.UserAccountDAO;
 
+
 /**
  * Controls user input to a GPT-4o model.
  */
@@ -64,7 +66,10 @@ public class AiController {
 
 
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
-    private final OpenAIClient client = OpenAIOkHttpClient.builder().apiKey("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").build();
+
+    private final Dotenv dotenv = Dotenv.load();
+
+    private final OpenAIClient client = OpenAIOkHttpClient.builder().apiKey(dotenv.get("LOCAL_OPENAI_API_KEY")).build();
     @FXML
     private ImageView uploadedImagePreview;
     private File selectedImageFile;

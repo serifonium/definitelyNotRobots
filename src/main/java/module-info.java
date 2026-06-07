@@ -15,6 +15,8 @@ module com.example.definitelynotrobots {
     requires openai.java.core;
     requires openai.java.client.okhttp;
     requires annotations;
+    requires io.github.cdimascio.dotenv.java;
+
 
     opens com.example.definitelynotrobots to javafx.fxml;
     exports com.example.definitelynotrobots;

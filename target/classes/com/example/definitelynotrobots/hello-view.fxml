@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="helloRoot" alignment="CENTER" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #2a6c36;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HelloController">
+<HBox fx:id="helloRoot" alignment="CENTER" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" style="-fx-background-color: #2a6c36;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <AnchorPane maxWidth="-Infinity" prefHeight="480.0" prefWidth="120.0" style="-fx-background-color: #2a6c36;" />
    <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="340.0" style="-fx-background-color: #2a6c36;">
       <children>
@@ -42,7 +42,7 @@
          </VBox.margin></PasswordField>
         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="280.0" spacing="20.0">
             <Button onAction="#onLoginButtonClick" style="-fx-background-color: #ff6600;" text="Login" />
-            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#onSignUpButtonClick" text="Sign Up" />
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#goToSignUpView" text="Sign Up" />
         </HBox>
         <Label fx:id="errorText" textFill="#ab0000" />
         <VBox>
