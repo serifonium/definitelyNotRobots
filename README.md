@@ -7,13 +7,11 @@ _(Project Structure --> Libraries --> [+] New Project Libraries --> From Maven..
 
 To use AI features:
 
-MAC:  
-- run `nano ~/.zshrc`
-- Add this line at the bottom: 
-  - `export OPENAI_API_KEY=""`
-- Save & Exit
-  - `Ctrl+O`, `Enter`, `Ctrl+X`
-- Restart IntelliJ
+To use the AI feature from the GitHub and not the zip file subbmision
+
+copy the .env file from the zip file from canvas and replace the .env file in the root folder of GitHUb
+
+This will prevent the key from leaking because if it does it will become unsuable. if this is done it will allow you to use the ai features from guthub
 
 Meal Creator:
 
