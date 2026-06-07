@@ -119,7 +119,7 @@ public class RecipeController extends BaseController {
      * */
     public HBox RecipeRoot; //This Hbox is the main parent.
     public void initialize() throws IOException {
-        ScaleRecipe(1.6);
+        ScaleRecipe(1);
     }
 
     /**

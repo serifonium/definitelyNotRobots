@@ -64,7 +64,7 @@ public class AiController {
 
 
     private final SavedRecipesDAO savedRecipesDAO = new SavedRecipesDAO();
-    private final OpenAIClient client = OpenAIOkHttpClient.fromEnv();
+    private final OpenAIClient client = OpenAIOkHttpClient.builder().apiKey("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").build();
     @FXML
     private ImageView uploadedImagePreview;
     private File selectedImageFile;
